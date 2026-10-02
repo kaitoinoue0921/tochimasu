@@ -11,6 +11,11 @@
   - GitHub repo `kaitoinoue0921/tochimasu` を作成。`main`=ソース、`gh-pages`=公開用。
   - 公開URL: https://kaitoinoue0921.github.io/tochimasu/ （トップ・問題・公式ページが200を確認）
 
+- 2026-10-02（改善）
+  - トップに「令和5年度」セクション追加（これまで未リンクだった /r5-q2, /r5-q4 を掲載）。
+  - トップに「クリアした問題 N 問」表示（localStorage の tochimasu_completed を集計）。
+  - `scripts/deploy.sh` でビルド→gh-pages公開を1コマンド化。自動デプロイ用の `scripts/deploy.yml.disabled` も用意（gh のトークンに workflow 権限がなく push 不可。`gh auth refresh -s workflow` 後に `.github/workflows/` へ移せば有効）。
+
 ## 決定事項と理由
 - 公開はGitHub Pages（他のサイトと同じ方式、URL固定、PCを閉じても見られる）。
 - サイト上に制作ツール名（Antigravity/Gemini）は書かない（本人の希望）。
@@ -28,7 +33,9 @@ Antigravity側で問題を追加した場合は、元フォルダの `src/` を 
 
 ## 次のタスク
 - 令和5年度は q2/q4 のみ。残りの大問を追加。
-- デプロイの自動化（GitHub Actions など）。
+- 旧版の /q1,/q2,/q3,/q5,/q6（令和6年の旧ページ。未リンク）が /r6 と重複。整理するか判断。
+- 令和5年の他の大問、令和2年以前の追加。
+- 問題ごとの「クリア済」バッジ表示（現状は合計数のみ。titleが保存キーなので対応づけが必要）。
 - 元フォルダと `~/tochimasu` の二重管理を解消（どちらを正とするか決める）。
 
 ## 未確認事項

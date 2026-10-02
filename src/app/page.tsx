@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ClearedCount } from '@/components/ClearedCount';
 import { BookOpen, Move, PieChart, Triangle, Activity, Box, Car, GraduationCap, BarChart2, Calculator, Timer, Shapes, Beaker, Users } from 'lucide-react';
 
 export default function Home() {
@@ -72,6 +73,11 @@ export default function Home() {
     }
   ];
 
+  const r5Problems = [
+    { title: '令和5年 大問2：教室と参加人数の過不足', description: '方程式を立てて、教室の数と参加人数を求める問題。', href: '/r5-q2' },
+    { title: '令和5年 大問4：箱ひげ図とデータの読み取り', description: '箱ひげ図から四分位数などを読み取るデータの活用問題。', href: '/r5-q4' },
+  ];
+
   const r6Problems = [
     { id: 'q1', title: '令和6年 大問1（基本計算）', subs: 6 },
     { id: 'q2', title: '令和6年 大問2（連立方程式）', subs: 1 },
@@ -106,6 +112,8 @@ export default function Home() {
           </div>
         </div>
         
+        <div><ClearedCount /></div>
+
         <Link 
           href="/formulas" 
           className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-transform active:scale-95 shadow-md"
@@ -152,6 +160,25 @@ export default function Home() {
                 <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed transition-colors">
                   {prob.description}
                 </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b-2 border-sky-500 pb-2 mb-6">
+          令和5年度（2023年度）
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {r5Problems.map((prob) => (
+            <Link href={prob.href} key={prob.href} className="block group">
+              <div className="border-2 rounded-2xl p-6 h-full transition-all duration-300 transform group-hover:-translate-y-1 group-hover:shadow-lg bg-sky-50 dark:bg-sky-900/20 border-sky-200 dark:border-sky-800 hover:border-sky-400 dark:hover:border-sky-500">
+                <div className="bg-white dark:bg-slate-800 w-14 h-14 rounded-full flex items-center justify-center shadow-sm mb-4 transition-colors">
+                  <BookOpen className="w-8 h-8 text-sky-500 dark:text-sky-400" />
+                </div>
+                <h4 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 transition-colors">{prob.title}</h4>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed transition-colors">{prob.description}</p>
               </div>
             </Link>
           ))}
