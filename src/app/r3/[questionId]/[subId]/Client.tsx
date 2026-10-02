@@ -24,6 +24,7 @@ export default function R3SubQuestionPage({ params }: { params: Promise<{ questi
       
       <StepLayout
         title={sub.title}
+        progressKey={`r3/${resolvedParams.questionId}/${resolvedParams.subId}`}
         knowledge={sub.knowledge}
         questionText={
           <div className="space-y-4 text-sm leading-relaxed border-2 border-slate-300 dark:border-slate-600 p-6 rounded-xl bg-white dark:bg-slate-900 shadow-inner">

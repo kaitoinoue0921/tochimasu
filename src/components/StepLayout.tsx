@@ -24,9 +24,10 @@ interface StepLayoutProps {
   knowledge?: string[];
   questionText: React.ReactNode;
   steps: Step[];
+  progressKey?: string; // クリア記録のキー。未指定ならtitle
 }
 
-export function StepLayout({ title, knowledge, questionText, steps }: StepLayoutProps) {
+export function StepLayout({ title, knowledge, questionText, steps, progressKey }: StepLayoutProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepStates, setStepStates] = useState<Record<number, { 
     isCorrect: boolean; 
@@ -107,7 +108,7 @@ export function StepLayout({ title, knowledge, questionText, steps }: StepLayout
         if (isAllComplete) {
           try {
             const completed = JSON.parse(localStorage.getItem('tochimasu_completed') || '{}');
-            completed[title] = { date: new Date().toISOString() };
+            completed[progressKey ?? title] = { date: new Date().toISOString() };
             localStorage.setItem('tochimasu_completed', JSON.stringify(completed));
           } catch(e) {}
         }

@@ -15,6 +15,8 @@
   - トップに「令和5年度」セクション追加（これまで未リンクだった /r5-q2, /r5-q4 を掲載）。
   - トップに「クリアした問題 N 問」表示（localStorage の tochimasu_completed を集計）。
   - `scripts/deploy.sh` でビルド→gh-pages公開を1コマンド化。自動デプロイ用の `scripts/deploy.yml.disabled` も用意（gh のトークンに workflow 権限がなく push 不可。`gh auth refresh -s workflow` 後に `.github/workflows/` へ移せば有効）。
+  - 全部改善（第2弾）: ①小問ごとの「クリア済」バッジ＋大問ごとの「n / m クリア」(src/components/Progress.tsx、記録キーは `r7/q1/1` 形式。StepLayoutに progressKey を追加) ②旧ページ /q1,/q2,/q3,/q5,/q6 を削除（/r6 と同内容・未リンク。履歴はgitに残る）③トップを sections 配列のデータ駆動に整理（小問数は data から自動算出）④スマホ幅でヘッダー折り返しを修正し、主要6ページで横スクロールなしを確認。
+  - 旧クリア記録（タイトルをキーにしていた分）は合計数にだけ残る。バッジには出ない。
 
 ## 決定事項と理由
 - 公開はGitHub Pages（他のサイトと同じ方式、URL固定、PCを閉じても見られる）。
@@ -33,9 +35,9 @@ Antigravity側で問題を追加した場合は、元フォルダの `src/` を 
 
 ## 次のタスク
 - 令和5年度は q2/q4 のみ。残りの大問を追加。
-- 旧版の /q1,/q2,/q3,/q5,/q6（令和6年の旧ページ。未リンク）が /r6 と重複。整理するか判断。
-- 令和5年の他の大問、令和2年以前の追加。
-- 問題ごとの「クリア済」バッジ表示（現状は合計数のみ。titleが保存キーなので対応づけが必要）。
+- 令和5年の他の大問、令和2年以前の追加（公式の問題PDFが手元にないと正確に作れないため保留。PDFをもらえれば opus-thinker で作成）。
+- r5-q2 / r5-q4 は旧形式のページ。r6と同じデータ形式に移すとバッジ・進捗が付く。
+- 自動デプロイ: `gh auth refresh -s workflow` 後に scripts/deploy.yml.disabled を .github/workflows/deploy.yml へ。
 - 元フォルダと `~/tochimasu` の二重管理を解消（どちらを正とするか決める）。
 
 ## 未確認事項

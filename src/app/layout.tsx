@@ -21,8 +21,8 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300`}>
         <header className="bg-emerald-600 dark:bg-emerald-800 text-white p-4 shadow-md transition-colors duration-300">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <h1 className="text-xl font-black tracking-wider">🔥 とちます！ <span className="text-sm font-normal ml-2 opacity-80">栃木県公立入試 スパルタ特訓</span></h1>
-            <Link href="/" className="text-emerald-100 hover:text-white transition-colors font-bold">ホーム</Link>
+            <h1 className="text-xl font-black tracking-wider">🔥 とちます！ <span className="hidden sm:inline text-sm font-normal ml-2 opacity-80">栃木県公立入試 スパルタ特訓</span></h1>
+            <Link href="/" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">ホーム</Link>
           </div>
         </header>
         <main className="flex-1 max-w-4xl w-full mx-auto p-4 md:p-8">

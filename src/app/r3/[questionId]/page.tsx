@@ -1,6 +1,7 @@
 import { r3Data } from '@/data/r3';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { ClearBadge } from '@/components/Progress';
 import { Book, ChevronLeft } from 'lucide-react';
 
 export function generateStaticParams() {
@@ -36,6 +37,7 @@ export default async function R3QuestionMenu({ params }: { params: Promise<{ que
               <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 {sub.title}
               </h3>
+              <div className="mb-2"><ClearBadge id={`r3/${resolvedParams.questionId}/${sub.id}`} /></div>
               
               {sub.knowledge.length > 0 && (
                 <div className="flex flex-wrap gap-2">
