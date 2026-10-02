@@ -228,7 +228,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
                   {state.isCorrect && <CheckCircle2 className="w-6 h-6 text-emerald-500 dark:text-emerald-400 ml-auto" />}
                 </div>
                 
-                <div className="pl-11 text-slate-700 dark:text-slate-200">
+                <div className="pl-0 sm:pl-11 text-slate-700 dark:text-slate-200 min-w-0 overflow-x-auto">
                   {step.content && <div className="mb-4">{step.content}</div>}
                   
                   {hasQuiz && (
@@ -236,19 +236,19 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
                       <p className="font-bold text-slate-800 dark:text-slate-100 mb-4">{step.quiz!.question}</p>
                       
                       {step.quiz!.type === 'choice' && (
-                        <div className="space-y-3 relative">
+                        <div className={`space-y-3 relative ${isLocked ? 'min-h-[19rem] sm:min-h-[15rem]' : ''}`}>
                           {isLocked && (
-                            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-red-700/95 dark:bg-red-950/95 backdrop-blur-md rounded-xl p-6 text-center animate-shake shadow-[0_0_50px_rgba(220,38,38,0.8)] overflow-hidden border-4 border-red-500">
+                            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-red-700/95 dark:bg-red-950/95 backdrop-blur-md rounded-xl p-4 sm:p-6 text-center animate-shake shadow-[0_0_50px_rgba(220,38,38,0.8)] overflow-hidden border-4 border-red-500">
                               <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
                               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-black/40 rounded-full blur-2xl"></div>
                               
-                              <div className="z-20 flex gap-4 mb-4 text-red-300 animate-pulse">
-                                <Flame className="w-12 h-12" />
-                                <Skull className="w-12 h-12" />
-                                <Flame className="w-12 h-12" />
+                              <div className="z-20 flex gap-4 mb-2 sm:mb-4 text-red-300 animate-pulse">
+                                <Flame className="w-8 h-8 sm:w-12 sm:h-12" />
+                                <Skull className="w-8 h-8 sm:w-12 sm:h-12" />
+                                <Flame className="w-8 h-8 sm:w-12 sm:h-12" />
                               </div>
 
-                              <p className="text-white font-black text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-snug z-20 whitespace-pre-wrap">
+                              <p className="text-white font-black text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-6 break-words drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-snug z-20 whitespace-pre-wrap">
                                 {state.scoldingMessage}
                               </p>
                               
