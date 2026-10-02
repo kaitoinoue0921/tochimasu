@@ -27,6 +27,15 @@ interface StepLayoutProps {
   progressKey?: string; // クリア記録のキー。未指定ならtitle
 }
 
+function shuffled<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export function StepLayout({ title, knowledge, questionText, steps, progressKey }: StepLayoutProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepStates, setStepStates] = useState<Record<number, { 
@@ -36,6 +45,18 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
     scoldingMessage?: string;
   }>>({});
   const [now, setNow] = useState(Date.now());
+  // 選択肢は開くたび・やり直すたびに並び替える（正解の位置を覚えて押せないように）
+  // SSRとの不一致を避けるため、マウント後に並び替える
+  const [optionOrder, setOptionOrder] = useState<Record<number, string[]>>({});
+  const shuffleOptions = () => {
+    const next: Record<number, string[]> = {};
+    for (const st of steps) {
+      if (st.quiz?.type === 'choice' && st.quiz.options) next[st.id] = shuffled(st.quiz.options);
+    }
+    setOptionOrder(next);
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(shuffleOptions, []);
 
   // Timer loop for updating the penalty countdown
   useEffect(() => {
@@ -52,6 +73,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   const reset = () => {
     setCurrentStep(0);
     setStepStates({});
+    shuffleOptions();
   };
 
   const scoldingMessages = [
@@ -237,7 +259,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
                             </div>
                           )}
 
-                          {step.quiz!.options?.map((opt) => {
+                          {(optionOrder[step.id] ?? step.quiz!.options)?.map((opt) => {
                             const isSelected = state.selectedAnswer === opt;
                             const isCorrectOpt = opt === step.quiz!.correctAnswer;
                             
