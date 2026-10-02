@@ -4,6 +4,7 @@ import { BookOpen, Calculator, Shapes, BarChart2, Beaker, Users } from 'lucide-r
 import { ClearedCount, ProgressPill } from '@/components/Progress';
 import { r3Data } from '@/data/r3';
 import { r4Data } from '@/data/r4';
+import { r5Data } from '@/data/r5';
 import { r6Data } from '@/data/r6';
 import { r7Data } from '@/data/r7';
 
@@ -79,8 +80,12 @@ const sections: { title: string; border: string; cards: Card[] }[] = [
     title: '令和5年度（2023年度）',
     border: 'border-sky-500',
     cards: [
-      { title: '令和5年 大問2：教室と参加人数の過不足', description: '方程式を立てて、教室の数と参加人数を求める問題。', href: '/r5-q2', icon: <BookOpen className={`w-8 h-8 ${themes.sky.icon}`} />, color: themes.sky.card },
-      { title: '令和5年 大問4：箱ひげ図とデータの読み取り', description: '箱ひげ図から四分位数などを読み取るデータの活用問題。', href: '/r5-q4', icon: <BookOpen className={`w-8 h-8 ${themes.sky.icon}`} />, color: themes.sky.card },
+      card('r5', 'q1', r5Data, 'sky', '令和5年 大問1：基本の小問集合', '正負の数、単項式の除法、ねじれの位置、円周角、相似比と面積比など8問。', (c) => <Calculator className={`w-8 h-8 ${c}`} />),
+      card('r5', 'q2', r5Data, 'sky', '令和5年 大問2：方程式と数の性質', '解の公式、教室の数と参加人数の方程式、99をたしても各位の和が変わらない証明。'),
+      card('r5', 'q3', r5Data, 'sky', '令和5年 大問3：作図・回転体・証明', '30°の作図、台形を回転させた立体の体積、正方形と垂線の合同証明。', (c) => <Shapes className={`w-8 h-8 ${c}`} />),
+      card('r5', 'q4', r5Data, 'sky', '令和5年 大問4：確率とデータの活用', 'くじびきの確率、累積度数と最頻値、箱ひげ図の読み取り。', (c) => <BarChart2 className={`w-8 h-8 ${c}`} />),
+      card('r5', 'q5', r5Data, 'sky', '令和5年 大問5：関数', '放物線と直線の図形問題と、前田さん・後藤さんの速さのグラフ。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
+      card('r5', 'q6', r5Data, 'sky', '令和5年 大問6：タイルのしきつめ', '黒と白のタイルの枚数の規則性を文字式で表し、条件を満たす整数を探す。', (c) => <Users className={`w-8 h-8 ${c}`} />),
     ],
   },
   {
