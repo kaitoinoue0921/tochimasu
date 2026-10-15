@@ -501,7 +501,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: (
           <div className="space-y-4">
             <p>図1のような深さ40cmの直方体の水そうの底に、直方体ABCD－EFGHのブロックが長方形EFGHを底面にして固定されている。この水そうを満水にし、水そうの底に取り付けられた排水口から毎分一定の量で排水した。図2は、排水を始めてから <TextWithMath text="$x$" /> 分後の水面の高さを <TextWithMath text="$y$" /> cmとして、<TextWithMath text="$x$" /> と <TextWithMath text="$y$" /> の関係をグラフに表したものである。</p>
-            <div className="grid sm:grid-cols-2 gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl">
+            <div className="grid sm:grid-cols-2 gap-4 bg-white p-4 rounded-xl">
               <figure className="text-center">
                 <svg viewBox="0 0 240 190" className="w-full max-w-xs mx-auto">
                   {/* 水そう */}
