@@ -29,9 +29,19 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p><TextWithMath text="$-4-3$" /> を計算しなさい。</p>,
         steps: [
           {
-            id: 1, title: '正負の数の計算',
-            content: <p>一番基本となる計算問題です。</p>,
-            quiz: { type: 'choice', question: '-4 - 3 を計算しなさい。', options: ['-7', '7', '-1'], correctAnswer: '-7', explanation: <p><TextWithMath text="$-4 - 3 = -7$" /> です。</p> }
+            id: 1, title: '① 引き算をたし算に直す',
+            content: <p>「−3 を引く」は「−3 をたす」と同じです。まず全部たし算の形にします。</p>,
+            quiz: { type: 'choice', question: '−4 − 3 をたし算の形に直すと？', options: ['(−4) + (−3)', '(−4) + (+3)', '(+4) + (−3)'], correctAnswer: '(−4) + (−3)', explanation: <p><TextWithMath text="$-4-3=(-4)+(-3)$" /> です。</p> }
+          },
+          {
+            id: 2, title: '② 答えの符号',
+            content: <p>同じ符号どうしのたし算は、その共通の符号がつきます。</p>,
+            quiz: { type: 'choice', question: '(−4) + (−3) の答えの符号は？', options: ['−（マイナス）', '＋（プラス）'], correctAnswer: '−（マイナス）', explanation: <p>どちらもマイナスなので、答えもマイナスです。</p> }
+          },
+          {
+            id: 3, title: '③ 答え',
+            content: <p>符号はマイナス、数の部分は 4 と 3 をたします。</p>,
+            quiz: { type: 'choice', question: '−4 − 3 を計算すると？', options: ['−7', '7', '−1', '1'], correctAnswer: '−7', explanation: <p><TextWithMath text="$-4-3=-7$" /> です。</p> }
           }
         ]
       },
@@ -42,9 +52,24 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p>2025を素因数分解すると <TextWithMath text="$3^ア \times 5^イ$" /> と表せる。ア、イを求めなさい。</p>,
         steps: [
           {
-            id: 1, title: '素因数分解',
-            content: <p>2025を素数で割っていきます。</p>,
-            quiz: { type: 'choice', question: '2025を素因数分解すると？', options: ['3² × 5⁴', '3⁴ × 5²', '3³ × 5²'], correctAnswer: '3⁴ × 5²', explanation: <p><TextWithMath text="$2025 = 3^4 \times 5^2$" /> です。（ア=4, イ=2）</p> }
+            id: 1, title: '① 何で割り始める？',
+            content: <p>素因数分解は、小さい素数で割れるだけ割っていきます。2025は一の位が5です。</p>,
+            quiz: { type: 'choice', question: '2025 をまず割れる素数はどれ？', options: ['5', '2', '7'], correctAnswer: '5', explanation: <p>一の位が5なので5で割れます。<TextWithMath text="$2025 \div 5 = 405$" />。</p> }
+          },
+          {
+            id: 2, title: '② もう一度5で割る',
+            content: <p>405 も一の位が5です。</p>,
+            quiz: { type: 'choice', question: '405 ÷ 5 は？', options: ['81', '85', '71'], correctAnswer: '81', explanation: <p><TextWithMath text="$405 \div 5 = 81$" />。81 はもう5では割れません。</p> }
+          },
+          {
+            id: 3, title: '③ 81 を3の累乗に',
+            content: <p>81 は 3 で割り続けられます。81 → 27 → 9 → 3 → 1。</p>,
+            quiz: { type: 'choice', question: '81 を3の累乗で表すと？', options: ['3³', '3⁴', '3⁵'], correctAnswer: '3⁴', explanation: <p>3で4回割れたので <TextWithMath text="$81 = 3^4$" /> です。</p> }
+          },
+          {
+            id: 4, title: '④ まとめる',
+            content: <p>5で2回、3で4回割れました。</p>,
+            quiz: { type: 'choice', question: 'ア、イに入る数は？', options: ['ア=4, イ=2', 'ア=2, イ=4', 'ア=4, イ=1'], correctAnswer: 'ア=4, イ=2', explanation: <p><TextWithMath text="$2025 = 3^4 \times 5^2$" />。ア=4、イ=2 です。</p> }
           }
         ]
       },
@@ -55,9 +80,19 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p><TextWithMath text="$x^2 + 2x - 15$" /> を因数分解しなさい。</p>,
         steps: [
           {
-            id: 1, title: '因数分解',
-            content: <p>かけて -15、足して +2 になる2つの数字を探します。</p>,
-            quiz: { type: 'choice', question: 'x² + 2x - 15 を因数分解しなさい。', options: ['(x + 5)(x - 3)', '(x - 5)(x + 3)', '(x + 15)(x - 1)'], correctAnswer: '(x + 5)(x - 3)', explanation: <p><TextWithMath text="$(x + 5)(x - 3)$" /> です。</p> }
+            id: 1, title: '① 何を探す？',
+            content: <p><TextWithMath text="$x^2+(a+b)x+ab=(x+a)(x+b)$" /> の形を使います。かけて定数項、たして x の係数になる2つの数を探します。</p>,
+            quiz: { type: 'choice', question: 'x² + 2x − 15 で探すのはどんな2つの数？', options: ['かけて −15、たして 2', 'かけて 2、たして −15', 'かけて 15、たして 2'], correctAnswer: 'かけて −15、たして 2', explanation: <p>定数項 −15 が「かけた答え」、xの係数 2 が「たした答え」です。</p> }
+          },
+          {
+            id: 2, title: '② 2つの数を見つける',
+            content: <p>かけてマイナスなので、2つの数は符号がちがいます。15 = 1×15、3×5 の組から探します。</p>,
+            quiz: { type: 'choice', question: 'かけて −15、たして 2 になる2つの数は？', options: ['5 と −3', '−5 と 3', '15 と −1'], correctAnswer: '5 と −3', explanation: <p><TextWithMath text="$5 \times (-3) = -15$" />、<TextWithMath text="$5 + (-3) = 2$" /> です。</p> }
+          },
+          {
+            id: 3, title: '③ 答え',
+            content: <p>見つけた2つの数を (x + □)(x + □) に入れます。</p>,
+            quiz: { type: 'choice', question: 'x² + 2x − 15 を因数分解すると？', options: ['(x + 5)(x − 3)', '(x − 5)(x + 3)', '(x + 15)(x − 1)'], correctAnswer: '(x + 5)(x − 3)', explanation: <p><TextWithMath text="$(x+5)(x-3)$" /> です。展開して元に戻るか確かめると安心です。</p> }
           }
         ]
       },
@@ -68,9 +103,29 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div className="space-y-2"><p>次のデータは、クイズ大会に参加した6人の生徒の得点である。このデータの四分位範囲を求めなさい。</p><p className="text-center border border-slate-400 rounded px-3 py-1 w-fit mx-auto">19, 20, 7, 16, 24, 11（点）</p></div>,
         steps: [
           {
-            id: 1, title: '四分位範囲',
-            content: <p>データを小さい順に並べ替えてから考えます。</p>,
-            quiz: { type: 'choice', question: '四分位範囲（第3四分位数 - 第1四分位数）はいくつですか？', options: ['8', '9', '11'], correctAnswer: '9', explanation: <p>並べ替えると [7, 11, 16, 19, 20, 24]。四分位範囲は <TextWithMath text="$20 - 11 = 9$" /> です。</p> }
+            id: 1, title: '① 小さい順に並べる',
+            content: <p>四分位数は、まずデータを小さい順に並べてから考えます。</p>,
+            quiz: { type: 'choice', question: '19, 20, 7, 16, 24, 11 を小さい順に並べると？', options: ['7, 11, 16, 19, 20, 24', '7, 11, 16, 20, 19, 24', '7, 16, 11, 19, 20, 24'], correctAnswer: '7, 11, 16, 19, 20, 24', explanation: <p>7, 11, 16, 19, 20, 24 です。</p> }
+          },
+          {
+            id: 2, title: '② 前半と後半に分ける',
+            content: <p>データは6個なので、真ん中で3個ずつに分けます。</p>,
+            quiz: { type: 'choice', question: '前半のデータはどれ？', options: ['7, 11, 16', '7, 11, 16, 19', '7, 11'], correctAnswer: '7, 11, 16', explanation: <p>前半は 7, 11, 16、後半は 19, 20, 24 です。</p> }
+          },
+          {
+            id: 3, title: '③ 第1四分位数',
+            content: <p>第1四分位数は、前半のデータの中央値です。</p>,
+            quiz: { type: 'choice', question: '第1四分位数は？', options: ['11', '9', '16'], correctAnswer: '11', explanation: <p>7, 11, 16 の真ん中なので 11 です。</p> }
+          },
+          {
+            id: 4, title: '④ 第3四分位数',
+            content: <p>第3四分位数は、後半のデータの中央値です。</p>,
+            quiz: { type: 'choice', question: '第3四分位数は？', options: ['20', '19.5', '24'], correctAnswer: '20', explanation: <p>19, 20, 24 の真ん中なので 20 です。</p> }
+          },
+          {
+            id: 5, title: '⑤ 四分位範囲',
+            content: <p>四分位範囲 = 第3四分位数 − 第1四分位数 です。</p>,
+            quiz: { type: 'choice', question: 'このデータの四分位範囲は？', options: ['9点', '8点', '17点'], correctAnswer: '9点', explanation: <p><TextWithMath text="$20 - 11 = 9$" />（点）。17点は「最大値 − 最小値」の範囲なので別物です。</p> }
           }
         ]
       },
@@ -81,9 +136,19 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p>正十角形の1つの内角の大きさを求めなさい。</p>,
         steps: [
           {
-            id: 1, title: '内角の大きさ',
-            content: <p>内角の和の公式は <TextWithMath text="$180 \times (n - 2)$" /> です。</p>,
-            quiz: { type: 'choice', question: '正十角形の1つの内角の大きさを求めなさい。', options: ['120度', '144度', '150度'], correctAnswer: '144度', explanation: <p>内角の和 <TextWithMath text="$1440^\circ$" /> を10で割るので 144° です。</p> }
+            id: 1, title: '① 内角の和の公式',
+            content: <p>n角形は、1つの頂点から対角線を引くと (n − 2) 個の三角形に分けられます。</p>,
+            quiz: { type: 'choice', question: 'n角形の内角の和を表す式は？', options: ['180 × (n − 2)', '180 × n', '360 × (n − 2)'], correctAnswer: '180 × (n − 2)', explanation: <p>三角形1つが180°なので、180 × (n − 2) です。</p> }
+          },
+          {
+            id: 2, title: '② 十角形の内角の和',
+            content: <p>十角形なので n = 10 を入れます。</p>,
+            quiz: { type: 'choice', question: '十角形の内角の和は？', options: ['1440°', '1800°', '1260°'], correctAnswer: '1440°', explanation: <p><TextWithMath text="$180 \times (10-2) = 180 \times 8 = 1440$" />（°）です。</p> }
+          },
+          {
+            id: 3, title: '③ 1つの内角',
+            content: <p>正十角形は10個の内角がすべて等しいので、和を10等分します。</p>,
+            quiz: { type: 'choice', question: '正十角形の1つの内角は？', options: ['144°', '140°', '150°'], correctAnswer: '144°', explanation: <p><TextWithMath text="$1440 \div 10 = 144$" />（°）。外角から考えても <TextWithMath text="$180 - 360 \div 10 = 144$" /> になります。</p> }
           }
         ]
       },
@@ -137,9 +202,24 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p>関数 <TextWithMath text="$y = 2x^2$" />（<TextWithMath text="$-1 \leqq x \leqq 3$" />）の <TextWithMath text="$y$" /> の変域を求めなさい。</p>,
         steps: [
           {
-            id: 1, title: '変域',
-            content: <p>グラフが原点（x=0）を通るかどうかが最大のポイントです！</p>,
-            quiz: { type: 'choice', question: 'yの変域として正しいものはどれ？', options: ['2 ≦ y ≦ 18', '0 ≦ y ≦ 18', '-2 ≦ y ≦ 18'], correctAnswer: '0 ≦ y ≦ 18', explanation: <p>最小値は0、最大値は18です。</p> }
+            id: 1, title: '① グラフの形',
+            content: <p><TextWithMath text="$y=2x^2$" /> は比例定数が正なので、上に開いた放物線です。</p>,
+            quiz: { type: 'choice', question: 'y = 2x² で y がいちばん小さくなるのはどこ？', options: ['原点（x = 0）', 'x の変域の左はし', 'x の変域の右はし'], correctAnswer: '原点（x = 0）', explanation: <p>上に開いた放物線は、原点が一番下（y = 0）です。</p> }
+          },
+          {
+            id: 2, title: '② 変域に x = 0 が入る？',
+            content: <p>x の変域は <TextWithMath text="$-1 \leqq x \leqq 3$" /> です。</p>,
+            quiz: { type: 'choice', question: 'この変域に x = 0 は含まれる？', options: ['含まれる', '含まれない'], correctAnswer: '含まれる', explanation: <p>−1 から 3 の間に 0 があるので、グラフは原点を通ります。だから y の最小値は 0 です。</p> }
+          },
+          {
+            id: 3, title: '③ 最大値',
+            content: <p>y が一番大きくなるのは、0 から一番遠い x のときです。x = −1 と x = 3 では 3 の方が遠い。</p>,
+            quiz: { type: 'choice', question: 'y の最大値は？', options: ['18（x = 3 のとき）', '2（x = −1 のとき）', '6（x = 3 のとき）'], correctAnswer: '18（x = 3 のとき）', explanation: <p><TextWithMath text="$2 \times 3^2 = 18$" /> です。</p> }
+          },
+          {
+            id: 4, title: '④ 答え',
+            content: <p>最小値 0、最大値 18 をまとめます。</p>,
+            quiz: { type: 'choice', question: 'y の変域は？', options: ['0 ≦ y ≦ 18', '2 ≦ y ≦ 18', '−2 ≦ y ≦ 18'], correctAnswer: '0 ≦ y ≦ 18', explanation: <p><TextWithMath text="$0 \leqq y \leqq 18$" />。両はしの値だけ入れて 2 ≦ y ≦ 18 とするのが典型的なミスです。</p> }
           }
         ]
       },
@@ -150,9 +230,24 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>右の図のように、1次関数 <TextWithMath text="$y=ax+b$" />、<TextWithMath text="$y=cx+d$" />（<TextWithMath text="$a, b, c, d$" /> は定数）のグラフがある。このとき、<TextWithMath text="$a$" /> と <TextWithMath text="$c$" />、<TextWithMath text="$b$" /> と <TextWithMath text="$d$" /> の関係について表した不等式の組み合わせとして正しいものを、次のア、イ、ウ、エのうちから1つ選んで、記号で答えなさい。</p><R7LinesFig /><p>ア <TextWithMath text="$a<c,\ b<d$" />　イ <TextWithMath text="$a>c,\ b<d$" />　ウ <TextWithMath text="$a<c,\ b>d$" />　エ <TextWithMath text="$a>c,\ b>d$" /></p></div>,
         steps: [
           {
-            id: 1, title: '傾きと切片の大小',
-            content: <p>傾き（a, c）と y切片（b, d）をそれぞれグラフの見た目から判断します。</p>,
-            quiz: { type: 'choice', question: '大小関係で正しいものはどれ？', options: ['a < c, b < d', 'a > c, b < d', 'a < c, b > d'], correctAnswer: 'a < c, b > d', explanation: <p>どちらも右下がりなので傾きは負。<TextWithMath text="$y=ax+b$" /> の方が急なので <TextWithMath text="$a < c$" />（例：−3 &lt; −1/2）。切片はどちらも正ですが、<TextWithMath text="$y=ax+b$" /> の方がy軸と高い位置で交わるので <TextWithMath text="$b > d$" />。答えは ウ です。</p> }
+            id: 1, title: '① 傾きの符号',
+            content: <p>グラフが右上がりなら傾きは正、右下がりなら負です。</p>,
+            quiz: { type: 'choice', question: '図の2本の直線の傾き a, c の符号は？', options: ['どちらも負', 'どちらも正', 'a は負、c は正'], correctAnswer: 'どちらも負', explanation: <p>2本とも右下がりなので、a も c も負の数です。</p> }
+          },
+          {
+            id: 2, title: '② a と c の大小',
+            content: <p><TextWithMath text="$y=ax+b$" /> の方が急に下がっています。右下がりで急なほど、傾きの値は小さい（マイナスが大きい）数になります。</p>,
+            quiz: { type: 'choice', question: 'a と c の大小は？', options: ['a < c', 'a > c'], correctAnswer: 'a < c', explanation: <p>たとえば a = −3、c = −1/2 のようなイメージで、a &lt; c です。</p> }
+          },
+          {
+            id: 3, title: '③ 切片 b と d の大小',
+            content: <p>切片は、グラフが y 軸と交わる点の y 座標です。</p>,
+            quiz: { type: 'choice', question: 'b と d の大小は？', options: ['b > d', 'b < d'], correctAnswer: 'b > d', explanation: <p><TextWithMath text="$y=ax+b$" /> の方が y 軸の高い位置で交わっているので b &gt; d です。</p> }
+          },
+          {
+            id: 4, title: '④ 記号を選ぶ',
+            content: <p>a &lt; c、b &gt; d の組み合わせを選びます。</p>,
+            quiz: { type: 'choice', question: '正しい組み合わせの記号は？', options: ['ア a<c, b<d', 'イ a>c, b<d', 'ウ a<c, b>d', 'エ a>c, b>d'], correctAnswer: 'ウ a<c, b>d', explanation: <p>答えは ウ です。</p> }
           }
         ]
       }
@@ -169,9 +264,19 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <p><TextWithMath text="$\sqrt{23}$" /> より小さい自然数は全部で何個か。</p>,
         steps: [
           {
-            id: 1, title: '平方根と自然数',
-            content: <p><TextWithMath text="$\sqrt{23}$" /> より小さい自然数が何個あるかを求めます。</p>,
-            quiz: { type: 'choice', question: '√23 は、おおよそどのくらいの大きさの数ですか？', options: ['3.xx', '4.xx', '5.xx'], correctAnswer: '4.xx', explanation: <p>およそ 4.79... くらい。それより小さい自然数は 1, 2, 3, 4 の 4個 です。</p> }
+            id: 1, title: '① 2乗して比べる',
+            content: <p>ルートのついた数と自然数は、どちらも2乗すると比べやすくなります。5 と √23 なら、25 と 23 を比べます。</p>,
+            quiz: { type: 'choice', question: '√23 と 5 はどちらが大きい？', options: ['5 の方が大きい', '√23 の方が大きい', '同じ'], correctAnswer: '5 の方が大きい', explanation: <p><TextWithMath text="$5^2=25 > 23$" /> なので、5 の方が大きいです。</p> }
+          },
+          {
+            id: 2, title: '② 4 とも比べる',
+            content: <p>次に 4 と比べます。</p>,
+            quiz: { type: 'choice', question: '√23 と 4 はどちらが大きい？', options: ['√23 の方が大きい', '4 の方が大きい'], correctAnswer: '√23 の方が大きい', explanation: <p><TextWithMath text="$4^2=16 < 23$" /> なので √23 の方が大きい。つまり <TextWithMath text="$4 < \sqrt{23} < 5$" /> です。</p> }
+          },
+          {
+            id: 3, title: '③ 数える',
+            content: <p>√23 は 4 と 5 の間の数です。それより小さい自然数を数えます。</p>,
+            quiz: { type: 'choice', question: '√23 より小さい自然数は何個？', options: ['4個', '5個', '3個', '23個'], correctAnswer: '4個', explanation: <p>1, 2, 3, 4 の 4個 です。</p> }
           }
         ]
       },
@@ -326,14 +431,34 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>下の表は、1から100までの自然数を左から右へ10個ずつ、上から下へ順に並べたものである。</p><p>この表中の太線で囲んだ 23, 24, 34, 35 のような4つの整数の組 <TextWithMath text="$a, b, c, d$" />（下の図の右）について、<TextWithMath text="$bc - ad$" /> の値はつねに11になる。このことを証明しなさい。</p><R7NumberTableFig /></div>,
         steps: [
           {
-            id: 1, title: '文字で表す',
-            content: <p>左上のaを <TextWithMath text="$n$" /> と置いたとき、他の文字はどう表せるか考えます。</p>,
-            quiz: { type: 'choice', question: 'aの右下にある「c」は n を使ってどう表せる？', options: ['n + 10', 'n + 11', 'n + 12'], correctAnswer: 'n + 11', explanation: <p>真下に行くと「+10」、さらに1つ右なので <strong><TextWithMath text="$n + 11$" /></strong> になります。dは <TextWithMath text="$n+12$" /> です。</p> }
+            id: 1, title: '① 表の規則',
+            content: <p>1行に10個ずつ並んでいます。右へ1つ進むと +1 です。</p>,
+            quiz: { type: 'choice', question: '表で1つ下へ進むと、数はいくつ増える？', options: ['10', '1', '11'], correctAnswer: '10', explanation: <p>1行10個なので、真下の数は +10 です。</p> }
           },
           {
-            id: 2, title: '証明の計算',
-            content: <p><TextWithMath text="$a=n, b=n+1, c=n+11, d=n+12$" /> を使って <TextWithMath text="$bc - ad$" /> を計算します。</p>,
-            quiz: { type: 'choice', question: 'bc - ad を展開して整理するとどうなる？', options: ['11', 'n + 11', '10n + 1'], correctAnswer: '11', explanation: <p><TextWithMath text="$(n+1)(n+11) - n(n+12) = 11$" /> になり、証明完了です！</p> }
+            id: 2, title: '② b を文字で',
+            content: <p>左上の a を <TextWithMath text="$n$" /> とします。b は a のすぐ右です（23 → 24）。</p>,
+            quiz: { type: 'choice', question: 'b を n で表すと？', options: ['n + 1', 'n + 10', 'n + 11'], correctAnswer: 'n + 1', explanation: <p>右へ1つなので <TextWithMath text="$b=n+1$" /> です。</p> }
+          },
+          {
+            id: 3, title: '③ c と d を文字で',
+            content: <p>c は b の真下（24 → 34）、d は c のすぐ右（34 → 35）です。</p>,
+            quiz: { type: 'choice', question: 'c と d を n で表すと？', options: ['c = n + 11, d = n + 12', 'c = n + 10, d = n + 11', 'c = n + 11, d = n + 21'], correctAnswer: 'c = n + 11, d = n + 12', explanation: <p>c は b より10大きいので <TextWithMath text="$n+11$" />、d はその右で <TextWithMath text="$n+12$" /> です。</p> }
+          },
+          {
+            id: 4, title: '④ bc を展開',
+            content: <p>b × c を展開します。</p>,
+            quiz: { type: 'choice', question: '(n + 1)(n + 11) を展開すると？', options: ['n² + 12n + 11', 'n² + 11n + 11', 'n² + 12n + 12'], correctAnswer: 'n² + 12n + 11', explanation: <p><TextWithMath text="$(n+1)(n+11)=n^2+12n+11$" /> です。</p> }
+          },
+          {
+            id: 5, title: '⑤ ad を展開',
+            content: <p>a × d を展開します。</p>,
+            quiz: { type: 'choice', question: 'n(n + 12) を展開すると？', options: ['n² + 12n', 'n² + 12', 'n² + 13n'], correctAnswer: 'n² + 12n', explanation: <p><TextWithMath text="$n(n+12)=n^2+12n$" /> です。</p> }
+          },
+          {
+            id: 6, title: '⑥ bc − ad を計算して結論',
+            content: <p>④から⑤を引きます。</p>,
+            quiz: { type: 'choice', question: 'bc − ad は？', options: ['11', 'n + 11', '2n² + 24n + 11'], correctAnswer: '11', explanation: <p><TextWithMath text="$(n^2+12n+11)-(n^2+12n)=11$" />。n がどんな数でも11になるので、bc − ad はつねに11です。証明完了！</p> }
           }
         ]
       }
@@ -350,9 +475,29 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>右の図のように、2点A、Bがある。点Aを中心として点Bを反時計回りに90°回転させた点Pを作図によって求めなさい。ただし、作図には定規とコンパスを使い、また、作図に用いた線は消さないこと。</p><R7PointsFig /></div>,
         steps: [
           {
-            id: 1, title: '90°回転の作図',
-            content: <p>「90°」といえば、コンパスを使ったある基本の作図が思い浮かびますね。</p>,
-            quiz: { type: 'choice', question: '90°の線（直角）を引くために使う作図方法はどれ？', options: ['角の二等分線の作図', '垂直二等分線（垂線）の作図', '正三角形の作図'], correctAnswer: '垂直二等分線（垂線）の作図', explanation: <p>点Aを通る直線ABの垂線を作図し、コンパスでABと同じ長さをとります。</p> }
+            id: 1, title: '① 90°回転とは',
+            content: <p>点Aを中心に点Bを回転させるとき、Aからの距離は変わりません。</p>,
+            quiz: { type: 'choice', question: '点Bを点Aを中心に90°回転させた点Pが満たす条件は？', options: ['AP = AB かつ ∠BAP = 90°', 'AP = AB かつ ∠ABP = 90°', 'BP = AB かつ ∠BAP = 90°'], correctAnswer: 'AP = AB かつ ∠BAP = 90°', explanation: <p>中心Aからの距離が等しく（AP = AB）、回した角が90°（∠BAP = 90°）です。</p> }
+          },
+          {
+            id: 2, title: '② ∠BAP = 90° をつくる作図',
+            content: <p>点Aで直線ABに直角な線を引けばよい。</p>,
+            quiz: { type: 'choice', question: '使う作図はどれ？', options: ['点Aを通る直線ABの垂線', '線分ABの垂直二等分線', '∠Aの二等分線'], correctAnswer: '点Aを通る直線ABの垂線', explanation: <p>直線AB上の点Aを通る垂線です。垂直二等分線だとABの中点を通ってしまいます。</p> }
+          },
+          {
+            id: 3, title: '③ 垂線の作図の手順',
+            content: <p>まず直線ABをAの反対側にも少し延ばしておきます。</p>,
+            quiz: { type: 'choice', question: '点Aを通る垂線を引くとき、最初にすることは？', options: ['Aを中心に円をかき、直線ABとの交点を2つとる', 'Bを中心に円をかく', 'ABの中点をとる'], correctAnswer: 'Aを中心に円をかき、直線ABとの交点を2つとる', explanation: <p>Aを中心とする円で直線AB上に2点をとり、その2点を中心に同じ半径の円をかいて交点を作ります。その交点とAを結ぶと垂線です。</p> }
+          },
+          {
+            id: 4, title: '④ AP = AB にする',
+            content: <p>垂線は引けました。あとは長さをABと同じにします。</p>,
+            quiz: { type: 'choice', question: '点Pの位置を決めるには？', options: ['Aを中心に半径ABの円をかき、垂線との交点をとる', 'Bを中心に半径ABの円をかき、垂線との交点をとる', '垂線とABの交点をPにする'], correctAnswer: 'Aを中心に半径ABの円をかき、垂線との交点をとる', explanation: <p>半径ABの円なら AP = AB になります。</p> }
+          },
+          {
+            id: 5, title: '⑤ どちらの交点？',
+            content: <p>円と垂線の交点は、直線ABをはさんで2つできます。反時計回りは「左回り」です。</p>,
+            quiz: { type: 'choice', question: '図でBは右下、Aは左上にあります。Aを中心にBを反時計回りに90°回すと、Pは直線ABのどちら側？', options: ['上側（Aの右上あたり）', '下側（Aの左下あたり）'], correctAnswer: '上側（Aの右上あたり）', explanation: <p>右下にあるBを左回りに90°回すと、Aの右上へ行きます。こちらの交点がPです。作図の線は消さずに残しておきます。</p> }
           }
         ]
       },
@@ -424,9 +569,29 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>右の図のように、正三角形ABCと正三角形DEFがあり、点Eは辺AB上にある。また、辺BCと辺EF、辺ACと辺DEはいずれも交点をもち、その交点をそれぞれG、Hとする。</p><p>このとき、△AEH ∽ △BGE となることを証明しなさい。</p><R7TwoTrianglesFig /></div>,
         steps: [
           {
-            id: 1, title: '外角の性質を使った証明',
-            content: <p>どちらも正三角形の内角なので ∠A = ∠B = 60° です。もう1つの等しい角を外角から探します。</p>,
-            quiz: { type: 'choice', question: '△AEHの外角の性質を使って角を考えるとき、注目すべき式はどれ？', options: ['∠AHE + ∠AEH = 180°', '∠HEB = ∠A + ∠AHE', '∠HEB = ∠A + ∠B'], correctAnswer: '∠HEB = ∠A + ∠AHE', explanation: <p>∠HEB は△AEHの外角なので ∠HEB = ∠A + ∠AHE = 60° + ∠AHE。<br/>一方、∠HEB = ∠HEG + ∠BEG で、△DEFは正三角形だから ∠HEG = 60°。よって ∠HEB = 60° + ∠BEG。<br/>2つの式から ∠AHE = ∠BEG。∠A = ∠B = 60° と合わせて、2組の角がそれぞれ等しいので △AEH ∽ △BGE です。</p> }
+            id: 1, title: '① まず1組目の角',
+            content: <p>△AEH と △BGE を比べます。∠A も ∠B も正三角形ABCの内角です。</p>,
+            quiz: { type: 'choice', question: 'すぐにわかる等しい角は？', options: ['∠EAH = ∠GBE（どちらも60°）', '∠AEH = ∠BGE', '∠AHE = ∠BGE'], correctAnswer: '∠EAH = ∠GBE（どちらも60°）', explanation: <p>正三角形の内角なので、どちらも60°です。</p> }
+          },
+          {
+            id: 2, title: '② 外角で ∠HEB を表す',
+            content: <p>∠HEB は △AEH の外角です。三角形の外角は、となり合わない2つの内角の和になります。</p>,
+            quiz: { type: 'choice', question: '∠HEB を △AEH の角で表すと？', options: ['∠HEB = ∠EAH + ∠AHE', '∠HEB = ∠EAH + ∠AEH', '∠HEB = 180° − ∠AHE'], correctAnswer: '∠HEB = ∠EAH + ∠AHE', explanation: <p><TextWithMath text="$\angle HEB = 60^\circ + \angle AHE$" /> です。</p> }
+          },
+          {
+            id: 3, title: '③ 別の見方で ∠HEB を表す',
+            content: <p>∠HEB は ∠HEG と ∠GEB に分けられます。∠HEG は正三角形DEFの角です。</p>,
+            quiz: { type: 'choice', question: '∠HEG は何度？', options: ['60°', '90°', '120°'], correctAnswer: '60°', explanation: <p>正三角形DEFの内角なので60°。よって <TextWithMath text="$\angle HEB = 60^\circ + \angle BEG$" /> です。</p> }
+          },
+          {
+            id: 4, title: '④ 2組目の角',
+            content: <p>②と③の式は、どちらも ∠HEB を表しています。</p>,
+            quiz: { type: 'choice', question: '2つの式からわかることは？', options: ['∠AHE = ∠BEG', '∠AEH = ∠BGE', '∠AHE = ∠BGE'], correctAnswer: '∠AHE = ∠BEG', explanation: <p><TextWithMath text="$60^\circ + \angle AHE = 60^\circ + \angle BEG$" /> なので ∠AHE = ∠BEG です。</p> }
+          },
+          {
+            id: 5, title: '⑤ 相似条件',
+            content: <p>①と④で、等しい角が2組そろいました。</p>,
+            quiz: { type: 'choice', question: '使う相似条件は？', options: ['2組の角がそれぞれ等しい', '3組の辺の比がすべて等しい', '2組の辺の比とその間の角がそれぞれ等しい'], correctAnswer: '2組の角がそれぞれ等しい', explanation: <p>∠EAH = ∠GBE、∠AHE = ∠BEG より、2組の角がそれぞれ等しいので △AEH ∽ △BGE です。</p> }
           }
         ]
       }
@@ -443,19 +608,34 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div className="space-y-2"><p>下の表は、ある農家で収穫された品種Aの梨800個から無作為に抽出した50個の梨の糖度と、収穫された品種Bの梨500個から無作為に抽出した30個の梨の糖度を測り、その結果を度数分布表にまとめたものである。</p><R7SugarTable /><p>このとき、次の(1)、(2)、(3)の問いに答えなさい。</p><p>(1) 品種Aについて、糖度が12.0以上12.5未満の階級の累積度数を求めなさい。</p><p>(2) 品種Bについて、収穫された500個のうち、糖度が13.0以上13.5未満の梨は何個含まれていると推定できるか。およその個数を求めなさい。</p><p>(3) この農家で収穫された品種Aと品種Bのうち、糖度が13.0以上の梨の割合が大きいのはどちらかをこの表から判断するときに、糖度が13.0以上の度数の大小を比較することは適切ではない。その理由を、この表から読み取れることで説明しなさい。</p></div>,
         steps: [
           {
-            id: 1, title: '(1) 累積度数',
-            content: <p>11.5〜12.0が7個、12.0〜12.5が15個です。</p>,
-            quiz: { type: 'choice', question: '品種Aの12.0以上12.5未満の階級の「累積度数」は？', options: ['15', '22', '36'], correctAnswer: '22', explanation: <p>7 + 15 = 22 です。</p> }
+            id: 1, title: '(1)① 累積度数とは',
+            content: <p>表の品種Aの列を見ます。</p>,
+            quiz: { type: 'choice', question: '「累積度数」の意味は？', options: ['最初の階級からその階級までの度数をたしたもの', 'その階級だけの度数', 'その階級の度数を合計でわったもの'], correctAnswer: '最初の階級からその階級までの度数をたしたもの', explanation: <p>上から順に積み上げた度数です。度数を合計でわったものは相対度数です。</p> }
           },
           {
-            id: 2, title: '(2) 標本調査',
-            content: <p>30個中9個が該当しました。全体は500個です。</p>,
-            quiz: { type: 'choice', question: '全体の500個中におよそ何個含まれていると推定できますか？', options: ['120個', '150個', '180個'], correctAnswer: '150個', explanation: <p>500 × (9/30) = 150個です。</p> }
+            id: 2, title: '(1)② 計算する',
+            content: <p>品種Aは 11.5〜12.0 が7個、12.0〜12.5 が15個です。</p>,
+            quiz: { type: 'choice', question: '品種Aの 12.0以上12.5未満 の累積度数は？', options: ['22個', '15個', '36個'], correctAnswer: '22個', explanation: <p><TextWithMath text="$7 + 15 = 22$" />（個）です。</p> }
           },
           {
-            id: 3, title: '(3) 度数で比較してはいけない理由',
-            content: <p>個数だけ見るとAの方が多いですが、割合で比べる必要があります。</p>,
-            quiz: { type: 'choice', question: '「度数」ではなく「相対度数（割合）」で比較すべき理由はどれ？', options: ['糖度の基準が違うから', '全体の個数（度数の合計）が違うから', '小数点が含まれているから'], correctAnswer: '全体の個数（度数の合計）が違うから', explanation: <p>全体の個数が異なるため、相対度数を使います。</p> }
+            id: 3, title: '(2)① 標本の割合',
+            content: <p>品種Bは30個を取り出して調べ、13.0以上13.5未満は9個でした。</p>,
+            quiz: { type: 'choice', question: '標本で 13.0以上13.5未満 の割合は？', options: ['3/10', '9/50', '1/3'], correctAnswer: '3/10', explanation: <p><TextWithMath text="$\frac{9}{30}=\frac{3}{10}$" /> です。</p> }
+          },
+          {
+            id: 4, title: '(2)② 全体に当てはめる',
+            content: <p>全体500個でも同じ割合だと考えます。</p>,
+            quiz: { type: 'choice', question: '500個のうち、およそ何個と推定できる？', options: ['およそ150個', 'およそ90個', 'およそ180個'], correctAnswer: 'およそ150個', explanation: <p><TextWithMath text="$500 \times \frac{3}{10}=150$" />（個）です。</p> }
+          },
+          {
+            id: 5, title: '(3)① 度数を比べると',
+            content: <p>13.0以上は、品種Aが 12 + 2 = 14個、品種Bが 9 + 2 = 11個です。</p>,
+            quiz: { type: 'choice', question: '度数だけ見るとどちらが多い？', options: ['品種A', '品種B'], correctAnswer: '品種A', explanation: <p>度数ではAの方が多く見えます。でも、それで割合が大きいとは言えません。</p> }
+          },
+          {
+            id: 6, title: '(3)② 度数で比べてはいけない理由',
+            content: <p>それぞれ何個を調べたか（度数の合計）を見ます。品種Aは50個、品種Bは30個です。</p>,
+            quiz: { type: 'choice', question: '度数で比べるのが適切でない理由は？', options: ['度数の合計（調べた個数）がちがうから', '糖度の基準がちがうから', '階級の幅がちがうから'], correctAnswer: '度数の合計（調べた個数）がちがうから', explanation: <p>度数の合計が50個と30個でちがうので、度数ではなく相対度数で比べる必要があります。（相対度数はA 14/50 = 0.28、B 11/30 ≒ 0.37 で、実はBの方が大きい。）</p> }
           }
         ]
       },
@@ -466,14 +646,29 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>右の図のように、正方形ABCDがあり、頂点Aの位置に点Pがある。大小2個のさいころを同時に投げ、点Pは出た目の数の和だけ、正方形の頂点から頂点へ反時計回りに動く。例えば、出た目の数の和が5のとき、点PはA→B→C→D→A→Bと動き、頂点Bの位置で止まる。</p><p>点Pの止まる位置について、確率が最も大きいのはどの頂点か。A、B、C、Dのうちから1つ選んで、記号で答えなさい。また、その頂点で止まる確率を求めなさい。</p><R7SquareFig /></div>,
         steps: [
           {
-            id: 1, title: '止まる位置の規則',
-            content: <p>出た目の和を 4で割った余り で止まる位置が決まります。</p>,
-            quiz: { type: 'choice', question: '出た目の和が「3, 7, 11」のとき、点Pはどの頂点に止まりますか？', options: ['頂点B', '頂点C', '頂点D'], correctAnswer: '頂点D', explanation: <p>3つ進んだ 頂点D に止まります。</p> }
+            id: 1, title: '① 4つ進むと元にもどる',
+            content: <p>頂点は4つなので、4つ進むとAにもどります。</p>,
+            quiz: { type: 'choice', question: '出た目の和が 4, 8, 12 のとき、点Pが止まる頂点は？', options: ['A', 'B', 'C', 'D'], correctAnswer: 'A', explanation: <p>4で割り切れるときはAです。和を4で割った余りで止まる頂点が決まり、余り1→B、余り2→C、余り3→D です。</p> }
           },
           {
-            id: 2, title: '最も確率が大きい頂点',
-            content: <p>2個のさいころの目の出方は全部で36通りです。</p>,
-            quiz: { type: 'choice', question: '点Pが止まる確率が「最も大きい」頂点と、その確率は？', options: ['A (1/4)', 'C (1/4)', 'D (5/18)'], correctAnswer: 'D (5/18)', explanation: <p>和が3,7,11になるのは合計10通り。確率は 10/36 = 5/18 です。</p> }
+            id: 2, title: '② 和ごとの通り数',
+            content: <p>大小2個のさいころの目の出方は全部で 6 × 6 = 36 通り。和が7になるのは (1,6)(2,5)(3,4)(4,3)(5,2)(6,1) です。</p>,
+            quiz: { type: 'choice', question: '和が7になる目の出方は何通り？', options: ['6通り', '5通り', '7通り'], correctAnswer: '6通り', explanation: <p>6通りです。和ごとに 2:1, 3:2, 4:3, 5:4, 6:5, 7:6, 8:5, 9:4, 10:3, 11:2, 12:1 通りです。</p> }
+          },
+          {
+            id: 3, title: '③ Dに止まる通り数',
+            content: <p>Dに止まるのは、和が 3, 7, 11 のときです。</p>,
+            quiz: { type: 'choice', question: 'Dに止まるのは何通り？', options: ['10通り', '9通り', '8通り'], correctAnswer: '10通り', explanation: <p><TextWithMath text="$2 + 6 + 2 = 10$" />（通り）です。</p> }
+          },
+          {
+            id: 4, title: '④ ほかの頂点と比べる',
+            content: <p>A（和4,8,12）は 3+5+1 = 9通り、B（和5,9）は 4+4 = 8通り、C（和2,6,10）は 1+5+3 = 9通り です。</p>,
+            quiz: { type: 'choice', question: '止まる確率が最も大きい頂点は？', options: ['D', 'A', 'C', 'B'], correctAnswer: 'D', explanation: <p>D の10通りが一番多いです（9 + 8 + 9 + 10 = 36 で全部そろっています）。</p> }
+          },
+          {
+            id: 5, title: '⑤ 確率',
+            content: <p>全体36通りのうち、Dは10通りです。</p>,
+            quiz: { type: 'choice', question: 'Dに止まる確率は？', options: ['5/18', '1/4', '5/36'], correctAnswer: '5/18', explanation: <p><TextWithMath text="$\frac{10}{36}=\frac{5}{18}$" />。答えは D、確率 5/18 です。</p> }
           }
         ]
       }
@@ -501,19 +696,54 @@ export const r7Data: Record<string, MajorQuestionData> = {
         ),
         steps: [
           {
-            id: 1, title: '(1) x<0で増加するグラフ',
-            content: <p><TextWithMath text="$x<0$" /> の部分（y軸より左）で、グラフが右上がりになっているのはどちらかを見ます。</p>,
-            quiz: { type: 'choice', question: 'x<0 の範囲で、xが増加するとyも増加するのは？', options: ['ア ①、②の両方', 'イ ①だけ', 'ウ ②だけ', 'エ どちらでもない'], correctAnswer: 'ウ ②だけ', explanation: <p>①（<TextWithMath text="$a>0$" /> の放物線）は <TextWithMath text="$x<0$" /> で右下がり、②（<TextWithMath text="$y=-\frac{9}{x}$" />）は <TextWithMath text="$x<0$" /> で右上がりです。答えは ウ。</p> }
+            id: 1, title: '(1)① ①のグラフ',
+            content: <p>①は <TextWithMath text="$a>0$" /> の放物線で、原点が一番下です。</p>,
+            quiz: { type: 'choice', question: 'x < 0 の範囲で、①は x が増えると y はどうなる？', options: ['減る', '増える'], correctAnswer: '減る', explanation: <p>y軸より左では、放物線は右下がりなので y は減ります。</p> }
           },
           {
-            id: 2, title: '(2) 変化の割合',
-            content: <p>xが1から3まで増加するときの変化の割合が等しくなります。</p>,
-            quiz: { type: 'choice', question: '反比例のグラフ y = -9/x の変化の割合はいくつですか？', options: ['3', '6', '9'], correctAnswer: '3', explanation: <p>x=1でy=-9、x=3でy=-3。(-3 - (-9)) / 2 = 3 です。<br/>4a = 3 より a = 3/4 になります。</p> }
+            id: 2, title: '(1)② ②のグラフ',
+            content: <p>②は <TextWithMath text="$y=-\frac{9}{x}$" />。x = −3 と x = −1 で y を計算してみます。</p>,
+            quiz: { type: 'choice', question: 'x = −3 と x = −1 のときの y は？', options: ['3 と 9（増える）', '−3 と −9（減る）', '9 と 3（減る）'], correctAnswer: '3 と 9（増える）', explanation: <p><TextWithMath text="$-\frac{9}{-3}=3$" />、<TextWithMath text="$-\frac{9}{-1}=9$" />。x が増えると y も増えます。</p> }
           },
           {
-            id: 3, title: '(3) 円とy軸の交点',
-            content: <p>点A(-1, 1)と点B(-1, 9)を直径の両端とする円の交点を考えます。</p>,
-            quiz: { type: 'choice', question: '中心からy軸に下ろした直角三角形の縦の長さを三平方の定理で求めると？', options: ['√15', '3', '√17'], correctAnswer: '√15', explanation: <p>中心は(-1, 5)で半径は4。1² + h² = 4² より h = √15。<br/>交点のy座標は 5 ± √15 になります。</p> }
+            id: 3, title: '(1)③ 記号',
+            content: <p>①は減る、②は増える、でした。</p>,
+            quiz: { type: 'choice', question: '当てはまる記号は？', options: ['ア ①、②の両方', 'イ ①だけ', 'ウ ②だけ', 'エ どちらでもない'], correctAnswer: 'ウ ②だけ', explanation: <p>答えは ウ です。</p> }
+          },
+          {
+            id: 4, title: '(2)① 変化の割合の式',
+            content: <p>変化の割合は「y の増加量 ÷ x の増加量」です。</p>,
+            quiz: { type: 'choice', question: '②で x = 1 → 3 のときの変化の割合は？', options: ['3', '6', '−3'], correctAnswer: '3', explanation: <p>x = 1 で y = −9、x = 3 で y = −3。<TextWithMath text="$\frac{-3-(-9)}{3-1}=\frac{6}{2}=3$" /> です。</p> }
+          },
+          {
+            id: 5, title: '(2)② ①の変化の割合',
+            content: <p>①は x = 1 で y = a、x = 3 で y = 9a です。</p>,
+            quiz: { type: 'choice', question: '①で x = 1 → 3 のときの変化の割合は？', options: ['4a', '8a', '2a'], correctAnswer: '4a', explanation: <p><TextWithMath text="$\frac{9a-a}{3-1}=\frac{8a}{2}=4a$" /> です。</p> }
+          },
+          {
+            id: 6, title: '(2)③ a を求める',
+            content: <p>2つの変化の割合が等しいので 4a = 3 です。</p>,
+            quiz: { type: 'choice', question: 'a の値は？', options: ['3/4', '4/3', '12'], correctAnswer: '3/4', explanation: <p><TextWithMath text="$a=\frac{3}{4}$" /> です。</p> }
+          },
+          {
+            id: 7, title: '(3)① 点A、Bの座標',
+            content: <p>a = 1 なので①は <TextWithMath text="$y=x^2$" />。x = −1 を①、②に入れます。</p>,
+            quiz: { type: 'choice', question: '点A、Bの座標は？', options: ['A(−1, 1)、B(−1, 9)', 'A(−1, −1)、B(−1, 9)', 'A(−1, 1)、B(−1, −9)'], correctAnswer: 'A(−1, 1)、B(−1, 9)', explanation: <p><TextWithMath text="$(-1)^2=1$" />、<TextWithMath text="$-\frac{9}{-1}=9$" /> です。</p> }
+          },
+          {
+            id: 8, title: '(3)② 円の中心と半径',
+            content: <p>ABが直径なので、中心はABの中点、半径はABの半分です。</p>,
+            quiz: { type: 'choice', question: '円の中心と半径は？', options: ['中心(−1, 5)、半径4', '中心(−1, 5)、半径8', '中心(0, 5)、半径4'], correctAnswer: '中心(−1, 5)、半径4', explanation: <p>中点は (−1, (1+9)÷2) = (−1, 5)、AB = 8 なので半径4です。</p> }
+          },
+          {
+            id: 9, title: '(3)③ 三平方の定理',
+            content: <p>中心(−1, 5)と、y軸上の交点を結ぶと長さは半径4。中心からy軸までの横の距離は1です。この直角三角形のたての長さを h とします。</p>,
+            quiz: { type: 'choice', question: 'h の値は？', options: ['√15', '3', '√17'], correctAnswer: '√15', explanation: <p><TextWithMath text="$1^2 + h^2 = 4^2$" /> より <TextWithMath text="$h^2=15$" />、<TextWithMath text="$h=\sqrt{15}$" /> です。</p> }
+          },
+          {
+            id: 10, title: '(3)④ 交点の y 座標',
+            content: <p>交点は中心の高さ5から、上と下に √15 ずつずれたところです。</p>,
+            quiz: { type: 'choice', question: '交点の y 座標は？', options: ['5 + √15 と 5 − √15', '5 + √15 だけ', '√15 と −√15'], correctAnswer: '5 + √15 と 5 − √15', explanation: <p><TextWithMath text="$y = 5 \pm \sqrt{15}$" /> です。</p> }
           }
         ]
       },
@@ -631,14 +861,34 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div className="space-y-2"><R7DanceIntro /><p>1　<TextWithMath text="$n=8$" /> のとき、1回目のフォーメーションチェンジ後に全体の西から6番目の生徒がつけているゼッケンの番号は何番か。</p><p>2　<TextWithMath text="$n=10$" /> のとき、8番のゼッケンをつけている生徒は、3回目のフォーメーションチェンジ後に全体の西から何番目にいるか求めなさい。</p></div>,
         steps: [
           {
-            id: 1, title: '問1: n=8の1回チェンジ',
-            content: <p>西:1,2,3,4 / 東:5,6,7,8 を交互に並べます。</p>,
-            quiz: { type: 'choice', question: '1回目のチェンジで全体の西から「6番目」に来るのは？', options: ['3番の人', '7番の人', '4番の人'], correctAnswer: '7番の人', explanation: <p>1, 5, 2, 6, 3, 7, 4, 8 となるので、6番目は「7」になります。</p> }
+            id: 1, title: '問1① 組に分ける',
+            content: <p>n = 8 なので、4人ずつ西側の組と東側の組に分かれます。</p>,
+            quiz: { type: 'choice', question: '東側の組のゼッケンは？', options: ['5, 6, 7, 8', '1, 2, 3, 4', '2, 4, 6, 8'], correctAnswer: '5, 6, 7, 8', explanation: <p>西側が 1, 2, 3, 4、東側が 5, 6, 7, 8 です。</p> }
           },
           {
-            id: 2, title: '問2: n=10の3回チェンジ',
-            content: <p>1,2,3,4,5 / 6,7,8,9,10 を3回交差させます。</p>,
-            quiz: { type: 'choice', question: '3回目のチェンジ後、ゼッケン「8」は何番目にいるでしょうか？', options: ['2番目', '3番目', '4番目'], correctAnswer: '3番目', explanation: <p>1回目: 1,6,2,7,3,8,4,9,5,10<br/>2回目: 1,8,6,4,2,9,7,5,3,10<br/>3回目: 1,9,8,7,6... となり、8は3番目です。</p> }
+            id: 2, title: '問1② 交互に並べる',
+            content: <p>全体の1番目は西側の1人目、2番目は東側の1人目、…と交互に並びます。</p>,
+            quiz: { type: 'choice', question: '1回目のチェンジ後の並びは？', options: ['1, 5, 2, 6, 3, 7, 4, 8', '5, 1, 6, 2, 7, 3, 8, 4', '1, 2, 5, 6, 3, 4, 7, 8'], correctAnswer: '1, 5, 2, 6, 3, 7, 4, 8', explanation: <p>1, 5, 2, 6, 3, 7, 4, 8 です。</p> }
+          },
+          {
+            id: 3, title: '問1③ 6番目',
+            content: <p>②の並びの西から6番目を見ます。</p>,
+            quiz: { type: 'choice', question: '全体の西から6番目のゼッケンは？', options: ['7番', '3番', '6番'], correctAnswer: '7番', explanation: <p>1, 5, 2, 6, 3, <strong>7</strong> なので 7番 です。</p> }
+          },
+          {
+            id: 4, title: '問2① 1回目',
+            content: <p>n = 10。西側 1〜5、東側 6〜10 を交互に並べます。</p>,
+            quiz: { type: 'choice', question: '1回目のチェンジ後の並びは？', options: ['1, 6, 2, 7, 3, 8, 4, 9, 5, 10', '1, 2, 6, 7, 3, 4, 8, 9, 5, 10', '6, 1, 7, 2, 8, 3, 9, 4, 10, 5'], correctAnswer: '1, 6, 2, 7, 3, 8, 4, 9, 5, 10', explanation: <p>1, 6, 2, 7, 3, 8, 4, 9, 5, 10 です。</p> }
+          },
+          {
+            id: 5, title: '問2② 2回目',
+            content: <p>今の並びを前半5人（1, 6, 2, 7, 3）と後半5人（8, 4, 9, 5, 10）に分けて、また交互に並べます。</p>,
+            quiz: { type: 'choice', question: '2回目のチェンジ後の並びは？', options: ['1, 8, 6, 4, 2, 9, 7, 5, 3, 10', '1, 6, 8, 4, 2, 9, 7, 5, 3, 10', '1, 8, 6, 4, 2, 9, 7, 3, 5, 10'], correctAnswer: '1, 8, 6, 4, 2, 9, 7, 5, 3, 10', explanation: <p>1, 8, 6, 4, 2, 9, 7, 5, 3, 10 です。</p> }
+          },
+          {
+            id: 6, title: '問2③ 3回目',
+            content: <p>前半（1, 8, 6, 4, 2）と後半（9, 7, 5, 3, 10）を交互に並べます。</p>,
+            quiz: { type: 'choice', question: '3回目のチェンジ後、8番の生徒は西から何番目？', options: ['3番目', '2番目', '4番目'], correctAnswer: '3番目', explanation: <p>1, 9, <strong>8</strong>, 7, 6, 5, 4, 3, 2, 10 なので 3番目 です。</p> }
           }
         ]
       },
@@ -660,14 +910,44 @@ export const r7Data: Record<string, MajorQuestionData> = {
         ),
         steps: [
           {
-            id: 1, title: '移動先を式で表す',
-            content: <p>西側の生徒(a番目)は奇数番目へ、東側の生徒(b番目)は偶数番目へ行きます。</p>,
-            quiz: { type: 'choice', question: '「西側の a 番目」の生徒の移動先を表す式はどれ？', options: ['a + 1', '2a - 1', '2a'], correctAnswer: '2a - 1', explanation: <p>奇数を表す 2a - 1 になります。東側の生徒は 2b です。</p> }
+            id: 1, title: '① 西側の組の行き先',
+            content: <p>西側の1人目→全体1番目、2人目→3番目、3人目→5番目…と、奇数番目に入ります。</p>,
+            quiz: { type: 'choice', question: '西側の組の a 人目は、全体の西から何番目へ？（①）', options: ['2a − 1', 'a + 1', '2a'], correctAnswer: '2a − 1', explanation: <p>a = 1, 2, 3 で 1, 3, 5 になる式は 2a − 1 です。</p> }
           },
           {
-            id: 2, title: '逆算して元の位置を突き止める！',
-            content: <p>5回目終了時、35番目(奇数)にいた生徒は、4回目終了時は西の 2a-1=35 より a=18番目(偶数)にいました。<br/>東の 2b=18 より b=9、全体では 35+9=44番目...と逆算します。</p>,
-            quiz: { type: 'choice', question: 'この調子で「最初」の場所まで逆算すると、元のゼッケン番号は？', options: ['12', '15', '18'], correctAnswer: '15', explanation: <p>44→57(西29)→29(西15)→15。元のゼッケン番号は 15番 です！</p> }
+            id: 2, title: '② 東側の組の行き先',
+            content: <p>東側の1人目→全体2番目、2人目→4番目…と、偶数番目に入ります。</p>,
+            quiz: { type: 'choice', question: '東側の組の b 人目は、全体の西から何番目へ？（②）', options: ['2b', '2b − 1', 'b + 1'], correctAnswer: '2b', explanation: <p>b = 1, 2, 3 で 2, 4, 6 になる式は 2b です。</p> }
+          },
+          {
+            id: 3, title: '③ 逆にたどるルール',
+            content: <p>チェンジ後に奇数番目なら前は西側、偶数番目なら前は東側にいました。n = 70 だと各組35人です。</p>,
+            quiz: { type: 'choice', question: 'n = 70 のとき、東側の組の b 人目は、全体の西から何番目？', options: ['35 + b', 'b', '70 − b'], correctAnswer: '35 + b', explanation: <p>西側の35人の後ろなので 35 + b 番目です。西側の組の a 人目は、そのまま全体の a 番目です。</p> }
+          },
+          {
+            id: 4, title: '④ 5回目後 → 4回目後',
+            content: <p>5回目後に35番目（奇数）。2a − 1 = 35 を解きます。</p>,
+            quiz: { type: 'choice', question: '4回目後には全体の西から何番目にいた？', options: ['18番目', '17番目', '36番目'], correctAnswer: '18番目', explanation: <p>a = 18。西側の18人目なので、全体でも18番目です。</p> }
+          },
+          {
+            id: 5, title: '⑤ 4回目後 → 3回目後',
+            content: <p>18番目（偶数）。2b = 18 なので東側の9人目です。</p>,
+            quiz: { type: 'choice', question: '3回目後には全体の西から何番目にいた？', options: ['44番目', '9番目', '27番目'], correctAnswer: '44番目', explanation: <p><TextWithMath text="$35 + 9 = 44$" />（番目）です。</p> }
+          },
+          {
+            id: 6, title: '⑥ 3回目後 → 2回目後',
+            content: <p>44番目（偶数）。2b = 44 なので東側の22人目です。</p>,
+            quiz: { type: 'choice', question: '2回目後には全体の西から何番目にいた？', options: ['57番目', '22番目', '66番目'], correctAnswer: '57番目', explanation: <p><TextWithMath text="$35 + 22 = 57$" />（番目）です。</p> }
+          },
+          {
+            id: 7, title: '⑦ 2回目後 → 1回目後',
+            content: <p>57番目（奇数）。2a − 1 = 57 を解きます。</p>,
+            quiz: { type: 'choice', question: '1回目後には全体の西から何番目にいた？', options: ['29番目', '28番目', '64番目'], correctAnswer: '29番目', explanation: <p>a = 29 なので29番目です。</p> }
+          },
+          {
+            id: 8, title: '⑧ 1回目後 → 最初',
+            content: <p>29番目（奇数）。2a − 1 = 29。最初の位置がそのままゼッケンの番号です。</p>,
+            quiz: { type: 'choice', question: '③に入るゼッケンの番号は？', options: ['15番', '14番', '12番', '18番'], correctAnswer: '15番', explanation: <p>a = 15。35 → 18 → 44 → 57 → 29 → 15 とたどれて、ゼッケンは 15番 です。</p> }
           }
         ]
       }

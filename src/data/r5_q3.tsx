@@ -122,47 +122,43 @@ export const q3Data: MajorQuestionData = {
       steps: [
         {
           id: 1, title: '① どんな立体ができる？',
-          content: <p>(1)と同じくAから垂線AHをひき、台形を「長方形ABCH」と「直角三角形AHD」に分けて、それぞれをCDのまわりに回します。</p>,
-          quiz: {
-            type: 'choice',
-            question: 'できる立体の形は？',
-            options: ['円柱の上に円錐がのった形', '円錐だけ', '円柱から円錐をくりぬいた形'],
-            correctAnswer: '円柱の上に円錐がのった形',
-            explanation: <p>長方形ABCHは円柱（半径3cm・高さ2cm）、△AHDは円錐（半径3cm・高さ1cm）になります。</p>
-          }
+          content: <p>Aから辺CDに垂線AHをひき、台形を「長方形ABCH」と「直角三角形AHD」に分けて、それぞれをCDのまわりに回します。</p>,
+          quiz: { type: 'choice', question: 'できる立体の形は？', options: ['円柱の上に円錐がのった形', '円錐だけ', '円柱から円錐をくりぬいた形'], correctAnswer: '円柱の上に円錐がのった形', explanation: <p>長方形ABCHは円柱、△AHDは円錐になります。2つに分けて体積を求め、最後にたします。</p> }
         },
         {
-          id: 2, title: '② 円柱部分の体積',
-          content: <p>半径 BC＝3cm、高さ AB＝2cm の円柱です。</p>,
-          quiz: {
-            type: 'choice',
-            question: '円柱部分の体積は？',
-            options: ['18π cm³', '12π cm³', '6π cm³'],
-            correctAnswer: '18π cm³',
-            explanation: <p><TextWithMath text="$\pi\times3^2\times2 = 18\pi$" /> cm³。半径と高さを逆にすると12πになります。</p>
-          }
+          id: 2, title: '② 体積の基本の式',
+          content: <p>体積の基本は「底面積 × 高さ」。これで柱（角柱・円柱）の体積が出ます。とがった形（角錐・円錐）は、同じ底面・同じ高さの柱の 3分の1 です。</p>,
+          quiz: { type: 'choice', question: '円柱と円錐の体積の式の組は？', options: ['円柱：底面積×高さ、円錐：底面積×高さ×1/3', '円柱：底面積×高さ×1/3、円錐：底面積×高さ', 'どちらも 底面積×高さ'], correctAnswer: '円柱：底面積×高さ、円錐：底面積×高さ×1/3', explanation: <p>円錐だけ最後に 1/3 をかけます。</p> }
         },
         {
-          id: 3, title: '③ 円錐部分の体積',
-          content: <p>半径 AH＝3cm、高さ HD＝1cm の円錐です。円錐は <TextWithMath text="$\frac{1}{3}$" /> をかけ忘れないこと。</p>,
-          quiz: {
-            type: 'choice',
-            question: '円錐部分の体積は？',
-            options: ['3π cm³', '9π cm³', 'π cm³'],
-            correctAnswer: '3π cm³',
-            explanation: <p><TextWithMath text="$\frac{1}{3}\times\pi\times3^2\times1 = 3\pi$" /> cm³。9πは <TextWithMath text="$\frac13$" /> の忘れです。</p>
-          }
+          id: 3, title: '③ 底面の半径',
+          content: <p>どちらの部分も、底面は軸CDから一番遠い点がえがく円です。</p>,
+          quiz: { type: 'choice', question: '円柱と円錐の底面の半径は？', options: ['どちらも3cm（BC＝AH）', '円柱2cm、円錐1cm', 'どちらも2cm（AB）'], correctAnswer: 'どちらも3cm（BC＝AH）', explanation: <p>BとAは軸CDから3cmはなれているので、半径はどちらも3cmです。ABやHDは軸の方向の長さなので「高さ」になります。</p> }
         },
         {
-          id: 4, title: '④ 合計する',
-          content: <p>円柱と円錐の体積を足します。</p>,
-          quiz: {
-            type: 'choice',
-            question: '立体の体積は？',
-            options: ['21π cm³', '27π cm³', '15π cm³'],
-            correctAnswer: '21π cm³',
-            explanation: <p><TextWithMath text="$18\pi + 3\pi = 21\pi$" />。答えは <strong><TextWithMath text="$21\pi$" /> cm³</strong>。（27πは円錐の1/3忘れ、15πは円柱から円錐を引いたミス）</p>
-          }
+          id: 4, title: '④ 底面積',
+          content: <p>円の面積は「半径 × 半径 × π」。</p>,
+          quiz: { type: 'choice', question: '半径3cmの円の面積は？', options: ['9π cm²', '6π cm²', '3π cm²'], correctAnswer: '9π cm²', explanation: <p><TextWithMath text="$3 \times 3 \times \pi = 9\pi$" />（cm²）。6πは円周の長さと混ざったミスです。</p> }
+        },
+        {
+          id: 5, title: '⑤ 円柱部分（底面積×高さ）',
+          content: <p>円柱の高さは AB＝HC＝2cm です。</p>,
+          quiz: { type: 'choice', question: '円柱部分の体積は？', options: ['18π cm³', '12π cm³', '6π cm³'], correctAnswer: '18π cm³', explanation: <p><TextWithMath text="$9\pi \times 2 = 18\pi$" />（cm³）です。</p> }
+        },
+        {
+          id: 6, title: '⑥ 円錐部分：まず柱だと思う',
+          content: <p>円錐の高さは HD＝3−2＝1cm。まず同じ底面・高さの円柱として「底面積×高さ」を出します。</p>,
+          quiz: { type: 'choice', question: '9π × 1 は？', options: ['9π', '10π', '3π'], correctAnswer: '9π', explanation: <p>9π です。これは円柱だった場合の体積なので、まだ答えではありません。</p> }
+        },
+        {
+          id: 7, title: '⑦ 円錐なので 1/3 をかける',
+          content: <p>円錐は円柱の3分の1です。</p>,
+          quiz: { type: 'choice', question: '円錐部分の体積は？', options: ['3π cm³', '9π cm³', 'π cm³'], correctAnswer: '3π cm³', explanation: <p><TextWithMath text="$9\pi \times \frac{1}{3} = 3\pi$" />（cm³）。9πのままは 1/3 のかけ忘れです。</p> }
+        },
+        {
+          id: 8, title: '⑧ 合計する',
+          content: <p>円柱と円錐の体積をたします。</p>,
+          quiz: { type: 'choice', question: '立体の体積は？', options: ['21π cm³', '27π cm³', '15π cm³'], correctAnswer: '21π cm³', explanation: <p><TextWithMath text="$18\pi + 3\pi = 21\pi$" />（cm³）。27πは 1/3 忘れ、15πは円柱から円錐を引いたミスです。</p> }
         }
       ]
     },

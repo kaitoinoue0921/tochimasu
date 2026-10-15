@@ -191,26 +191,19 @@ export const q1Data: MajorQuestionData = {
       originalText: <p><TextWithMath text="$y$" /> は <TextWithMath text="$x$" /> に反比例し、<TextWithMath text="$x=-2$" /> のとき <TextWithMath text="$y=8$" /> である。<TextWithMath text="$y$" /> を <TextWithMath text="$x$" /> の式で表しなさい。</p>,
       steps: [
         {
-          id: 1, title: '① 比例定数を求める',
-          content: <p>反比例は <TextWithMath text="$y=\frac{a}{x}$" />、つまり <TextWithMath text="$a = xy$" /> です。</p>,
-          quiz: {
-            type: 'choice',
-            question: '比例定数 a はいくつ？',
-            options: ['−4', '−16', '16'],
-            correctAnswer: '−16',
-            explanation: <p><TextWithMath text="$a = (-2)\times 8 = -16$" /> です。「−4」は <TextWithMath text="$y=ax$" />（比例）と取り違えたときの答えです。</p>
-          }
+          id: 1, title: '① 反比例の式の形',
+          content: <p>比例は y = ax、反比例は「x と y をかけると一定」の関係です。</p>,
+          quiz: { type: 'choice', question: '反比例を表す式の形は？', options: ['y = a/x', 'y = ax', 'y = ax²'], correctAnswer: 'y = a/x', explanation: <p>反比例は <TextWithMath text="$y=\frac{a}{x}$" />。両辺に x をかけると <TextWithMath text="$a=xy$" /> です。</p> }
         },
         {
-          id: 2, title: '② 式を書く',
-          content: <p>求めた比例定数を <TextWithMath text="$y=\frac{a}{x}$" /> に入れます。</p>,
-          quiz: {
-            type: 'choice',
-            question: 'y を x の式で表すと？',
-            options: ['y = −16/x', 'y = 16/x', 'y = −4x'],
-            correctAnswer: 'y = −16/x',
-            explanation: <p><strong><TextWithMath text="$y = -\frac{16}{x}$" /></strong>。検算：<TextWithMath text="$x=-2$" /> を入れると <TextWithMath text="$-16 \div (-2) = 8$" /> で合っています。</p>
-          }
+          id: 2, title: '② 比例定数を求める',
+          content: <p><TextWithMath text="$a = xy$" /> に x = −2、y = 8 を入れます。</p>,
+          quiz: { type: 'choice', question: '比例定数 a はいくつ？', options: ['−16', '−4', '16'], correctAnswer: '−16', explanation: <p><TextWithMath text="$a = (-2)\times 8 = -16$" /> です。「−4」は比例 y = ax と取り違えたときの答えです。</p> }
+        },
+        {
+          id: 3, title: '③ 式を書く',
+          content: <p>求めた a を <TextWithMath text="$y=\frac{a}{x}$" /> に入れます。</p>,
+          quiz: { type: 'choice', question: 'y を x の式で表すと？', options: ['y = −16/x', 'y = 16/x', 'y = −4x'], correctAnswer: 'y = −16/x', explanation: <p><TextWithMath text="$y = -\frac{16}{x}$" />。検算：x = −2 を入れると <TextWithMath text="$-16 \div (-2) = 8$" /> で合っています。</p> }
         }
       ]
     },
@@ -263,26 +256,19 @@ export const q1Data: MajorQuestionData = {
       originalText: <p>△ABCと△DEFは相似であり、その相似比は 3 : 5 である。このとき、△DEFの面積は△ABCの面積の何倍か求めなさい。</p>,
       steps: [
         {
-          id: 1, title: '① 面積比を求める',
-          content: <p>相似比が <TextWithMath text="$m:n$" /> のとき、面積比は <TextWithMath text="$m^2:n^2$" /> です。</p>,
-          quiz: {
-            type: 'choice',
-            question: '△ABC と △DEF の面積比は？',
-            options: ['3 : 5', '9 : 25', '27 : 125'],
-            correctAnswer: '9 : 25',
-            explanation: <p><TextWithMath text="$3^2 : 5^2 = 9:25$" />。27:125 は体積比（3乗）です。</p>
-          }
+          id: 1, title: '① 面積は長さ×長さ',
+          content: <p>相似比 3 : 5 は「長さの比」です。面積は（たて）×（よこ）のように長さを2回かけて求めます。</p>,
+          quiz: { type: 'choice', question: '相似比が m : n のとき、面積比は？', options: ['m² : n²', 'm : n', 'm³ : n³'], correctAnswer: 'm² : n²', explanation: <p>長さが両方とも n/m 倍になるので、面積は2乗の比になります。3乗は体積比です。</p> }
         },
         {
-          id: 2, title: '② 何倍かを求める',
+          id: 2, title: '② 面積比を求める',
+          content: <p>相似比 3 : 5 をそれぞれ2乗します。</p>,
+          quiz: { type: 'choice', question: '△ABC と △DEF の面積比は？', options: ['9 : 25', '3 : 5', '27 : 125'], correctAnswer: '9 : 25', explanation: <p><TextWithMath text="$3^2 : 5^2 = 9:25$" /> です。</p> }
+        },
+        {
+          id: 3, title: '③ 何倍かを求める',
           content: <p>△DEF が △ABC の何倍か → △DEF ÷ △ABC を計算します。</p>,
-          quiz: {
-            type: 'choice',
-            question: '△DEF の面積は △ABC の何倍？',
-            options: ['9/25倍', '25/9倍', '5/3倍'],
-            correctAnswer: '25/9倍',
-            explanation: <p><TextWithMath text="$25 \div 9 = \frac{25}{9}$" /> 倍。わる順番を逆にすると 9/25 になってしまうので注意。</p>
-          }
+          quiz: { type: 'choice', question: '△DEF の面積は △ABC の何倍？', options: ['25/9倍', '9/25倍', '5/3倍'], correctAnswer: '25/9倍', explanation: <p><TextWithMath text="$25 \div 9 = \frac{25}{9}$" /> 倍。わる順番を逆にすると 9/25 になってしまうので注意。</p> }
         }
       ]
     }

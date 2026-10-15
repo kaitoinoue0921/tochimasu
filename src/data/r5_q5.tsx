@@ -35,26 +35,24 @@ export const q5Data: MajorQuestionData = {
       ),
       steps: [
         {
-          id: 1, title: '① 最小値を考える',
-          content: <p>xの変域に0がふくまれているかがポイントです。<TextWithMath text="$y=2x^2$" /> は <TextWithMath text="$x=0$" /> で最も小さくなります。</p>,
-          quiz: {
-            type: 'choice',
-            question: 'y の最小値は？',
-            options: ['0', '2', '−2'],
-            correctAnswer: '0',
-            explanation: <p><TextWithMath text="$-1\leqq x\leqq5$" /> は0をふくむので、最小値は <TextWithMath text="$x=0$" /> のときの <TextWithMath text="$y=0$" />。両端だけを計算して「2」とするのが典型ミスです。</p>
-          }
+          id: 1, title: '① グラフの形',
+          content: <p><TextWithMath text="$y=2x^2$" /> は上に開いた放物線で、原点（x = 0）が一番下です。</p>,
+          quiz: { type: 'choice', question: 'x の変域 −1 ≦ x ≦ 5 に x = 0 は含まれる？', options: ['含まれる', '含まれない'], correctAnswer: '含まれる', explanation: <p>−1 と 5 の間に 0 があるので、グラフは原点を通ります。</p> }
         },
         {
-          id: 2, title: '② 最大値を考える',
-          content: <p>0から遠いほうの端で最大になります。</p>,
-          quiz: {
-            type: 'choice',
-            question: 'y の変域は？',
-            options: ['0 ≦ y ≦ 50', '2 ≦ y ≦ 50', '0 ≦ y ≦ 10'],
-            correctAnswer: '0 ≦ y ≦ 50',
-            explanation: <p><TextWithMath text="$x=5$" /> のとき <TextWithMath text="$y=2\times25=50$" />。答えは <strong><TextWithMath text="$0\leqq y\leqq 50$" /></strong>。</p>
-          }
+          id: 2, title: '② 最小値',
+          content: <p>原点を通るので、一番下は y = 0 です。</p>,
+          quiz: { type: 'choice', question: 'y の最小値は？', options: ['0', '2', '−2'], correctAnswer: '0', explanation: <p>x = 0 のとき y = 0 が最小です。x = −1 のときの 2 ではありません。</p> }
+        },
+        {
+          id: 3, title: '③ 最大値',
+          content: <p>0 から遠いほうの端（−1 と 5 なら 5）で最大になります。</p>,
+          quiz: { type: 'choice', question: 'y の最大値は？', options: ['50', '10', '2'], correctAnswer: '50', explanation: <p><TextWithMath text="$2 \times 5^2 = 50$" /> です。</p> }
+        },
+        {
+          id: 4, title: '④ 答え',
+          content: <p>最小値と最大値をまとめます。</p>,
+          quiz: { type: 'choice', question: 'y の変域は？', options: ['0 ≦ y ≦ 50', '2 ≦ y ≦ 50', '0 ≦ y ≦ 10'], correctAnswer: '0 ≦ y ≦ 50', explanation: <p><TextWithMath text="$0 \leqq y \leqq 50$" /> です。</p> }
         }
       ]
     },
