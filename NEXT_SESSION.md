@@ -84,3 +84,8 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
 - 「ア・イ・ウ」「上のすべて」など、並びに意味がある選択肢があると、シャッフルで不自然になる（現状は見つかっていない）。
 - スマホ実機での表示・数式(KaTeX)の崩れ確認はしていない。
 - 全ページのリンク切れ検査は、トップから張られたリンクのみ。
+
+- 2026-10-15（R7大問5-2の元問題を補完）
+  - 原本: 東進掲載 https://www.toshin.com/koukou_nyushi/files/2025_tochigi_sugaku_q.pdf （解答は _a.pdf）。スキャンPDFなので Swift+PDFKit で画像化して読んだ。
+  - r7/q5/2 の originalText を原本どおりの全文＋図1(水そう)・図2(グラフ)のSVGに差し替え。(2) y=-6x+60 のステップを追加（全3ステップ）。図は白背景固定（ダークでも読める）。
+  - 次: r7 の他の小問も originalText が1行要約のまま（q4の度数分布・さいころ、q6ダンス等）。同じPDFから全文と図を補完する。
