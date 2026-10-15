@@ -498,7 +498,60 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "2",
         title: "2. 水そうとブロックの体積",
         knowledge: ["グラフの読み取り", "体積と速さの方程式"],
-        originalText: <p>深さ40cmの水そうの底にブロックを固定し、排水する。</p>,
+        originalText: (
+          <div className="space-y-4">
+            <p>図1のような深さ40cmの直方体の水そうの底に、直方体ABCD－EFGHのブロックが長方形EFGHを底面にして固定されている。この水そうを満水にし、水そうの底に取り付けられた排水口から毎分一定の量で排水した。図2は、排水を始めてから <TextWithMath text="$x$" /> 分後の水面の高さを <TextWithMath text="$y$" /> cmとして、<TextWithMath text="$x$" /> と <TextWithMath text="$y$" /> の関係をグラフに表したものである。</p>
+            <div className="grid sm:grid-cols-2 gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl">
+              <figure className="text-center">
+                <svg viewBox="0 0 240 190" className="w-full max-w-xs mx-auto">
+                  {/* 水そう */}
+                  <polygon points="40,40 180,40 220,15 80,15" fill="none" stroke="#64748b" strokeWidth="1" />
+                  <line x1="40" y1="40" x2="40" y2="160" stroke="#64748b" strokeWidth="1" />
+                  <line x1="180" y1="40" x2="180" y2="160" stroke="#64748b" strokeWidth="1" />
+                  <line x1="220" y1="15" x2="220" y2="135" stroke="#64748b" strokeWidth="1" />
+                  <line x1="80" y1="15" x2="80" y2="135" stroke="#94a3b8" strokeWidth="0.7" strokeDasharray="3 2" />
+                  <polyline points="40,160 180,160 220,135" fill="none" stroke="#64748b" strokeWidth="1" />
+                  <polyline points="40,160 80,135 220,135" fill="none" stroke="#94a3b8" strokeWidth="0.7" strokeDasharray="3 2" />
+                  {/* ブロック */}
+                  <polygon points="85,80 145,80 145,150 85,150" fill="rgba(100,116,139,0.35)" stroke="#334155" strokeWidth="1.2" />
+                  <polygon points="85,80 145,80 165,65 105,65" fill="rgba(100,116,139,0.25)" stroke="#334155" strokeWidth="1.2" />
+                  <polygon points="145,80 165,65 165,135 145,150" fill="rgba(100,116,139,0.45)" stroke="#334155" strokeWidth="1.2" />
+                  <polyline points="85,150 105,135 165,135" fill="none" stroke="#334155" strokeWidth="0.7" strokeDasharray="3 2" />
+                  <line x1="105" y1="65" x2="105" y2="135" stroke="#334155" strokeWidth="0.7" strokeDasharray="3 2" />
+                  <text x="78" y="80" fontSize="9" fill="#334155">A</text>
+                  <text x="137" y="76" fontSize="9" fill="#334155">B</text>
+                  <text x="167" y="64" fontSize="9" fill="#334155">C</text>
+                  <text x="100" y="61" fontSize="9" fill="#334155">D</text>
+                  <text x="78" y="158" fontSize="9" fill="#334155">E</text>
+                  <text x="137" y="160" fontSize="9" fill="#334155">F</text>
+                  <text x="167" y="140" fontSize="9" fill="#334155">G</text>
+                  <text x="108" y="132" fontSize="9" fill="#334155">H</text>
+                  <text x="8" y="103" fontSize="9" fill="#334155">40cm</text>
+                  <rect x="186" y="140" width="8" height="10" fill="none" stroke="#64748b" strokeWidth="0.8" />
+                  <text x="198" y="160" fontSize="9" fill="#334155">排水口</text>
+                </svg>
+                <figcaption className="text-xs text-slate-500">図1</figcaption>
+              </figure>
+              <figure className="text-center">
+                <svg viewBox="0 0 230 210" className="w-full max-w-xs mx-auto">
+                  <line x1="47" y1="190" x2="47" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="64" y1="190" x2="64" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="81" y1="190" x2="81" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="98" y1="190" x2="98" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="115" y1="190" x2="115" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="132" y1="190" x2="132" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="149" y1="190" x2="149" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="166" y1="190" x2="166" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="183" y1="190" x2="183" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="200" y1="190" x2="200" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="170" x2="208.5" y2="170" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="150" x2="208.5" y2="150" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="130" x2="208.5" y2="130" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="110" x2="208.5" y2="110" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="90" x2="208.5" y2="90" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="70" x2="208.5" y2="70" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="50" x2="208.5" y2="50" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="30" x2="208.5" y2="30" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" /><line x1="30" y1="10" x2="208.5" y2="10" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2 2" />
+                  <line x1="30" y1="190" x2="213.60000000000002" y2="190" stroke="#64748b" strokeWidth="1" />
+                  <line x1="30" y1="190" x2="30" y2="6" stroke="#64748b" strokeWidth="1" />
+                  <text x="47" y="202" fontSize="8" textAnchor="middle" fill="#64748b">1</text><text x="64" y="202" fontSize="8" textAnchor="middle" fill="#64748b">2</text><text x="81" y="202" fontSize="8" textAnchor="middle" fill="#64748b">3</text><text x="98" y="202" fontSize="8" textAnchor="middle" fill="#64748b">4</text><text x="115" y="202" fontSize="8" textAnchor="middle" fill="#64748b">5</text><text x="132" y="202" fontSize="8" textAnchor="middle" fill="#64748b">6</text><text x="149" y="202" fontSize="8" textAnchor="middle" fill="#64748b">7</text><text x="166" y="202" fontSize="8" textAnchor="middle" fill="#64748b">8</text><text x="183" y="202" fontSize="8" textAnchor="middle" fill="#64748b">9</text><text x="200" y="202" fontSize="8" textAnchor="middle" fill="#64748b">10</text><text x="26" y="153" fontSize="8" textAnchor="end" fill="#64748b">10</text><text x="26" y="113" fontSize="8" textAnchor="end" fill="#64748b">20</text><text x="26" y="73" fontSize="8" textAnchor="end" fill="#64748b">30</text><text x="26" y="33" fontSize="8" textAnchor="end" fill="#64748b">40</text>
+                  <text x="26" y="202" fontSize="8" textAnchor="end" fill="#64748b">O</text>
+                  <text x="213.60000000000002" y="202" fontSize="8" fill="#64748b">x(分)</text>
+                  <text x="26" y="6" fontSize="8" textAnchor="end" fill="#64748b">y(cm)</text>
+                  <polyline points="30,30 115,70 200,190" fill="none" stroke="#10b981" strokeWidth="2" />
+                </svg>
+                <figcaption className="text-xs text-slate-500">図2</figcaption>
+              </figure>
+            </div>
+            <p>このとき、次の(1)、(2)、(3)の問いに答えなさい。</p>
+            <p>(1) AEの長さを求めなさい。</p>
+            <p>(2) 排水を始めて5分後から10分後までの <TextWithMath text="$x$" /> と <TextWithMath text="$y$" /> の関係を式で表しなさい。ただし、途中の計算も書くこと。</p>
+            <p>(3) 水そうの水がなくなった後、長方形BCGFが底面になるようにブロックの向きを変え、水そうの底に固定した。ここから再び水そうを満水にし、排水口から1度目の排水のときと同じ一定の量で排水したところ、排水し始めてから5分後の水面の高さは1度目の排水のときと比べて4cm低かった。このとき、ABの長さを求めなさい。ただし、ブロックの向きを変えて固定しても、ブロックが水そうの外にはみ出ることはないものとする。</p>
+          </div>
+        ),
         steps: [
           {
             id: 1, title: '(1) ブロックの高さ',
@@ -506,7 +559,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
             quiz: { type: 'choice', question: 'このことから、ブロックの高さは何cmだと分かりますか？', options: ['10cm', '30cm', '40cm'], correctAnswer: '30cm', explanation: <p>水位が30cmになったところから下がり方が急になっているので、ブロックの高さは 30cm です。</p> }
           },
           {
-            id: 2, title: '(3) 横に倒したブロックの高さ',
+            id: 2, title: '(2) 5分後から10分後の式',
+            content: <p>グラフは点(5, 30)と点(10, 0)を通る直線です。</p>,
+            quiz: { type: 'choice', question: '5分後から10分後までの x と y の関係を表す式は？', options: ['y = -6x + 60', 'y = -2x + 40', 'y = -3x + 45'], correctAnswer: 'y = -6x + 60', explanation: <p>傾きは (0 - 30) / (10 - 5) = -6。y = -6x + b に (10, 0) を代入して b = 60。よって y = -6x + 60 です。</p> }
+          },
+          {
+            id: 3, title: '(3) 横に倒したブロックの高さ',
             content: <p>ブロックを横に倒すと、5分後の水位は前より4cm低く(26cm)なりました。</p>,
             quiz: { type: 'choice', question: '条件から方程式を立ててブロックの新しい高さを計算すると？', options: ['28 cm', '32.5 cm', '35 cm'], correctAnswer: '32.5 cm', explanation: <p>減った体積 10S = (40-h)S + (h-26)(S - 20S/h) を解くと h = 32.5cm になります。</p> }
           }
