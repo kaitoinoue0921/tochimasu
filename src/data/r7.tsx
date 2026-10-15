@@ -1,6 +1,7 @@
 import React from 'react';
 import { Step } from '@/components/StepLayout';
 import { TextWithMath, MathText } from '@/components/MathText';
+import { R7TriangleFig, R7LinesFig, R7NumberTableFig, R7PointsFig, R7PyramidFig, R7TwoTrianglesFig, R7SugarTable, R7SquareFig, R7FuncGraphFig, R7DanceIntro } from './r7_figs';
 
 export type SubQuestionData = {
   id: string; // e.g. "1", "2-(1)"
@@ -64,7 +65,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "4",
         title: "(4) 四分位範囲",
         knowledge: ["四分位範囲"],
-        originalText: <p>データ（19, 20, 7, 16, 24, 11）の四分位範囲を求めなさい。</p>,
+        originalText: <div className="space-y-2"><p>次のデータは、クイズ大会に参加した6人の生徒の得点である。このデータの四分位範囲を求めなさい。</p><p className="text-center border border-slate-400 rounded px-3 py-1 w-fit mx-auto">19, 20, 7, 16, 24, 11（点）</p></div>,
         steps: [
           {
             id: 1, title: '四分位範囲',
@@ -90,12 +91,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "6",
         title: "(6) 回転体の体積",
         knowledge: ["円錐の体積"],
-        originalText: <p>直角三角形（底辺5cm, 高さ2cm）を、底辺を軸として1回転させてできる立体の体積を求めなさい。</p>,
+        originalText: <div><p>右の図の三角形を、辺ACを軸として1回転させてできる立体の体積を求めなさい。ただし、円周率は <TextWithMath text="$\pi$" /> とする。</p><R7TriangleFig /></div>,
         steps: [
           {
             id: 1, title: '回転体',
             content: <p>半径2cm、高さ5cmの円錐ができます。</p>,
-            quiz: { type: 'choice', question: 'できる立体の体積を求めなさい。（円周率はπ）', options: ['10/3 π', '20/3 π', '20 π'], correctAnswer: '20/3 π', explanation: <p>体積は <TextWithMath text="$\frac{1}{3} \times \pi \times 2^2 \times 5 = \frac{20}{3}\pi$" /> です。</p> }
+            quiz: { type: 'choice', question: 'できる立体の体積を求めなさい。（円周率はπ）', options: ['20/3 π', '50/3 π', '50 π'], correctAnswer: '50/3 π', explanation: <p>軸は辺AC（2cm）なので、できるのは底面の半径がBC=5cm、高さがAC=2cmの円錐です。体積は <TextWithMath text="$\frac{1}{3} \times \pi \times 5^2 \times 2 = \frac{50}{3}\pi$" /> (cm³)。半径と高さを逆にすると 20/3 π になるので注意。</p> }
           }
         ]
       },
@@ -116,12 +117,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "8",
         title: "(8) 1次関数のグラフ",
         knowledge: ["1次関数のグラフ"],
-        originalText: <p>2つのグラフ <TextWithMath text="$y=ax+b$" /> と <TextWithMath text="$y=cx+d$" /> がある。（※ <TextWithMath text="$y=ax+b$" /> は急な右下がりで切片が正、<TextWithMath text="$y=cx+d$" /> は緩やかな右下がりで切片が負）aとc、bとdの大小関係を答えなさい。</p>,
+        originalText: <div><p>右の図のように、1次関数 <TextWithMath text="$y=ax+b$" />、<TextWithMath text="$y=cx+d$" />（<TextWithMath text="$a, b, c, d$" /> は定数）のグラフがある。このとき、<TextWithMath text="$a$" /> と <TextWithMath text="$c$" />、<TextWithMath text="$b$" /> と <TextWithMath text="$d$" /> の関係について表した不等式の組み合わせとして正しいものを、次のア、イ、ウ、エのうちから1つ選んで、記号で答えなさい。</p><R7LinesFig /><p>ア <TextWithMath text="$a<c,\ b<d$" />　イ <TextWithMath text="$a>c,\ b<d$" />　ウ <TextWithMath text="$a<c,\ b>d$" />　エ <TextWithMath text="$a>c,\ b>d$" /></p></div>,
         steps: [
           {
             id: 1, title: '傾きと切片の大小',
             content: <p>傾き（a, c）と y切片（b, d）をそれぞれグラフの見た目から判断します。</p>,
-            quiz: { type: 'choice', question: '大小関係で正しいものはどれ？', options: ['a < c, b < d', 'a > c, b < d', 'a < c, b > d'], correctAnswer: 'a < c, b > d', explanation: <p>切片はbが正、dが負なので <TextWithMath text="$b > d$" />。傾きはaの方が急なので <TextWithMath text="$a < c$" /> です。</p> }
+            quiz: { type: 'choice', question: '大小関係で正しいものはどれ？', options: ['a < c, b < d', 'a > c, b < d', 'a < c, b > d'], correctAnswer: 'a < c, b > d', explanation: <p>どちらも右下がりなので傾きは負。<TextWithMath text="$y=ax+b$" /> の方が急なので <TextWithMath text="$a < c$" />（例：−3 &lt; −1/2）。切片はどちらも正ですが、<TextWithMath text="$y=ax+b$" /> の方がy軸と高い位置で交わるので <TextWithMath text="$b > d$" />。答えは ウ です。</p> }
           }
         ]
       }
@@ -149,15 +150,16 @@ export const r7Data: Record<string, MajorQuestionData> = {
         title: "2. ノートと鉛筆の連立方程式",
         knowledge: ["連立方程式の立式と計算"],
         originalText: (
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-            <p className="leading-relaxed">
-              ある文房具店では、ノートと鉛筆をセットにして販売しています。<br/>
-              ・**セットA**：ノート2冊 と 鉛筆3本 のセット<br/>
-              ・**セットB**：ノート5冊 と 鉛筆8本 のセット<br/>
-              ある日、用意したセットAとセットBがすべて売れました。<br/>
-              売れたノートの合計は **76冊**、鉛筆の合計は **120本** でした。<br/>
-              セットAとセットBはそれぞれ何セット売れたでしょうか。
-            </p>
+          <div className="space-y-3">
+            <p>ある店では、ノートと鉛筆をセットで販売することにした。右の表のような2種類のセットのいずれかで販売したところ、全部で76冊のノートと、120本の鉛筆が売れた。</p>
+            <table className="border-collapse text-sm mx-auto">
+              <thead><tr><th className="border border-slate-400 px-3 py-1"></th><th className="border border-slate-400 px-3 py-1">ノート</th><th className="border border-slate-400 px-3 py-1">鉛筆</th></tr></thead>
+              <tbody>
+                <tr><td className="border border-slate-400 px-3 py-1">セットA</td><td className="border border-slate-400 px-3 py-1 text-center">2冊</td><td className="border border-slate-400 px-3 py-1 text-center">3本</td></tr>
+                <tr><td className="border border-slate-400 px-3 py-1">セットB</td><td className="border border-slate-400 px-3 py-1 text-center">5冊</td><td className="border border-slate-400 px-3 py-1 text-center">8本</td></tr>
+              </tbody>
+            </table>
+            <p>このとき、売れたセットAの数を <TextWithMath text="$x$" />、セットBの数を <TextWithMath text="$y$" /> として連立方程式をつくり、売れたセットAとセットBの数をそれぞれ求めなさい。ただし、途中の計算も書くこと。</p>
           </div>
         ),
         steps: [
@@ -291,7 +293,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "3",
         title: "3. 数表の規則性の証明",
         knowledge: ["文字を使った数の証明", "式の展開"],
-        originalText: <p>1から100までの自然数を10個ずつ並べた表。<br/>a, bが隣り合い、その右下の段にc, dがあるとき、<TextWithMath text="$bc - ad = 11$" /> になることを証明しなさい。</p>,
+        originalText: <div><p>下の表は、1から100までの自然数を左から右へ10個ずつ、上から下へ順に並べたものである。</p><p>この表中の太線で囲んだ 23, 24, 34, 35 のような4つの整数の組 <TextWithMath text="$a, b, c, d$" />（下の図の右）について、<TextWithMath text="$bc - ad$" /> の値はつねに11になる。このことを証明しなさい。</p><R7NumberTableFig /></div>,
         steps: [
           {
             id: 1, title: '文字で表す',
@@ -315,7 +317,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "1",
         title: "1. 90°回転の作図",
         knowledge: ["垂線の作図"],
-        originalText: <p>点Aを中心に点Bを反時計回りに90°回転させた点Pを作図しなさい。</p>,
+        originalText: <div><p>右の図のように、2点A、Bがある。点Aを中心として点Bを反時計回りに90°回転させた点Pを作図によって求めなさい。ただし、作図には定規とコンパスを使い、また、作図に用いた線は消さないこと。</p><R7PointsFig /></div>,
         steps: [
           {
             id: 1, title: '90°回転の作図',
@@ -328,35 +330,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "2-1",
         title: "2(1). 正四角錐の体積比",
         knowledge: ["相似比と面積比・体積比の関係"],
-        originalText: (
-          <div className="space-y-4">
-            <p>底面の正方形ABCDの面積が16cm²、正方形EFGHの面積が4cm²のとき、<br/>正四角錐OEFGHと正四角錐OABCDの体積比を求めなさい。</p>
-            <div className="flex justify-center my-4">
-              <svg viewBox="0 0 200 200" className="w-48 h-48 drop-shadow-md">
-                {/* OABCD Pyramid */}
-                <polygon points="100,20 40,140 100,180 160,140" fill="rgba(52, 211, 153, 0.1)" stroke="#10b981" strokeWidth="2" />
-                <line x1="100" y1="20" x2="40" y2="140" stroke="#10b981" strokeWidth="2" />
-                <line x1="100" y1="20" x2="100" y2="180" stroke="#10b981" strokeWidth="2" />
-                <line x1="100" y1="20" x2="160" y2="140" stroke="#10b981" strokeWidth="2" />
-                {/* Back edges (dashed) */}
-                <line x1="40" y1="140" x2="100" y2="110" stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" />
-                <line x1="160" y1="140" x2="100" y2="110" stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" />
-                <line x1="100" y1="20" x2="100" y2="110" stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" />
-                
-                {/* EFGH Cut (Smaller pyramid OEFGH) */}
-                <polygon points="100,80 70,110 100,130 130,110" fill="rgba(99, 102, 241, 0.3)" stroke="#6366f1" strokeWidth="2" />
-                
-                {/* Labels */}
-                <text x="100" y="15" textAnchor="middle" className="text-xs font-bold fill-slate-700 dark:fill-slate-200">O</text>
-                <text x="30" y="145" textAnchor="middle" className="text-xs font-bold fill-slate-700 dark:fill-slate-200">A</text>
-                <text x="100" y="195" textAnchor="middle" className="text-xs font-bold fill-slate-700 dark:fill-slate-200">B</text>
-                <text x="170" y="145" textAnchor="middle" className="text-xs font-bold fill-slate-700 dark:fill-slate-200">C</text>
-                <text x="60" y="110" textAnchor="middle" className="text-xs font-bold fill-indigo-600 dark:fill-indigo-400">E</text>
-              </svg>
-            </div>
-            <p className="text-xs text-slate-500 text-center">※図はイメージです（上が小さい四角錐OEFGH、下が大きい四角錐OABCD）</p>
-          </div>
-        ),
+        originalText: <div className="space-y-2"><p>右の図のような、正方形ABCDを底面とする正四角錐OABCDがあり、辺OA、OB、OC、OD上にそれぞれ点E、F、G、Hを四角形EFGHが正方形となるようにとる。</p><p>正方形ABCDの面積が16cm²、正方形EFGHの面積が4cm²のとき、次の(1)、(2)の問いに答えなさい。</p><R7PyramidFig /><p>(1) 正四角錐OEFGHと正四角錐OABCDの体積の比を、最も簡単な整数の比で表しなさい。</p></div>,
         steps: [
           {
             id: 1, title: '体積比',
@@ -369,7 +343,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "2-2",
         title: "2(2). 四角錐の高さ",
         knowledge: ["三平方の定理"],
-        originalText: <p>正四角錐OABCDの表面積が64cm²のとき、この四角錐の高さを求めなさい。</p>,
+        originalText: <div className="space-y-2"><p>右の図のような、正方形ABCDを底面とする正四角錐OABCDがあり、辺OA、OB、OC、OD上にそれぞれ点E、F、G、Hを四角形EFGHが正方形となるようにとる。</p><p>正方形ABCDの面積が16cm²、正方形EFGHの面積が4cm²のとき、次の(1)、(2)の問いに答えなさい。</p><R7PyramidFig /><p>(2) 正四角錐OABCDの表面積が64cm²のとき、正四角錐OABCDの高さを求めなさい。</p></div>,
         steps: [
           {
             id: 1, title: '側面積と三角形の高さ',
@@ -387,12 +361,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "3",
         title: "3. 相似の証明",
         knowledge: ["三角形の外角の性質", "相似の証明"],
-        originalText: <p>正三角形ABCとDEFが交わるとき、△AEH ∽ △BGE となることを証明しなさい。</p>,
+        originalText: <div><p>右の図のように、正三角形ABCと正三角形DEFがあり、点Eは辺AB上にある。また、辺BCと辺EF、辺ACと辺DEはいずれも交点をもち、その交点をそれぞれG、Hとする。</p><p>このとき、△AEH ∽ △BGE となることを証明しなさい。</p><R7TwoTrianglesFig /></div>,
         steps: [
           {
             id: 1, title: '外角の性質を使った証明',
             content: <p>どちらも正三角形の内角なので ∠A = ∠B = 60° です。もう1つの等しい角を外角から探します。</p>,
-            quiz: { type: 'choice', question: '△AEHの外角の性質を使って角を考えるとき、注目すべき式はどれ？', options: ['∠AHE + ∠AEH = 180°', '∠CEH = ∠A + ∠AHE', '∠CEB = ∠A + ∠AHE'], correctAnswer: '∠CEB = ∠A + ∠AHE', explanation: <p>∠BEG = 180° - 60° - ∠AEH。また、△AEHの内角より ∠AHE = 180° - 60° - ∠AEH。よって∠BEG = ∠AHE となり2組の角が等しくなります。</p> }
+            quiz: { type: 'choice', question: '△AEHの外角の性質を使って角を考えるとき、注目すべき式はどれ？', options: ['∠AHE + ∠AEH = 180°', '∠HEB = ∠A + ∠AHE', '∠HEB = ∠A + ∠B'], correctAnswer: '∠HEB = ∠A + ∠AHE', explanation: <p>∠HEB は△AEHの外角なので ∠HEB = ∠A + ∠AHE = 60° + ∠AHE。<br/>一方、∠HEB = ∠HEG + ∠BEG で、△DEFは正三角形だから ∠HEG = 60°。よって ∠HEB = 60° + ∠BEG。<br/>2つの式から ∠AHE = ∠BEG。∠A = ∠B = 60° と合わせて、2組の角がそれぞれ等しいので △AEH ∽ △BGE です。</p> }
           }
         ]
       }
@@ -406,7 +380,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "1",
         title: "1. データの活用",
         knowledge: ["累積度数", "標本調査", "相対度数"],
-        originalText: <p>品種A(50個)とB(30個)の糖度の度数分布表に関する問題。</p>,
+        originalText: <div className="space-y-2"><p>下の表は、ある農家で収穫された品種Aの梨800個から無作為に抽出した50個の梨の糖度と、収穫された品種Bの梨500個から無作為に抽出した30個の梨の糖度を測り、その結果を度数分布表にまとめたものである。</p><R7SugarTable /><p>このとき、次の(1)、(2)、(3)の問いに答えなさい。</p><p>(1) 品種Aについて、糖度が12.0以上12.5未満の階級の累積度数を求めなさい。</p><p>(2) 品種Bについて、収穫された500個のうち、糖度が13.0以上13.5未満の梨は何個含まれていると推定できるか。およその個数を求めなさい。</p><p>(3) この農家で収穫された品種Aと品種Bのうち、糖度が13.0以上の梨の割合が大きいのはどちらかをこの表から判断するときに、糖度が13.0以上の度数の大小を比較することは適切ではない。その理由を、この表から読み取れることで説明しなさい。</p></div>,
         steps: [
           {
             id: 1, title: '(1) 累積度数',
@@ -429,7 +403,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "2",
         title: "2. 正方形上の点の移動と確率",
         knowledge: ["さいころの確率", "規則性（余り）"],
-        originalText: <p>正方形ABCDの頂点Aから、2個のさいころの目の和だけ反時計回りに進む。</p>,
+        originalText: <div><p>右の図のように、正方形ABCDがあり、頂点Aの位置に点Pがある。大小2個のさいころを同時に投げ、点Pは出た目の数の和だけ、正方形の頂点から頂点へ反時計回りに動く。例えば、出た目の数の和が5のとき、点PはA→B→C→D→A→Bと動き、頂点Bの位置で止まる。</p><p>点Pの止まる位置について、確率が最も大きいのはどの頂点か。A、B、C、Dのうちから1つ選んで、記号で答えなさい。また、その頂点で止まる確率を求めなさい。</p><R7SquareFig /></div>,
         steps: [
           {
             id: 1, title: '止まる位置の規則',
@@ -454,41 +428,30 @@ export const r7Data: Record<string, MajorQuestionData> = {
         title: "1. 変化の割合と円と直線",
         knowledge: ["変化の割合", "円と直線の交点", "三平方の定理"],
         originalText: (
-          <div className="space-y-4">
-            <p>関数 <TextWithMath text="$y = ax^2$" /> と <TextWithMath text="$y = -9/x$" /> 、そして円に関する問題です。</p>
-            <div className="flex justify-center my-4 bg-white dark:bg-slate-800 p-4 rounded-xl">
-              <svg viewBox="-50 -50 200 200" className="w-64 h-64 drop-shadow-sm">
-                {/* Axes */}
-                <line x1="-50" y1="50" x2="150" y2="50" stroke="#94a3b8" strokeWidth="1" />
-                <line x1="10" y1="-50" x2="10" y2="150" stroke="#94a3b8" strokeWidth="1" />
-                
-                {/* Hyperbola y = -9/x (approx) */}
-                <path d="M 20 150 Q 30 70 140 60" fill="none" stroke="#ef4444" strokeWidth="2" />
-                <path d="M 0 -50 Q -10 30 -50 40" fill="none" stroke="#ef4444" strokeWidth="2" />
-                
-                {/* Circle Center(-1, 5) -> Scaled to (0, 0) for diagram sake, Radius 4 -> 40 */}
-                <circle cx="-10" cy="-30" r="40" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" strokeWidth="2" />
-                <circle cx="-10" cy="-30" r="2" fill="#3b82f6" />
-                <line x1="-10" y1="-30" x2="-10" y2="50" stroke="#3b82f6" strokeDasharray="2 2" />
-                
-                {/* Labels */}
-                <text x="140" y="45" className="text-xs fill-slate-500">x</text>
-                <text x="15" y="-45" className="text-xs fill-slate-500">y</text>
-                <text x="-5" y="65" className="text-xs fill-slate-500">O</text>
-                <text x="-35" y="-35" className="text-[10px] fill-blue-500">(-1, 5)</text>
-              </svg>
-            </div>
-            <p className="text-xs text-slate-500 text-center">※関数と円が交わる図のイメージ（赤：反比例、青：円）</p>
+          <div className="space-y-2">
+            <p>下の図で、①は関数 <TextWithMath text="$y = ax^2$" />（<TextWithMath text="$a>0$" />）、②は関数 <TextWithMath text="$y = -\frac{9}{x}$" /> のグラフである。</p>
+            <R7FuncGraphFig />
+            <p>このとき、次の(1)、(2)、(3)の問いに答えなさい。</p>
+            <p>(1) 次の文の（　）に当てはまる内容として最も適切なものを、下のア、イ、ウ、エのうちから1つ選んで、記号で答えなさい。</p>
+            <p className="border border-slate-400 rounded px-3 py-2">①、②のグラフのうち、<TextWithMath text="$x<0$" /> の範囲において <TextWithMath text="$x$" /> の値が増加すると <TextWithMath text="$y$" /> の値も増加する関数のグラフは（　　）</p>
+            <p>ア ①、②の両方である。　イ ①だけである。　ウ ②だけである。　エ ①、②のどちらでもない。</p>
+            <p>(2) この2つの関数について、<TextWithMath text="$x$" /> の値が1から3まで増加するときの変化の割合が等しいとき、<TextWithMath text="$a$" /> の値を求めなさい。</p>
+            <p>(3) <TextWithMath text="$a=1$" /> とする。また、①、②のグラフ上で <TextWithMath text="$x$" /> 座標が −1 である点をそれぞれA、Bとする。このとき、ABを直径とする円と <TextWithMath text="$y$" /> 軸との交点の <TextWithMath text="$y$" /> 座標を求めなさい。</p>
           </div>
         ),
         steps: [
           {
-            id: 1, title: '(2) 変化の割合',
+            id: 1, title: '(1) x<0で増加するグラフ',
+            content: <p><TextWithMath text="$x<0$" /> の部分（y軸より左）で、グラフが右上がりになっているのはどちらかを見ます。</p>,
+            quiz: { type: 'choice', question: 'x<0 の範囲で、xが増加するとyも増加するのは？', options: ['ア ①、②の両方', 'イ ①だけ', 'ウ ②だけ', 'エ どちらでもない'], correctAnswer: 'ウ ②だけ', explanation: <p>①（<TextWithMath text="$a>0$" /> の放物線）は <TextWithMath text="$x<0$" /> で右下がり、②（<TextWithMath text="$y=-\frac{9}{x}$" />）は <TextWithMath text="$x<0$" /> で右上がりです。答えは ウ。</p> }
+          },
+          {
+            id: 2, title: '(2) 変化の割合',
             content: <p>xが1から3まで増加するときの変化の割合が等しくなります。</p>,
             quiz: { type: 'choice', question: '反比例のグラフ y = -9/x の変化の割合はいくつですか？', options: ['3', '6', '9'], correctAnswer: '3', explanation: <p>x=1でy=-9、x=3でy=-3。(-3 - (-9)) / 2 = 3 です。<br/>4a = 3 より a = 3/4 になります。</p> }
           },
           {
-            id: 2, title: '(3) 円とy軸の交点',
+            id: 3, title: '(3) 円とy軸の交点',
             content: <p>点A(-1, 1)と点B(-1, 9)を直径の両端とする円の交点を考えます。</p>,
             quiz: { type: 'choice', question: '中心からy軸に下ろした直角三角形の縦の長さを三平方の定理で求めると？', options: ['√15', '3', '√17'], correctAnswer: '√15', explanation: <p>中心は(-1, 5)で半径は4。1² + h² = 4² より h = √15。<br/>交点のy座標は 5 ± √15 になります。</p> }
           }
@@ -580,7 +543,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "1",
         title: "1, 2. シミュレーション",
         knowledge: ["規則性の発見"],
-        originalText: <p>n人の生徒が西と東に分かれて交互に交差するフォーメーションチェンジ。</p>,
+        originalText: <div className="space-y-2"><R7DanceIntro /><p>1　<TextWithMath text="$n=8$" /> のとき、1回目のフォーメーションチェンジ後に全体の西から6番目の生徒がつけているゼッケンの番号は何番か。</p><p>2　<TextWithMath text="$n=10$" /> のとき、8番のゼッケンをつけている生徒は、3回目のフォーメーションチェンジ後に全体の西から何番目にいるか求めなさい。</p></div>,
         steps: [
           {
             id: 1, title: '問1: n=8の1回チェンジ',
@@ -598,7 +561,18 @@ export const r7Data: Record<string, MajorQuestionData> = {
         id: "3",
         title: "3. 規則性を文字で表して逆算",
         knowledge: ["奇数と偶数の文字式", "式の逆算", "論理的思考力"],
-        originalText: <p>移動の規則性を文字式で表し、n=70のとき5回チェンジ後の35番目の人の元の番号を求める。</p>,
+        originalText: (
+          <div className="space-y-2">
+            <R7DanceIntro />
+            <p>3　次の文章の①、②、③に当てはまる式や数をそれぞれ求めなさい。ただし、文章中の <TextWithMath text="$a$" />、<TextWithMath text="$b$" /> は自然数とする。</p>
+            <div className="border border-slate-400 rounded px-3 py-2 space-y-2">
+              <p>1回のフォーメーションチェンジにより、フォーメーションチェンジ前の西側の組の西から <TextWithMath text="$a$" /> 人目の生徒は、フォーメーションチェンジ後は全体の西から（ ① ）番目に移動し、フォーメーションチェンジ前の東側の組の西から <TextWithMath text="$b$" /> 人目の生徒は、フォーメーションチェンジ後は全体の西から（ ② ）番目に移動する。</p>
+              <p>見方を変えると、フォーメーションチェンジ後に全体の西から（ ① ）番目の生徒は、フォーメーションチェンジ前は西側の組の西から <TextWithMath text="$a$" /> 人目であり、フォーメーションチェンジ後に全体の西から（ ② ）番目の生徒は、フォーメーションチェンジ前は東側の組の西から <TextWithMath text="$b$" /> 人目である。</p>
+              <p>つまり、フォーメーションチェンジ後にいる位置から、フォーメーションチェンジ前にいた位置がどこであるかを求めることができる。</p>
+              <p>このことから、<TextWithMath text="$n=70$" /> のとき、5回目のフォーメーションチェンジ後に、全体の西から35番目の生徒のゼッケンの番号は（ ③ ）番である。</p>
+            </div>
+          </div>
+        ),
         steps: [
           {
             id: 1, title: '移動先を式で表す',
