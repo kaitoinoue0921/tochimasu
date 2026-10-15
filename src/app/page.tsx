@@ -7,6 +7,8 @@ import { r4Data } from '@/data/r4';
 import { r5Data } from '@/data/r5';
 import { r6Data } from '@/data/r6';
 import { r7Data } from '@/data/r7';
+import { u8d1Data } from '@/data/u8d1';
+import { u8d2Data } from '@/data/u8d2';
 
 type Card = {
   title: string;
@@ -52,7 +54,7 @@ function card(
   };
 }
 
-const sections: { title: string; border: string; cards: Card[] }[] = [
+const sections: { title: string; label?: string; border: string; cards: Card[] }[] = [
   {
     title: '令和7年度（2025年度） 最新問題',
     border: 'border-emerald-500',
@@ -108,15 +110,38 @@ const sections: { title: string; border: string; cards: Card[] }[] = [
       card('r3', 'q6', r3Data, 'emerald', '令和3年 大問6（空間図形）', ''),
     ],
   },
+  {
+    title: '私立 宇都宮短期大学附属高校 令和8年度 第1回（1月4日）',
+    label: '宇短附 4日',
+    border: 'border-violet-500',
+    cards: [
+      card('u8d1', 'q1', u8d1Data, 'indigo', '宇短附 大問1：計算問題', '正負の数・分数式・小数の2乗・平方根・因数分解の基本計算5問。', (c) => <Calculator className={`w-8 h-8 ${c}`} />),
+      card('u8d1', 'q2', u8d1Data, 'teal', '宇短附 大問2：小問集合', '反比例と傾き、奇数の和、円周角の定理の逆、連立方程式、立方体の切断、確率、平均値と中央値など8問。'),
+      card('u8d1', 'q3', u8d1Data, 'cyan', '宇短附 大問3：放物線と直線・三角形の面積', '放物線と直線の交点から、三角形の面積と面積比を満たす点の座標を求める。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
+      card('u8d1', 'q4', u8d1Data, 'pink', '宇短附 大問4：正方形に並べた円の周', '円の並べ方を一般化して周の長さの規則性を式にし、条件を満たす最大の n を考える。', (c) => <Users className={`w-8 h-8 ${c}`} />),
+      card('u8d1', 'q5', u8d1Data, 'amber', '宇短附 大問5：メネラウスの定理', '定理の証明の穴埋めと、それを使った線分比・面積比の問題。', (c) => <Shapes className={`w-8 h-8 ${c}`} />),
+    ],
+  },
+  {
+    title: '私立 宇都宮短期大学附属高校 令和8年度 第1回（1月5日）',
+    label: '宇短附 5日',
+    border: 'border-violet-500',
+    cards: [
+      card('u8d2', 'q1', u8d2Data, 'indigo', '宇短附 大問1：計算問題', '負の数、単項式の乗除、小数の累乗、平方根、共通因数でくくる因数分解までの計算5問。', (c) => <Calculator className={`w-8 h-8 ${c}`} />),
+      card('u8d2', 'q2', u8d2Data, 'teal', '宇短附 大問2：小問集合', '1次関数の増加量、正五角形と平行線の角、過不足、連立方程式、平行四辺形の面積比、確率、中央値と最頻値など8題。'),
+      card('u8d2', 'q3', u8d2Data, 'pink', '宇短附 大問3：目の数が偏ったさいころ', '1・2・2・3・3・3の目のさいころを2回投げて、どちらの主張が正しいかを確率で判定する。', (c) => <BarChart2 className={`w-8 h-8 ${c}`} />),
+      card('u8d2', 'q4', u8d2Data, 'cyan', '宇短附 大問4：台形の辺上を動く点', '動く2点がつくる三角形の面積を、時間ごとに式とグラフで表す。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
+      card('u8d2', 'q5', u8d2Data, 'amber', '宇短附 大問5：正四角錐と切り口', '平面OACで切った正四角錐で、中点連結定理と相似から長さの比と体積を求める。', (c) => <Shapes className={`w-8 h-8 ${c}`} />),
+    ],
+  },
 ];
-
 function qNum(href: string) {
   return Number(href.match(/q(\d+)$/)?.[1] ?? 0);
 }
 
 // 「令和7年 大問1：基本の小問集合」→「基本の小問集合」
 function shortTitle(title: string) {
-  return title.replace(/^令和\d+年\s*大問\d+\s*[：:（(]?\s*/, '').replace(/[）)]$/, '');
+  return title.replace(/^.*?大問\d+\s*[：:（(]?\s*/, '').replace(/[）)]$/, '');
 }
 
 function yearLabel(title: string) {
@@ -180,7 +205,7 @@ export default function Home() {
               href={`#y${i}`}
               className="shrink-0 text-sm font-bold px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-emerald-400 hover:text-emerald-700"
             >
-              {yearLabel(sec.title)}
+              {sec.label ?? yearLabel(sec.title)}
             </a>
           ))}
         </div>
