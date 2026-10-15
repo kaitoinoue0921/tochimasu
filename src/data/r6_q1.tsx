@@ -2,6 +2,7 @@ import React from 'react';
 import { Step } from '@/components/StepLayout';
 import { TextWithMath, MathText } from '@/components/MathText';
 import { MajorQuestionData } from './r7';
+import { R6HyperbolaFig, R6SectorFig, R6SphereFig, R6ShuttleTable } from './r6_figs';
 
 export const q1Data: MajorQuestionData = {
   id: "q1",
@@ -153,7 +154,7 @@ export const q1Data: MajorQuestionData = {
       id: "5",
       title: "(5) 反比例のグラフ",
       knowledge: ["反比例"],
-      originalText: <p>関数 <TextWithMath text="$y = a/x$" /> のグラフが点(2, -3)を通るとき、aの値を求めなさい。</p>,
+      originalText: <div><p>右の図は、関数 <TextWithMath text="$y = \dfrac{a}{x}$" />（<TextWithMath text="$a$" /> は0でない定数）のグラフである。このグラフが点(2, −3)を通るとき、<TextWithMath text="$a$" /> の値を求めなさい。</p><R6HyperbolaFig /></div>,
       steps: [
         {
           id: 1, title: '反比例の式の意味',
@@ -186,7 +187,7 @@ export const q1Data: MajorQuestionData = {
       id: "6",
       title: "(6) おうぎ形の弧の長さ",
       knowledge: ["おうぎ形", "円"],
-      originalText: <p>中心角が40°のおうぎ形の弧の長さは、同じ半径の円の周の長さの何倍か求めなさい。</p>,
+      originalText: <div><p>右の図は、半径が2cm、中心角が40°のおうぎ形である。このおうぎ形の弧の長さは、半径が2cmの円の周の長さの何倍か求めなさい。</p><R6SectorFig /></div>,
       steps: [
         {
           id: 1, title: 'おうぎ形と円の関係',
@@ -219,7 +220,7 @@ export const q1Data: MajorQuestionData = {
       id: "7",
       title: "(7) 球の体積",
       knowledge: ["球", "体積"],
-      originalText: <p>半径が6cmの球の体積を求めなさい。（円周率はπとする）</p>,
+      originalText: <div><p>半径が6cmの球の体積を求めなさい。ただし、円周率はπとする。</p><R6SphereFig /></div>,
       steps: [
         {
           id: 1, title: '球の体積の公式',
@@ -257,7 +258,7 @@ export const q1Data: MajorQuestionData = {
       id: "8",
       title: "(8) 度数分布表と相対度数",
       knowledge: ["資料の活用", "度数分布表"],
-      originalText: <p>生徒20人の記録の度数分布表がある。度数が最も多い階級の相対度数を求めなさい。<br/>[40〜55:1人, 55〜70:2人, 70〜85:6人, 85〜100:7人, 100〜115:4人]</p>,
+      originalText: <div><p>右の度数分布表は、生徒20人の20mシャトルランの記録をまとめたものである。度数が最も多い階級の相対度数を求めなさい。</p><R6ShuttleTable /></div>,
       steps: [
         {
           id: 1, title: '相対度数とは',
