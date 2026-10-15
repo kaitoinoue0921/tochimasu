@@ -38,7 +38,7 @@ export function ConcyclicFigs() {
           <text x="58" y="50" className="text-[11px] italic font-bold fill-sky-600 dark:fill-sky-400">x</text>
           <text x="26" y="112" className={ang}>20°</text>
           <text x="92" y="42" className={ang}>70°</text>
-          <text x="66" y="80" className={ang}>100°</text>
+          <text x="52" y="88" className={ang}>100°</text>
         </svg>
         <svg viewBox="0 0 170 150" className="w-40 h-auto">
           <text x="2" y="12" className={lbl}>②</text>
@@ -49,7 +49,7 @@ export function ConcyclicFigs() {
           <text x="5" y="128" className={lbl}>B</text>
           <text x="152" y="128" className={lbl}>C</text>
           <text x="68" y="58" className="text-[11px] italic font-bold fill-sky-600 dark:fill-sky-400">x</text>
-          <text x="80" y="80" className={ang}>113°</text>
+          <text x="74" y="92" className={ang}>113°</text>
           <text x="38" y="110" className={ang}>33°</text>
           <text x="58" y="145" className="text-[10px] fill-slate-600 dark:fill-slate-300">AD // BC</text>
         </svg>
@@ -62,7 +62,7 @@ export function ConcyclicFigs() {
           <text x="2" y="128" className={lbl}>B</text>
           <text x="150" y="128" className={lbl}>C</text>
           <text x="44" y="38" className="text-[11px] italic font-bold fill-sky-600 dark:fill-sky-400">x</text>
-          <text x="22" y="98" className={ang}>32°</text>
+          <text x="20" y="92" className={ang}>32°</text>
           <text x="112" y="48" className={ang}>68°</text>
           <text x="74" y="82" className={ang}>100°</text>
         </svg>
@@ -203,7 +203,7 @@ export function MenelausFig2() {
         <text x="115" y="175" className={lbl}>P</text>
         <text x="110" y="92" className={lbl}>Q</text>
         <text x="84" y="58" className={lbl}>R</text>
-        <text x="132" y="55" className={ang}>3cm</text>
+        <text x="126" y="66" className={ang}>3cm</text>
         <text x="126" y="128" className={ang}>3cm</text>
         <text x="60" y="176" className={ang}>5cm</text>
         <text x="152" y="176" className={ang}>4cm</text>

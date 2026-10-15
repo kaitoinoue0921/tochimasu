@@ -24,7 +24,7 @@ export function PentagonFig() {
         <line x1="20" y1="165.7" x2="245" y2="165.7" className={stroke} strokeWidth="1.5" />
         <polygon points={`${A} ${B} ${C} ${D} ${E}`} fill="none" className={stroke} strokeWidth="2" />
         <path d="M 95 45 A 25 25 0 0 0 94 38.1" fill="none" className="stroke-rose-500" strokeWidth="1.5" />
-        <text x="100" y="38" className="text-[11px] font-bold fill-rose-600 dark:fill-rose-400">16°</text>
+        <text x="113" y="43" className="text-[10px] font-bold fill-rose-600 dark:fill-rose-400">16°</text>
         <path d="M 171.4 165.7 A 20 20 0 0 0 163.7 149.9" fill="none" className="stroke-sky-500" strokeWidth="1.5" />
         <text x="174" y="158" className="text-[12px] italic font-bold fill-sky-600 dark:fill-sky-400">x</text>
         <text x="56" y="40" className={lbl}>A</text>
@@ -127,7 +127,7 @@ export function GraphChoicesFig() {
             <line x1="10" y1="5" x2="10" y2="80" className={stroke} strokeWidth="1" />
             <line x1="2" y1="70" x2="78" y2="70" className={stroke} strokeWidth="1" />
             <path d={g.d} fill="none" className={stroke} strokeWidth="2" />
-            <text x="2" y="12" className={lbl}>{g.n}</text>
+            <text x="15" y="12" className={lbl}>{g.n}</text>
             <text x="2" y="82" className="text-[9px] fill-slate-700 dark:fill-slate-200">O</text>
           </svg>
         ))}
