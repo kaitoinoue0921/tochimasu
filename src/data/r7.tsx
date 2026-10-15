@@ -94,9 +94,39 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div><p>右の図の三角形を、辺ACを軸として1回転させてできる立体の体積を求めなさい。ただし、円周率は <TextWithMath text="$\pi$" /> とする。</p><R7TriangleFig /></div>,
         steps: [
           {
-            id: 1, title: '回転体',
-            content: <p>半径2cm、高さ5cmの円錐ができます。</p>,
-            quiz: { type: 'choice', question: 'できる立体の体積を求めなさい。（円周率はπ）', options: ['20/3 π', '50/3 π', '50 π'], correctAnswer: '50/3 π', explanation: <p>軸は辺AC（2cm）なので、できるのは底面の半径がBC=5cm、高さがAC=2cmの円錐です。体積は <TextWithMath text="$\frac{1}{3} \times \pi \times 5^2 \times 2 = \frac{50}{3}\pi$" /> (cm³)。半径と高さを逆にすると 20/3 π になるので注意。</p> }
+            id: 1, title: '① どんな立体ができる？',
+            content: <p>直角三角形ABCを、辺ACを軸にしてくるっと1回転させます。辺ACは軸なので動かず、点Bが円をえがきます。</p>,
+            quiz: { type: 'choice', question: '回転させてできる立体はどれ？', options: ['円柱', '円錐', '球'], correctAnswer: '円錐', explanation: <p>軸の上の点Aがとがった頂点、点Bがえがく円が底面になるので、円錐です。</p> }
+          },
+          {
+            id: 2, title: '② 体積の基本の式',
+            content: <p>体積の基本は「底面積 × 高さ」。これで求まるのは柱の形（角柱・円柱）です。<br/>とがった形（角錐・円錐）は、同じ底面・同じ高さの柱の <strong>3分の1</strong> になります。</p>,
+            quiz: { type: 'choice', question: '円錐の体積を求める式はどれ？', options: ['底面積 × 高さ', '底面積 × 高さ × 1/3', '底面積 × 高さ × 1/2'], correctAnswer: '底面積 × 高さ × 1/3', explanation: <p>円錐は「とがった形」なので、柱の式に 1/3 をかけます。</p> }
+          },
+          {
+            id: 3, title: '③ 底面の半径はどこ？',
+            content: <p>底面は点Bがえがく円です。その円の中心は軸の上の点C。</p>,
+            quiz: { type: 'choice', question: '底面の円の半径はどの辺？', options: ['AC（2cm）', 'BC（5cm）', 'AB'], correctAnswer: 'BC（5cm）', explanation: <p>軸ACから点Bまでの距離、つまりBC＝5cmが半径です。ACは軸なので「高さ」のほうになります。</p> }
+          },
+          {
+            id: 4, title: '④ 底面積を求める',
+            content: <p>円の面積は「半径 × 半径 × π」です。</p>,
+            quiz: { type: 'choice', question: '半径5cmの円の面積は？', options: ['10π cm²', '25π cm²', '4π cm²'], correctAnswer: '25π cm²', explanation: <p><TextWithMath text="$5 \times 5 \times \pi = 25\pi$" />（cm²）。10πは円周の長さと混ざったときのミスです。</p> }
+          },
+          {
+            id: 5, title: '⑤ 高さはどこ？',
+            content: <p>円錐の高さは、頂点Aから底面の中心Cまでの長さです。</p>,
+            quiz: { type: 'choice', question: '円錐の高さは？', options: ['2cm', '5cm', '7cm'], correctAnswer: '2cm', explanation: <p>軸になっている辺AC＝2cmが高さです。</p> }
+          },
+          {
+            id: 6, title: '⑥ 底面積 × 高さ',
+            content: <p>まず柱（円柱）だと思って「底面積 × 高さ」を計算します。</p>,
+            quiz: { type: 'choice', question: '25π × 2 はいくつ？', options: ['27π', '50π', '25π'], correctAnswer: '50π', explanation: <p><TextWithMath text="$25\pi \times 2 = 50\pi$" />。これは同じ底面・高さの円柱の体積です。</p> }
+          },
+          {
+            id: 7, title: '⑦ 円錐なので 1/3 をかける',
+            content: <p>円錐は円柱の3分の1です。</p>,
+            quiz: { type: 'choice', question: '求める立体の体積は？', options: ['50π cm³', '50/3 π cm³', '20/3 π cm³'], correctAnswer: '50/3 π cm³', explanation: <p><TextWithMath text="$50\pi \times \frac{1}{3} = \frac{50}{3}\pi$" />（cm³）。半径と高さを逆にすると 20/3 π になってしまうので、③で「半径はBC」を確認したことが大事です。</p> }
           }
         ]
       },
@@ -303,7 +333,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 2, title: '証明の計算',
             content: <p><TextWithMath text="$a=n, b=n+1, c=n+11, d=n+12$" /> を使って <TextWithMath text="$bc - ad$" /> を計算します。</p>,
-            quiz: { type: 'choice', question: 'bc - ad を展開して整理するとどうなる？', options: ['11', 'n + 11', '10n + 1'], correctAnswer: '11', explanation: <p><TextWithMath text="(n+1)(n+11) - n(n+12) = 11" /> になり、証明完了です！</p> }
+            quiz: { type: 'choice', question: 'bc - ad を展開して整理するとどうなる？', options: ['11', 'n + 11', '10n + 1'], correctAnswer: '11', explanation: <p><TextWithMath text="$(n+1)(n+11) - n(n+12) = 11$" /> になり、証明完了です！</p> }
           }
         ]
       }
@@ -333,9 +363,24 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div className="space-y-2"><p>右の図のような、正方形ABCDを底面とする正四角錐OABCDがあり、辺OA、OB、OC、OD上にそれぞれ点E、F、G、Hを四角形EFGHが正方形となるようにとる。</p><p>正方形ABCDの面積が16cm²、正方形EFGHの面積が4cm²のとき、次の(1)、(2)の問いに答えなさい。</p><R7PyramidFig /><p>(1) 正四角錐OEFGHと正四角錐OABCDの体積の比を、最も簡単な整数の比で表しなさい。</p></div>,
         steps: [
           {
-            id: 1, title: '体積比',
-            content: <p>相似な立体の「面積比」から「相似比」と「体積比」を導きます。</p>,
-            quiz: { type: 'choice', question: '底面積の比が「4：16（＝1：4）」のとき、体積の比はどうなりますか？', options: ['1：4', '1：8', '1：16'], correctAnswer: '1：8', explanation: <p>相似比は面積比の平方根なので 1：2。体積比はその3乗なので 1：8 になります。</p> }
+            id: 1, title: '① 2つの四角錐の関係',
+            content: <p>正方形EFGHは底面ABCDと平行な位置にあり、正四角錐OEFGHは正四角錐OABCDの上の部分を切り取った形です。</p>,
+            quiz: { type: 'choice', question: '正四角錐OEFGHとOABCDはどんな関係？', options: ['合同', '相似（形が同じで大きさがちがう）', '関係はない'], correctAnswer: '相似（形が同じで大きさがちがう）', explanation: <p>同じ形を縮小したものなので相似です。</p> }
+          },
+          {
+            id: 2, title: '② 底面の1辺の長さ',
+            content: <p>正方形の面積は「1辺 × 1辺」です。</p>,
+            quiz: { type: 'choice', question: '面積16cm²の正方形ABCDと、面積4cm²の正方形EFGHの1辺は？', options: ['AB=4cm, EF=2cm', 'AB=8cm, EF=2cm', 'AB=16cm, EF=4cm'], correctAnswer: 'AB=4cm, EF=2cm', explanation: <p>4×4=16、2×2=4 なので、AB=4cm、EF=2cm です。</p> }
+          },
+          {
+            id: 3, title: '③ 相似比',
+            content: <p>対応する辺の長さの比が相似比です。</p>,
+            quiz: { type: 'choice', question: 'OEFGH と OABCD の相似比 EF : AB は？', options: ['1 : 2', '1 : 4', '1 : 8'], correctAnswer: '1 : 2', explanation: <p>2 : 4 = 1 : 2。高さも同じく 1 : 2 になります。</p> }
+          },
+          {
+            id: 4, title: '④ 体積の式で比べる',
+            content: <p>四角錐の体積は「底面積 × 高さ × 1/3」。<br/>底面積の比は 4 : 16 = 1 : 4、高さの比は相似比と同じ 1 : 2 です。1/3 はどちらにもかかるので、比には影響しません。</p>,
+            quiz: { type: 'choice', question: '体積の比（OEFGH : OABCD）は？', options: ['1 : 4', '1 : 6', '1 : 8'], correctAnswer: '1 : 8', explanation: <p>底面積の比 1:4 と高さの比 1:2 をかけて、1×1 : 4×2 = 1 : 8。相似比 1:2 の3乗（<TextWithMath text="$1^3 : 2^3$" />）と同じになります。</p> }
           }
         ]
       },
@@ -346,14 +391,29 @@ export const r7Data: Record<string, MajorQuestionData> = {
         originalText: <div className="space-y-2"><p>右の図のような、正方形ABCDを底面とする正四角錐OABCDがあり、辺OA、OB、OC、OD上にそれぞれ点E、F、G、Hを四角形EFGHが正方形となるようにとる。</p><p>正方形ABCDの面積が16cm²、正方形EFGHの面積が4cm²のとき、次の(1)、(2)の問いに答えなさい。</p><R7PyramidFig /><p>(2) 正四角錐OABCDの表面積が64cm²のとき、正四角錐OABCDの高さを求めなさい。</p></div>,
         steps: [
           {
-            id: 1, title: '側面積と三角形の高さ',
-            content: <p>底面積は16cm²なので、側面積の合計は48cm²。三角形1つ分は12cm²です。</p>,
-            quiz: { type: 'choice', question: '底辺AB=4cmのとき、三角形OABの高さは何cmですか？', options: ['3 cm', '6 cm', '8 cm'], correctAnswer: '6 cm', explanation: <p>三角形の面積 1/2 × 4 × h = 12 より、h = 6cm になります。</p> }
+            id: 1, title: '① 表面積 = 底面積 + 側面積',
+            content: <p>表面積64cm²のうち、底面の正方形ABCDは16cm²です。残りが側面（三角形4つ）です。</p>,
+            quiz: { type: 'choice', question: '側面積の合計は？', options: ['48 cm²', '60 cm²', '80 cm²'], correctAnswer: '48 cm²', explanation: <p>64 − 16 = 48（cm²）。</p> }
           },
           {
-            id: 2, title: '三平方の定理',
-            content: <p>側面の高さが6cm、底面の中心から辺までの距離が2cmの直角三角形で三平方の定理を使います。</p>,
-            quiz: { type: 'choice', question: '四角錐の高さを求めるといくつになりますか？', options: ['4√2 cm', '32 cm', '√40 cm'], correctAnswer: '4√2 cm', explanation: <p>OM² + 2² = 6² より OM² = 32。よって OM = 4√2 cm です。</p> }
+            id: 2, title: '② 側面の三角形1つ分',
+            content: <p>正四角錐の側面は、同じ形の二等辺三角形が4つです。</p>,
+            quiz: { type: 'choice', question: '三角形OAB 1つの面積は？', options: ['12 cm²', '16 cm²', '24 cm²'], correctAnswer: '12 cm²', explanation: <p>48 ÷ 4 = 12（cm²）。</p> }
+          },
+          {
+            id: 3, title: '③ 三角形OABの高さ',
+            content: <p>辺ABの中点をMとすると、OMが三角形OABの高さです。底辺AB=4cm（面積16の正方形の1辺）。三角形の面積は「底辺 × 高さ ÷ 2」。</p>,
+            quiz: { type: 'choice', question: '4 × OM ÷ 2 = 12 より、OMは？', options: ['3 cm', '6 cm', '8 cm'], correctAnswer: '6 cm', explanation: <p>2 × OM = 12 なので OM = 6cm です。</p> }
+          },
+          {
+            id: 4, title: '④ 高さを含む直角三角形を見つける',
+            content: <p>底面の正方形の中心をIとすると、四角錐の高さはOIです。三角形OIMは、∠OIM=90°の直角三角形になります。</p>,
+            quiz: { type: 'choice', question: 'IM（中心から辺ABの中点まで）の長さは？', options: ['2 cm', '4 cm', '2√2 cm'], correctAnswer: '2 cm', explanation: <p>IMは正方形の1辺の半分なので 4 ÷ 2 = 2cm。2√2cm は中心から頂点Aまでの長さなので別物です。</p> }
+          },
+          {
+            id: 5, title: '⑤ 三平方の定理',
+            content: <p>斜辺はOM=6cm、もう1辺はIM=2cm です。<TextWithMath text="$OI^2 + 2^2 = 6^2$" /></p>,
+            quiz: { type: 'choice', question: '四角錐の高さOIは？', options: ['4√2 cm', '√40 cm', '4 cm'], correctAnswer: '4√2 cm', explanation: <p><TextWithMath text="$OI^2 = 36 - 4 = 32$" /> より <TextWithMath text="$OI = \sqrt{32} = 4\sqrt{2}$" />（cm）。√40 は足し算にしてしまったときのミスです。</p> }
           }
         ]
       },
@@ -527,9 +587,34 @@ export const r7Data: Record<string, MajorQuestionData> = {
             quiz: { type: 'choice', question: '5分後から10分後までの x と y の関係を表す式は？', options: ['y = -6x + 60', 'y = -2x + 40', 'y = -3x + 45'], correctAnswer: 'y = -6x + 60', explanation: <p>傾きは (0 - 30) / (10 - 5) = -6。y = -6x + b に (10, 0) を代入して b = 60。よって y = -6x + 60 です。</p> }
           },
           {
-            id: 3, title: '(3) 横に倒したブロックの高さ',
-            content: <p>ブロックを横に倒すと、5分後の水位は前より4cm低く(26cm)なりました。</p>,
-            quiz: { type: 'choice', question: '条件から方程式を立ててブロックの新しい高さを計算すると？', options: ['28 cm', '32.5 cm', '35 cm'], correctAnswer: '32.5 cm', explanation: <p>減った体積 10S = (40-h)S + (h-26)(S - 20S/h) を解くと h = 32.5cm になります。</p> }
+            id: 3, title: '(3)① 1分間に出る水の量',
+            content: <p>水そうの底面積を <TextWithMath text="$S$" /> cm² とします。最初の5分間はブロックより上の部分なので、水そうの形そのまま「底面積 × 高さ」で水の量がわかります。</p>,
+            quiz: { type: 'choice', question: '最初の5分間（40cm→30cm）に出た水の量は？', options: ['10S cm³', '30S cm³', '40S cm³'], correctAnswer: '10S cm³', explanation: <p>水面が10cm下がったので <TextWithMath text="$S \times 10 = 10S$" />。つまり5分ごとに <TextWithMath text="$10S$" /> cm³ の水が出ます。</p> }
+          },
+          {
+            id: 4, title: '(3)② ブロックの体積',
+            content: <p>5分後から10分後（30cm→0cm）も、出た水は同じ <TextWithMath text="$10S$" />。でも高さ30cm分の水そうの容積は <TextWithMath text="$30S$" /> です。その差がブロックの体積になります。</p>,
+            quiz: { type: 'choice', question: 'ブロックの体積は？', options: ['10S cm³', '20S cm³', '30S cm³'], correctAnswer: '20S cm³', explanation: <p><TextWithMath text="$30S - 10S = 20S$" />（cm³）。</p> }
+          },
+          {
+            id: 5, title: '(3)③ 向きを変えたブロックの高さとの関係',
+            content: <p>2回目も5分で <TextWithMath text="$10S$" /> の水が出て、水面は 30 − 4 = 26cm になりました。ブロックの新しい高さ（ABの長さ）を <TextWithMath text="$h$" /> cm とします。</p>,
+            quiz: { type: 'choice', question: 'h は 26cm より高い？低い？', options: ['26cmより高い', '26cmより低い', 'ちょうど26cm'], correctAnswer: '26cmより高い', explanation: <p>もしブロックが26cm以下なら、5分間ずっとブロックより上の水だけが出るので、1回目と同じく10cm下がって30cmになるはず。実際は26cmまで（14cm）下がったので、途中からブロックの横を水面が下がった、つまり <TextWithMath text="$h > 26$" /> です。</p> }
+          },
+          {
+            id: 6, title: '(3)④ 新しい底面積',
+            content: <p>ブロックの体積は向きを変えても <TextWithMath text="$20S$" />。体積 = 底面積 × 高さ なので、底面積 = 体積 ÷ 高さ です。</p>,
+            quiz: { type: 'choice', question: '向きを変えたブロックの底面積（長方形BCGF）は？', options: ['20S − h', '20S / h', '20S × h'], correctAnswer: '20S / h', explanation: <p><TextWithMath text="$20S \div h = \frac{20S}{h}$" />（cm²）。</p> }
+          },
+          {
+            id: 7, title: '(3)⑤ 方程式を立てる',
+            content: <p>5分で出た <TextWithMath text="$10S$" /> を、2つの部分に分けます。<br/>・40cm から h cm まで：ブロックより上なので 底面積 S × 高さ (40 − h)<br/>・h cm から 26cm まで：ブロックの横なので 底面積 (S − 20S/h) × 高さ (h − 26)</p>,
+            quiz: { type: 'choice', question: '正しい方程式は？', options: ['(40 − h)S + (h − 26)(S − 20S/h) = 10S', '(40 − h)S + (h − 26)S = 10S', '(40 − 26)(S − 20S/h) = 10S'], correctAnswer: '(40 − h)S + (h − 26)(S − 20S/h) = 10S', explanation: <p>ブロックの横の部分は、水そうの底面積からブロックの底面積を引いた分だけが水です。</p> }
+          },
+          {
+            id: 8, title: '(3)⑥ 方程式を解く',
+            content: <p>両辺を S でわると <TextWithMath text="$(40-h) + (h-26)\left(1 - \frac{20}{h}\right) = 10$" />。<br/>左辺を整理すると <TextWithMath text="$40 - h + h - 26 - \frac{20(h-26)}{h} = 14 - \frac{20(h-26)}{h}$" /> です。</p>,
+            quiz: { type: 'choice', question: '14 − 20(h − 26)/h = 10 を解くと、ABの長さ h は？', options: ['28 cm', '65/2 cm', '35 cm'], correctAnswer: '65/2 cm', explanation: <p><TextWithMath text="$\frac{20(h-26)}{h} = 4$" /> より <TextWithMath text="$20h - 520 = 4h$" />、<TextWithMath text="$16h = 520$" />、<TextWithMath text="$h = \frac{65}{2}$" />（cm）。26より大きいので条件に合います。</p> }
           }
         ]
       }
