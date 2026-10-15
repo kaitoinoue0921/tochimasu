@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { StepLayout } from '@/components/StepLayout';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import { SubNav } from '@/components/SubNav';
 
 export default function R6SubQuestionPage({ params }: { params: Promise<{ questionId: string, subId: string }> }) {
   const resolvedParams = React.use(params);
@@ -34,6 +35,7 @@ export default function R6SubQuestionPage({ params }: { params: Promise<{ questi
         }
         steps={sub.steps}
       />
+      <SubNav base={`/r6/${resolvedParams.questionId}`} subs={data.subs} current={sub.id} />
     </div>
   );
 }

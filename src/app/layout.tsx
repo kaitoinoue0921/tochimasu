@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
 import 'katex/dist/katex.min.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'とちます！ - 栃木県公立入試 数学スパルタ特訓 -',
@@ -18,8 +15,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={`${inter.className} bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300`}>
-        <header className="bg-emerald-600 dark:bg-emerald-800 text-white p-4 shadow-md transition-colors duration-300">
+      <body className={`bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300`}>
+        <header className="sticky top-0 z-40 bg-emerald-600 dark:bg-emerald-800 text-white px-4 py-3 shadow-md transition-colors duration-300">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <h1 className="text-xl font-black tracking-wider">🔥 とちます！ <span className="hidden sm:inline text-sm font-normal ml-2 opacity-80">栃木県公立入試 スパルタ特訓</span></h1>
             <Link href="/" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">ホーム</Link>
