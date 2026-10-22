@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { BookOpen, Calculator, Shapes, BarChart2, Beaker, Users } from 'lucide-react';
+import { BookOpen, GraduationCap, Calculator, Shapes, BarChart2, Beaker, Users } from 'lucide-react';
 import { ClearedCount, ProgressPill } from '@/components/Progress';
 import { r3Data } from '@/data/r3';
 import { r4Data } from '@/data/r4';
@@ -204,6 +204,13 @@ export default function Home() {
             <BookOpen className="w-4 h-4 shrink-0" />
             公式・ルール集
           </Link>
+          <a
+            href="https://kaitoinoue0921.github.io/chugaku-math/"
+            className="inline-flex items-center gap-2 text-sm bg-white dark:bg-slate-800 hover:border-indigo-400 border border-indigo-200 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300 font-bold py-2.5 px-5 rounded-full shadow-sm"
+          >
+            <GraduationCap className="w-4 h-4 shrink-0" />
+            中1〜中3 公式と要点
+          </a>
         </div>
       </section>
 
