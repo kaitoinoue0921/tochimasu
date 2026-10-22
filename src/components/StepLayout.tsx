@@ -43,7 +43,12 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
     selectedAnswer?: string;
     lockUntil?: number; // timestamp for penalty
     scoldingMessage?: string;
+    misses?: number; // このステップで間違えた回数
   }>>({});
+  // この問題を通してのミス回数（やり直しても消えない。報告に出す）
+  const [totalMisses, setTotalMisses] = useState(0);
+  const [resetNotice, setResetNotice] = useState(false);
+  const [restartAt, setRestartAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
   // 選択肢は開くたび・やり直すたびに並び替える（正解の位置を覚えて押せないように）
   // SSRとの不一致を避けるため、マウント後に並び替える
@@ -57,6 +62,14 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(shuffleOptions, []);
+
+  // ロック明けにやり直し（ページ移動時はタイマーごと消える）
+  useEffect(() => {
+    if (restartAt === null) return;
+    const t = setTimeout(() => { setRestartAt(null); restartFromTop(); }, Math.max(0, restartAt - Date.now()));
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restartAt]);
 
   // Timer loop for updating the penalty countdown
   useEffect(() => {
@@ -73,7 +86,18 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   const reset = () => {
     setCurrentStep(0);
     setStepStates({});
+    setTotalMisses(0);
+    setResetNotice(false);
     shuffleOptions();
+  };
+
+  // 間違えたら、この問題をSTEP 1からやり直し（消去法で進めないように）
+  const restartFromTop = () => {
+    setCurrentStep(0);
+    setStepStates({});
+    setResetNotice(true);
+    shuffleOptions();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const scoldingMessages = [
@@ -130,7 +154,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
         if (isAllComplete) {
           try {
             const completed = JSON.parse(localStorage.getItem('tochimasu_completed') || '{}');
-            completed[progressKey ?? title] = { date: new Date().toISOString() };
+            completed[progressKey ?? title] = { date: new Date().toISOString(), misses: totalMisses };
             localStorage.setItem('tochimasu_completed', JSON.stringify(completed));
           } catch(e) {}
         }
@@ -138,22 +162,32 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
         return nextState;
       });
     } else {
-      // 不正解の場合は5秒間のペナルティと激しい罵倒メッセージ
-      const randomScolding = scoldingMessages[Math.floor(Math.random() * scoldingMessages.length)];
+      // 不正解: 5秒のペナルティ＋罵倒。選択肢は並び替え直す。
+      // ロック明けにSTEP 1からやり直し
+      const misses = (currentState.misses ?? 0) + 1;
+      setTotalMisses((n) => n + 1);
+      const step = steps.find((s) => s.id === stepId);
+      if (step?.quiz?.options) {
+        setOptionOrder((prev) => ({ ...prev, [stepId]: shuffled(step.quiz!.options!) }));
+      }
+      const randomScolding = scoldingMessages[Math.floor(Math.random() * scoldingMessages.length)] + '\nSTEP 1からやり直しだ！！';
       setStepStates((prev) => ({
         ...prev,
         [stepId]: { 
           isCorrect: false, 
-          selectedAnswer: option,
+          selectedAnswer: undefined, // どれを間違えたかは残さない（消去法防止）
           lockUntil: Date.now() + 5000,
-          scoldingMessage: randomScolding
+          scoldingMessage: randomScolding,
+          misses,
         }
       }));
+      setRestartAt(Date.now() + 5000);
     }
   };
 
   const isAllComplete = steps.every(s => stepStates[s.id]?.isCorrect);
-  const shareText = encodeURIComponent(`🔥【とちます！】\n「${title}」の特訓をクリアしました！\n\n#とちマス #栃木県公立入試`);
+  const missText = totalMisses === 0 ? 'ノーミス' : `ミス${totalMisses}回`;
+  const shareText = encodeURIComponent(`🔥【とちます！】\n「${title}」の特訓をクリアしました！（${missText}）\n\n#とちマス #栃木県公立入試`);
 
   return (
     <div className="space-y-8 max-w-3xl mx-auto">
@@ -196,6 +230,15 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
       </div>
 
       <div className="space-y-6">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          1回でも間違えたら、この問題はSTEP 1からやり直し。適当に押して進むことはできない。
+          {totalMisses > 0 && <span className="ml-2 font-bold text-red-600 dark:text-red-400">ここまでのミス {totalMisses}回</span>}
+        </p>
+        {resetNotice && currentStep === 0 && (
+          <div className="p-4 rounded-xl border-2 border-red-400 bg-red-50 dark:bg-red-950/40 text-red-800 dark:text-red-200 font-bold">
+            間違えたので最初からやり直し。今度は紙に書いて考えてから選ぶこと。
+          </div>
+        )}
         <AnimatePresence initial={false}>
           {steps.slice(0, currentStep + 1).map((step, index) => {
             const isLatest = index === currentStep;
@@ -359,7 +402,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
               全ステップ クリア！！
             </h2>
             <p className="text-emerald-600 dark:text-emerald-300 font-medium">
-              よく頑張りました。この調子でどんどん解いていこう！
+              {totalMisses === 0 ? 'ノーミスでクリア。この調子でどんどん解いていこう！' : `ミス${totalMisses}回。次はノーミスを目指そう。`}
             </p>
             
             <div className="pt-6 border-t border-emerald-200 dark:border-emerald-800">
