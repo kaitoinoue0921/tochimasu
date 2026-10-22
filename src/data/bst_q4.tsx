@@ -45,7 +45,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '代入してできる式は？',
-            options: ['12 = 16a', '12 = 8a', '4 = 144a'],
+            options: ['12 = 16a', '12 = 8a', '4 = 144a', '12 = 4a', '16 = 12a'],
             correctAnswer: '12 = 16a',
             explanation: <p><TextWithMath text="$x^2=4^2=16$" /> なので <TextWithMath text="$12=16a$" /> です。</p>
           }
@@ -108,7 +108,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '△CBPの面積を表す式は？',
-            options: ['½×(p+4)×3', '½×(p−4)×3', '½×p×3'],
+            options: ['½×(p+4)×3', '½×(p−4)×3', '½×p×3', '(p+4)×3', '½×(4−p)×3'],
             correctAnswer: '½×(p+4)×3',
             explanation: <p>BからPまでの長さは <TextWithMath text="$p-(-4)=p+4$" /> です。</p>
           }
@@ -190,7 +190,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '「弱」と「中」の1分あたりの消費量は？',
-            options: ['弱5mL・中7mL', '弱3mL・中4.2mL', '弱6mL・中8mL'],
+            options: ['弱5mL・中7mL', '弱3mL・中4.2mL', '弱6mL・中8mL', '弱7mL・中5mL', '弱5mL・中6mL'],
             correctAnswer: '弱5mL・中7mL',
             explanation: <p><TextWithMath text="$300\div60=5$" />、<TextWithMath text="$420\div60=7$" /> です。</p>
           }
@@ -201,7 +201,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '立てる式は？',
-            options: ['5t + 7(60 − t) = 400', '5t + 7t = 400', '7t + 5(60 − t) = 400'],
+            options: ['5t + 7(60 − t) = 400', '5t + 7t = 400', '7t + 5(60 − t) = 400', '5t + 7(60 + t) = 400', '5t + 7(60 − t) = 2800'],
             correctAnswer: '5t + 7(60 − t) = 400',
             explanation: <p>「中」の時間は <TextWithMath text="$60-t$" /> 分です。</p>
           }

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, CheckCircle2, RotateCcw, AlertCircle, Timer, Flame, Skull } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { buildOptions } from '@/lib/distractors';
 
 export interface StepQuiz {
   type: 'choice' | 'input';
@@ -49,6 +50,18 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   const [totalMisses, setTotalMisses] = useState(0);
   const [resetNotice, setResetNotice] = useState(false);
   const [restartAt, setRestartAt] = useState<number | null>(null);
+  // 問題文はスクロールしても上に貼りつける（固定ヘッダーの真下）
+  const [headerH, setHeaderH] = useState(0);
+  const [questionOpen, setQuestionOpen] = useState(true);
+  useEffect(() => {
+    const h = document.querySelector('header');
+    if (!h) return;
+    const update = () => setHeaderH(h.getBoundingClientRect().height);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(h);
+    return () => ro.disconnect();
+  }, []);
   const [now, setNow] = useState(Date.now());
   // 選択肢は開くたび・やり直すたびに並び替える（正解の位置を覚えて押せないように）
   // SSRとの不一致を避けるため、マウント後に並び替える
@@ -56,7 +69,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   const shuffleOptions = () => {
     const next: Record<number, string[]> = {};
     for (const st of steps) {
-      if (st.quiz?.type === 'choice' && st.quiz.options) next[st.id] = shuffled(st.quiz.options);
+      if (st.quiz?.type === 'choice' && st.quiz.options) next[st.id] = buildOptions(st.quiz.options, st.quiz.correctAnswer);
     }
     setOptionOrder(next);
   };
@@ -168,7 +181,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
       setTotalMisses((n) => n + 1);
       const step = steps.find((s) => s.id === stepId);
       if (step?.quiz?.options) {
-        setOptionOrder((prev) => ({ ...prev, [stepId]: shuffled(step.quiz!.options!) }));
+        setOptionOrder((prev) => ({ ...prev, [stepId]: buildOptions(step.quiz!.options!, step.quiz!.correctAnswer) }));
       }
       const randomScolding = scoldingMessages[Math.floor(Math.random() * scoldingMessages.length)] + '\nSTEP 1からやり直しだ！！';
       setStepStates((prev) => ({
@@ -224,9 +237,24 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
           </div>
         )}
 
-        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-200">
-          {questionText}
-        </div>
+      </div>
+
+      <div
+        className="sticky z-30 -mt-4 bg-white dark:bg-slate-800 rounded-2xl shadow-md border-2 border-emerald-500 transition-colors duration-300"
+        style={{ top: headerH + 8 }}
+      >
+        <button
+          onClick={() => setQuestionOpen((o) => !o)}
+          className="w-full flex items-center justify-between px-4 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-300"
+        >
+          <span>問題</span>
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{questionOpen ? 'たたむ ▲' : 'ひらく ▼'}</span>
+        </button>
+        {questionOpen && (
+          <div className="px-4 pb-4 md:px-6 max-h-[40vh] overflow-y-auto prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-200">
+            {questionText}
+          </div>
+        )}
       </div>
 
       <div className="space-y-6">
