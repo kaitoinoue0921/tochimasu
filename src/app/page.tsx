@@ -9,6 +9,7 @@ import { r6Data } from '@/data/r6';
 import { r7Data } from '@/data/r7';
 import { u8d1Data } from '@/data/u8d1';
 import { u8d2Data } from '@/data/u8d2';
+import { bstData } from '@/data/bst';
 
 type Card = {
   title: string;
@@ -132,6 +133,15 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
       card('u8d2', 'q3', u8d2Data, 'pink', '宇短附 大問3：目の数が偏ったさいころ', '1・2・2・3・3・3の目のさいころを2回投げて、どちらの主張が正しいかを確率で判定する。', (c) => <BarChart2 className={`w-8 h-8 ${c}`} />),
       card('u8d2', 'q4', u8d2Data, 'cyan', '宇短附 大問4：台形の辺上を動く点', '動く2点がつくる三角形の面積を、時間ごとに式とグラフで表す。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
       card('u8d2', 'q5', u8d2Data, 'amber', '宇短附 大問5：正四角錐と切り口', '平面OACで切った正四角錐で、中点連結定理と相似から長さの比と体積を求める。', (c) => <Shapes className={`w-8 h-8 ${c}`} />),
+    ],
+  },
+  {
+    title: '私立 文星芸術大学附属高校 特待生入試（大問4・5）',
+    label: '文星 特待',
+    border: 'border-violet-500',
+    cards: [
+      card('bst', 'q4', bstData, 'cyan', '文星特待 大問4：放物線と直線・加湿器のグラフ', '放物線の比例定数と面積が等しくなる点、加湿器の水の量のグラフから消費量と使用時間を求める。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
+      card('bst', 'q5', bstData, 'pink', '文星特待 大問5：白と灰色のタイルの規則性', 'L字に足していくタイルの枚数を文字式で表し、白と灰色の比から1辺の枚数を求める。', (c) => <Users className={`w-8 h-8 ${c}`} />),
     ],
   },
 ];
