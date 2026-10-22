@@ -47,31 +47,83 @@ export function numericVariants(correct: string, minus: string): string[] {
   };
 
   const st = step * stepMul;
-  const vals = [n + st, n - st, n + 2 * st, n - 2 * st, n * 2];
-  if (Number.isInteger(n) && n % 2 === 0) vals.push(n / 2);
-  if (n !== 0) vals.push(-n);
-  if (Number.isInteger(n) && Math.abs(n) >= 10) vals.push(n + 10, n - 10);
+  // 近い値は片側に寄せて取る（±1,±2だと正解が真ん中に来て当てられる）
+  const near = shuffled([1, 2, 3, -1, -2, -3]).slice(0, 4);
+  const typical = [n * 2]; // よくある間違い: 2倍・半分・符号
+  if (Number.isInteger(n) && n % 2 === 0) typical.push(n / 2);
+  if (n !== 0) typical.push(-n);
+  if (Number.isInteger(n) && Math.abs(n) >= 20) typical.push(n + 10, n - 10);
+  const vals = [...near.map((k) => n + k * st), ...shuffled(typical)];
   for (const v of vals) build(Math.round(v / step) * step, den);
 
   if (den) {
     const d = parseInt(den, 10);
-    for (const nd of [d + 1, d - 1, d * 2]) if (nd >= 2) build(n, String(nd));
+    for (const nd of shuffled([d + 1, d - 1, d * 2])) if (nd >= 2) build(n, String(nd));
     build(parseInt(den, 10) * (n < 0 ? -1 : 1), numStr); // 分母分子の逆
   }
   return [...out];
 }
 
-/** 毎回ちがう選択肢を返す。数値の答えは5択、それ以外は元の数のまま（正解は必ず含む） */
+const JP = /[ぁ-んァ-ヶ一-龠]/g;
+const SQUARES = new Set([0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]);
+
+/** 式・座標などの答えから、数字を1か所だけ変えた／符号を1か所だけ変えた「まちがい探し」の誤答を作る */
+export function textVariants(correct: string, minus: string): string[] {
+  const c = correct.trim();
+  if ((c.match(JP) || []).length > 4) return []; // 文章の答えは触らない
+  const out = new Set<string>();
+  const add = (s: string) => {
+    if (s === c || s.includes('NaN')) return;
+    if (/(^|[^\d.])0\/\d/.test(s) || /(^|[^\d.])(\d+)\/\2(?!\d)/.test(s)) return; // 0/2 や 2/2 は出さない
+    out.add(s);
+  };
+
+  for (const m of c.matchAll(/\d+(?:\.\d+)?/g)) {
+    const i = m.index!, numStr = m[0];
+    const prev = c[i - 1] ?? '', next = c[i + numStr.length] ?? '';
+    if (prev === '.' || next === '.') continue;
+    const n = parseFloat(numStr);
+    if ([90, 180, 360].includes(n)) continue;
+    const decimals = numStr.includes('.') ? numStr.split('.')[1].length : 0;
+    const step = Math.pow(10, -decimals);
+    const cands = [n + step, n - step];
+    if (n >= 2 && decimals === 0) cands.push(n * 2);
+    for (const v of cands) {
+      const r = Math.round(v / step) * step;
+      if (r < 0) continue;
+      if (r === 0 && (prev === '/' || /[a-zA-Zπ√(]/.test(next))) continue; // 0x や /0 は作らない
+      if (r === 1 && /[a-zA-Zπ(√]/.test(next) && !/\d/.test(prev)) continue; // 1x という書き方はしない
+      if (prev === '√' && SQUARES.has(r)) continue;
+      add(c.slice(0, i) + fmt(r, decimals) + c.slice(i + numStr.length));
+    }
+  }
+  // 符号を1か所だけ反転
+  for (const m of c.matchAll(/ ([+−-]) /g)) {
+    const flip = m[1] === '+' ? minus : '+';
+    add(c.slice(0, m.index!) + ` ${flip} ` + c.slice(m.index! + 3));
+  }
+  for (const m of c.matchAll(/(^|[(,=\s])([−-])(?=\d)/g)) {
+    const at = m.index! + m[1].length;
+    add(c.slice(0, at) + c.slice(at + 1));
+  }
+  return [...out];
+}
+
+/** 毎回ちがう選択肢を返す。数値の答えは6択、式・座標などは4択、文章は元の選択肢のまま（正解は必ず含む） */
 export function buildOptions(options: string[], correct: string): string[] {
   const authored = options.filter((o) => o !== correct);
   const minus = [correct, ...options].some((o) => o.includes('-')) ? '-' : '−';
-  const generated = numericVariants(correct, minus).filter((g) => !options.includes(g));
+  const notAuthored = (g: string) => !options.includes(g);
+
+  let generated = shuffled(numericVariants(correct, minus).filter(notAuthored));
+  let total = 6;
+  if (generated.length === 0) {
+    generated = shuffled(textVariants(correct, minus).filter(notAuthored));
+    total = 4;
+  }
   if (generated.length === 0) return shuffled(options);
 
-  const k = Math.min(4, authored.length + generated.length); // 正解＋4つで5択
-  // よくある間違いを最低1つは残し、残りは作った誤答と混ぜて抽選
-  const keep = shuffled(authored).slice(0, Math.max(1, Math.ceil(k / 2)));
-  const pool = shuffled([...authored.filter((a) => !keep.includes(a)), ...generated]);
-  const picked = [...keep, ...pool].slice(0, k);
+  // 本に載っている「よくある間違い」は全部残し、足りない分を作った誤答で埋める
+  const picked = [...authored, ...generated].slice(0, Math.max(total - 1, authored.length));
   return shuffled([correct, ...picked]);
 }
