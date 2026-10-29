@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, CheckCircle2, RotateCcw, AlertCircle, Timer, Flame, Skull } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { buildOptions } from '@/lib/distractors';
+import { formulaAnchor } from '@/lib/formulaLinks';
 
 export interface StepQuiz {
   type: 'choice' | 'input';
@@ -229,11 +231,20 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
             <span className="text-sm font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-600">
               💡 使う知識
             </span>
-            {knowledge.map((k, i) => (
-              <span key={i} className="text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800/50">
-                {k}
-              </span>
-            ))}
+            {knowledge.map((k, i) => {
+              const cls = 'text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800/50';
+              const a = formulaAnchor(k);
+              return a ? (
+                <Link key={i} href={`/formulas#${a}`} className={`${cls} underline decoration-dotted hover:bg-emerald-100 dark:hover:bg-emerald-900/60`}>
+                  {k} →公式
+                </Link>
+              ) : (
+                <span key={i} className={cls}>{k}</span>
+              );
+            })}
+            <Link href="/formulas" className="text-sm font-bold text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-800/50 hover:bg-indigo-100">
+              📖 公式・ルール集
+            </Link>
           </div>
         )}
 

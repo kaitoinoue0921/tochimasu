@@ -1,11 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Book, ChevronLeft } from 'lucide-react';
 import { TextWithMath, MathText } from '@/components/MathText';
 
 export default function FormulasPage() {
+  // #f-xxx つきで開かれたら、そのカードまでスクロールする（静的書き出しだと自動では飛ばないため）
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const t = setTimeout(() => document.getElementById(id)?.scrollIntoView({ block: 'center' }), 150);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div className="space-y-8 max-w-4xl mx-auto pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       
@@ -30,7 +38,7 @@ export default function FormulasPage() {
           【超重要】計算と等式の基本ルール
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
+          <div id="f-iko" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
             <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-2">移項（いこう）のルール</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">方程式などで「＝（イコール）」を飛び越えて反対側に移動させるときは、<strong>必ず符号が逆になります。</strong></p>
             <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
@@ -47,7 +55,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
+          <div id="f-bunpai" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
             <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-2">分配法則（カッコの外し方）</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">カッコの前の数字を、カッコの中の<strong>すべて</strong>に掛けます。マイナスがあるときは要注意！</p>
             <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
@@ -63,7 +71,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
+          <div id="f-toshiki" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
             <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-2">等式の性質（両辺にかける・割る）</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">方程式は、左と右のバランスが取れた天秤です。<strong>両辺に同じ数をかけたり割ったりしてもOK</strong>です。</p>
             <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
@@ -82,7 +90,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
+          <div id="f-minus" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-blue-200 dark:border-blue-700 shadow-sm">
             <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-2">マイナスの掛け算と、文字式の違い</h4>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
               <li className="flex items-center gap-2">
@@ -107,7 +115,7 @@ export default function FormulasPage() {
           1年生の図形ルール
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-ougi" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">おうぎ形の弧の長さと面積</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">半径を <TextWithMath text="$r$" />、中心角を <TextWithMath text="$a^\circ$" /> とします。</p>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
@@ -122,7 +130,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-sphere" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2">球の表面積と体積</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">半径を <TextWithMath text="$r$" /> とします。</p>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
@@ -145,7 +153,7 @@ export default function FormulasPage() {
           2年生の図形と関数ルール
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-angles" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-teal-700 dark:text-teal-400 mb-2">多角形の角</h4>
             <ul className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
               <li>
@@ -163,7 +171,17 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-line-recipe" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <h4 className="font-bold text-teal-700 dark:text-teal-400 mb-2">グラフから直線の式を求めて交点を出す（型）</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-slate-700 dark:text-slate-200">
+              <li>直線の式は <TextWithMath text="$y = ax + b$" />。<strong>傾き a</strong> と <strong>通る1点</strong> が分かれば決まる。</li>
+              <li>傾き ＝ 速さ（または <TextWithMath text="$\frac{yの増加量}{xの増加量}$" />）。2点を通るときはこの式で a を出す。</li>
+              <li>通る点を代入して <TextWithMath text="$b$" /> を求める。（平行な直線は傾きが同じ）</li>
+              <li>「追い抜く・出会う・等しくなる」は、2つの式を連立して <TextWithMath text="$x$" /> を求める（交点）。</li>
+            </ol>
+          </div>
+
+          <div id="f-line" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-teal-700 dark:text-teal-400 mb-2">1次関数と変化の割合</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">式：<TextWithMath text="$y = ax + b$" /> （<TextWithMath text="$a$" /> は傾き、<TextWithMath text="$b$" /> は切片）</p>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
@@ -175,7 +193,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-congruent" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-teal-700 dark:text-teal-400 mb-2">三角形の合同条件</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">証明問題で必ず使います！完全に暗記しましょう。</p>
             <ul className="list-decimal list-inside space-y-2 text-sm text-slate-700 dark:text-slate-200">
@@ -194,7 +212,7 @@ export default function FormulasPage() {
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-joho" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">乗法公式（展開・因数分解）</h4>
             <ul className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
               <li>
@@ -209,7 +227,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-kaiho" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">2次方程式の解の公式</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3"><TextWithMath text="$ax^2 + bx + c = 0$" /> のとき、</p>
             <div className="flex justify-center my-4">
@@ -218,7 +236,7 @@ export default function FormulasPage() {
             <p className="text-xs text-slate-500">※因数分解できないときに使う最強の公式です。</p>
           </div>
           
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-pythag" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">三平方の定理（ピタゴラスの定理）</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">直角三角形において、斜辺を <TextWithMath text="$c$" />、他の2辺を <TextWithMath text="$a, b$" /> とすると、</p>
             <div className="flex justify-center my-4">
@@ -226,7 +244,7 @@ export default function FormulasPage() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-parabola" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">関数 y = ax² の変化の割合</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3"><TextWithMath text="$x$" /> の値が <TextWithMath text="$p$" /> から <TextWithMath text="$q$" /> まで増加するときの変化の割合を求める【裏ワザ公式】：</p>
             <div className="flex justify-center my-4">
@@ -235,7 +253,7 @@ export default function FormulasPage() {
             <p className="text-xs text-slate-500">※入試で超頻出！計算ミスを減らせる便利な公式です。</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-similar" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">三角形の相似条件</h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">図形問題で必ず使います！「2組の角」が一番よく出ます。</p>
             <ul className="list-decimal list-inside space-y-2 text-sm text-slate-700 dark:text-slate-200">
@@ -245,7 +263,7 @@ export default function FormulasPage() {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div id="f-enshu" className="scroll-mt-20 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <h4 className="font-bold text-rose-700 dark:text-rose-400 mb-2">円周角の定理</h4>
             <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
               <li className="flex flex-col gap-1">

@@ -38,3 +38,6 @@ body {
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
 }
+
+/* 公式集へのリンクで飛んだカードを目立たせる */
+:target { outline: 3px solid #6366f1; outline-offset: 4px; border-radius: 0.75rem; }

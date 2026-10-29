@@ -147,3 +147,8 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
 - 2026-10-29（類題 24大問）
   - `/ruiji/<キー>`：A速さ・1次関数の利用(a1〜a6)、B1次関数と図形(b1〜b6)、C放物線と直線(c1〜c6)、D規則性・文字式・データ(d1〜d6)。各3小問。データ src/data/ruiji_{a,b,c,d}.tsx、配線 src/data/ruiji.tsx、図の部品 ruiji_figs.tsx(GraphFig, SimpleTable)。
   - 栃木県入試の大問5形式を踏まえてOpusが作成。全問pythonで検算済みだが公式解答はない。ホームは類題A〜Dの4セクション。図は一覧で目視確認、全ステップの表示までは未確認。
+
+- 2026-10-29（公式への導線）
+  - 問題ページの「使う知識」タグがタグ名に応じて /formulas の該当カードへのリンクになる（src/lib/formulaLinks.ts の対応表、StepLayout）。「📖 公式・ルール集」ボタンも追加。
+  - formulas ページの各カードに id（f-line, f-parabola, f-joho ほか）。新カード「グラフから直線の式を求めて交点を出す（型）」(f-line-recipe)。#id つきで開くとスクロール＋枠で強調。
+  - k1(3)を「傾き＋通る1点→式→連立」の型で作り直し済み。
