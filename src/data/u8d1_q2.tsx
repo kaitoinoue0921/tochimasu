@@ -225,7 +225,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'Hを含まないほうの立体は？',
-            options: ['三角すい B-ACF', '三角すい E-ACF', '三角柱 ABC-EFG'],
+            options: ['三角すい B-ACF', '三角すい E-ACF', '三角柱 ABC-EFG', '三角すい D-ACF', '四角すい F-ABCD'],
             correctAnswer: '三角すい B-ACF',
             explanation: <p>平面ACFは頂点Bの角を切り落とすので、小さいほうは三角すいB-ACFです。Hはその反対側の大きい立体に含まれます。</p>
           }

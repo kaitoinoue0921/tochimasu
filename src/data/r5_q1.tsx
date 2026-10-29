@@ -193,7 +193,7 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '① 反比例の式の形',
           content: <p>比例は y = ax、反比例は「x と y をかけると一定」の関係です。</p>,
-          quiz: { type: 'choice', question: '反比例を表す式の形は？', options: ['y = a/x', 'y = ax', 'y = ax²'], correctAnswer: 'y = a/x', explanation: <p>反比例は <TextWithMath text="$y=\frac{a}{x}$" />。両辺に x をかけると <TextWithMath text="$a=xy$" /> です。</p> }
+          quiz: { type: 'choice', question: '反比例を表す式の形は？', options: ['y = a/x', 'y = ax', 'y = ax²', 'y = x/a', 'y = a/x²'], correctAnswer: 'y = a/x', explanation: <p>反比例は <TextWithMath text="$y=\frac{a}{x}$" />。両辺に x をかけると <TextWithMath text="$a=xy$" /> です。</p> }
         },
         {
           id: 2, title: '② 比例定数を求める',
@@ -258,7 +258,7 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '① 面積は長さ×長さ',
           content: <p>相似比 3 : 5 は「長さの比」です。面積は（たて）×（よこ）のように長さを2回かけて求めます。</p>,
-          quiz: { type: 'choice', question: '相似比が m : n のとき、面積比は？', options: ['m² : n²', 'm : n', 'm³ : n³'], correctAnswer: 'm² : n²', explanation: <p>長さが両方とも n/m 倍になるので、面積は2乗の比になります。3乗は体積比です。</p> }
+          quiz: { type: 'choice', question: '相似比が m : n のとき、面積比は？', options: ['m² : n²', 'm : n', 'm³ : n³', 'n² : m²', '√m : √n'], correctAnswer: 'm² : n²', explanation: <p>長さが両方とも n/m 倍になるので、面積は2乗の比になります。3乗は体積比です。</p> }
         },
         {
           id: 2, title: '② 面積比を求める',

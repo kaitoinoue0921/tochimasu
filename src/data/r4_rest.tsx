@@ -18,7 +18,7 @@ export const r4RestData: Record<string, MajorQuestionData> = {
           },
           {
             id: 2, title: '「少なくとも」の考え方',
-            quiz: { type: 'choice', question: '「少なくとも1個が赤玉」の反対は何ですか？', options: ['2個とも赤玉', '2個とも白玉', '赤玉1個と白玉1個'], correctAnswer: '2個とも白玉', explanation: <p>「少なくとも」と出たら「全体 - (すべて白玉)」で計算するのが鉄則です！</p> }
+            quiz: { type: 'choice', question: '「少なくとも1個が赤玉」の反対は何ですか？', options: ['2個とも赤玉', '2個とも白玉', '赤玉1個と白玉1個', '少なくとも1個が白玉', '赤玉が1個以下'], correctAnswer: '2個とも白玉', explanation: <p>「少なくとも」と出たら「全体 - (すべて白玉)」で計算するのが鉄則です！</p> }
           },
           {
             id: 3, title: '答えを求める',
@@ -38,11 +38,11 @@ export const r4RestData: Record<string, MajorQuestionData> = {
         steps: [
           {
             id: 1, title: '仮定の確認',
-            quiz: { type: 'choice', question: '証明を始めるとき、最初に書くべきことは？', options: ['結論', '仮定からわかる等しい辺や角', '合同条件'], correctAnswer: '仮定からわかる等しい辺や角', explanation: <p>まずは問題文（仮定）で与えられているヒントを箇条書きにします。</p> }
+            quiz: { type: 'choice', question: '証明を始めるとき、最初に書くべきことは？', options: ['結論', '仮定からわかる等しい辺や角', '合同条件', '結論から逆にたどった式', '図から測った辺の長さ'], correctAnswer: '仮定からわかる等しい辺や角', explanation: <p>まずは問題文（仮定）で与えられているヒントを箇条書きにします。</p> }
           },
           {
             id: 2, title: '合同条件の選択',
-            quiz: { type: 'choice', question: '2つの辺とその間の角が等しいとき、使う合同条件は？', options: ['3組の辺がそれぞれ等しい', '2組の辺とその間の角がそれぞれ等しい', '1組の辺とその両端の角がそれぞれ等しい'], correctAnswer: '2組の辺とその間の角がそれぞれ等しい', explanation: <p>図形に印をつけて、どの条件が当てはまるか確認しましょう。</p> }
+            quiz: { type: 'choice', question: '2つの辺とその間の角が等しいとき、使う合同条件は？', options: ['3組の辺がそれぞれ等しい', '2組の辺とその間の角がそれぞれ等しい', '1組の辺とその両端の角がそれぞれ等しい', '2組の角がそれぞれ等しい', '2組の辺と1つの角がそれぞれ等しい'], correctAnswer: '2組の辺とその間の角がそれぞれ等しい', explanation: <p>図形に印をつけて、どの条件が当てはまるか確認しましょう。</p> }
           }
         ]
       }

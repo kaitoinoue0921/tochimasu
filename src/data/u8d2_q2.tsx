@@ -355,7 +355,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '中央値と最頻値の組は？',
-            options: ['中央値2冊、最頻値1冊', '中央値3冊、最頻値1冊', '中央値2冊、最頻値3冊'],
+            options: ['中央値2冊、最頻値1冊', '中央値3冊、最頻値1冊', '中央値2冊、最頻値3冊', '中央値5冊、最頻値1冊', '中央値1冊、最頻値2冊'],
             correctAnswer: '中央値2冊、最頻値1冊',
             explanation: <p>中央値は <TextWithMath text="$(2+2)\div2=2$" /> 冊。1冊の人が3人で最も多いので、最頻値は1冊です。平均値 <TextWithMath text="$30\div10=3$" /> 冊とまちがえないようにしましょう。</p>
           }

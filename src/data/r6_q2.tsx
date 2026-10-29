@@ -117,7 +117,9 @@ export const q2Data: MajorQuestionData = {
             options: [
               '走った時間と、歩いた時間',
               '走った速さと、歩いた速さ',
-              '走る距離と、歩く距離'
+              '走る距離と、歩く距離',
+              '走った道のりと、かかった時間',
+              '全体の道のりと、全体の時間'
             ],
             correctAnswer: '走る距離と、歩く距離',
             explanation: <p>問題文に「走る距離を x m、歩く距離を y mとして」と書かれています。</p>
@@ -153,7 +155,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '「時間」を求める正しい計算式はどれ？',
-            options: ['道のり × 速さ', '速さ ÷ 道のり', '道のり ÷ 速さ'],
+            options: ['道のり × 速さ', '速さ ÷ 道のり', '道のり ÷ 速さ', '速さ × 時間', '道のり ÷ 時間'],
             correctAnswer: '道のり ÷ 速さ',
             explanation: <p>時間は「道のり（距離） ÷ 速さ」で求められます。分数で書くなら <TextWithMath text="$\frac{\text{道のり}}{\text{速さ}}$" /> です。</p>
           }

@@ -22,17 +22,17 @@ export const q1Data: MajorQuestionData = {
         {
           id: 2, title: '符号のルール確認1',
           content: <p>正負の数のかけ算には、符号に関する大切なルールがあります。</p>,
-          quiz: { type: 'choice', question: '「プラス」と「プラス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス'], correctAnswer: 'プラス', explanation: <p>正の数同士のかけ算は正の数になります。</p> }
+          quiz: { type: 'choice', question: '「プラス」と「プラス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス', '0になる', 'かける数によって変わる', '最初の数と反対の符号になる'], correctAnswer: 'プラス', explanation: <p>正の数同士のかけ算は正の数になります。</p> }
         },
         {
           id: 3, title: '符号のルール確認2',
           content: <p>では、違う符号同士の場合はどうでしょう。</p>,
-          quiz: { type: 'choice', question: '「プラス」と「マイナス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス'], correctAnswer: 'マイナス', explanation: <p>異なる符号同士のかけ算はマイナスになります。</p> }
+          quiz: { type: 'choice', question: '「プラス」と「マイナス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス', '0になる', 'かける順番によって変わる', '絶対値が大きい方の符号になる'], correctAnswer: 'マイナス', explanation: <p>異なる符号同士のかけ算はマイナスになります。</p> }
         },
         {
           id: 4, title: '今回の符号の決定',
           content: <p>いよいよ本題です。今回は(-4)と(-3)のかけ算ですね。</p>,
-          quiz: { type: 'choice', question: '「マイナス」と「マイナス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス'], correctAnswer: 'プラス', explanation: <p>マイナス同士のかけ算はプラスになります。</p> }
+          quiz: { type: 'choice', question: '「マイナス」と「マイナス」をかけると符号はどうなりますか？', options: ['プラス', 'マイナス', '0になる', 'かける順番によって変わる', '絶対値が大きい方の符号になる'], correctAnswer: 'プラス', explanation: <p>マイナス同士のかけ算はプラスになります。</p> }
         },
         {
           id: 5, title: '絶対値の計算と答え',
@@ -50,7 +50,7 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '計算の方針',
           content: <p>ルートの足し算は、ルートの中の数字が同じでないと計算できません。</p>,
-          quiz: { type: 'choice', question: '現在、ルートの中の数字は同じですか？', options: ['同じ', '違う'], correctAnswer: '違う', explanation: <p>28と7なので違います。</p> }
+          quiz: { type: 'choice', question: '現在、ルートの中の数字は同じですか？', options: ['同じ', '違う', '28は7の倍数なので同じ', 'どちらも7の倍数なので同じ', '足すと35になるので同じ'], correctAnswer: '違う', explanation: <p>28と7なので違います。</p> }
         },
         {
           id: 2, title: '素因数分解',
@@ -83,12 +83,12 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '絶対値の意味',
           content: <p>まずは「絶対値」という言葉の意味を確認しましょう。</p>,
-          quiz: { type: 'choice', question: '絶対値とは、数直線上でどこからの距離のことですか？', options: ['1からの距離', '0からの距離', 'その数自身'], correctAnswer: '0からの距離', explanation: <p>絶対値は、原点（0）からの距離を表します。</p> }
+          quiz: { type: 'choice', question: '絶対値とは、数直線上でどこからの距離のことですか？', options: ['1からの距離', '0からの距離', 'その数自身', '−1からの距離', 'その数の符号を逆にした数'], correctAnswer: '0からの距離', explanation: <p>絶対値は、原点（0）からの距離を表します。</p> }
         },
         {
           id: 2, title: '「より小さい」の定義',
           content: <p>問題文にある「3より小さい」という表現について考えます。</p>,
-          quiz: { type: 'choice', question: '「3より小さい」場合、3そのものは含まれますか？', options: ['含まれる（3以下）', '含まれない（3未満）'], correctAnswer: '含まれない（3未満）', explanation: <p>「より小さい」は「未満」と同じで、その数は含みません。不等号で表すと ＜ 3 です。</p> }
+          quiz: { type: 'choice', question: '「3より小さい」場合、3そのものは含まれますか？', options: ['含まれる（3以下）', '含まれない（3未満）', '含まれる（3未満）', '含まれない（3以下）', '整数のときだけ含まれる'], correctAnswer: '含まれない（3未満）', explanation: <p>「より小さい」は「未満」と同じで、その数は含みません。不等号で表すと ＜ 3 です。</p> }
         },
         {
           id: 3, title: '正の整数の確認',
@@ -121,12 +121,12 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '解き方の方針',
           content: <p>2次方程式を解くにはいくつか方法がありますが、式の形を見て一番簡単な方法を選びましょう。</p>,
-          quiz: { type: 'choice', question: 'x² + 5x + 6 = 0 を解くのに、最も適した方法はどれですか？', options: ['解の公式を使う', '平方完成を使う', '因数分解を使う'], correctAnswer: '因数分解を使う', explanation: <p>左辺が因数分解できる形なので、因数分解を使うのが一番早くてミスが少ないです。</p> }
+          quiz: { type: 'choice', question: 'x² + 5x + 6 = 0 を解くのに、最も適した方法はどれですか？', options: ['解の公式を使う', '平方完成を使う', '因数分解を使う', '移項して x² = −5x − 6 の平方根をとる', '両辺を x でわって1次方程式にする'], correctAnswer: '因数分解を使う', explanation: <p>左辺が因数分解できる形なので、因数分解を使うのが一番早くてミスが少ないです。</p> }
         },
         {
           id: 2, title: '因数分解の準備',
           content: <p>左辺の <TextWithMath text="$x^2 + 5x + 6$" /> を因数分解するために、2つの数字を探します。</p>,
-          quiz: { type: 'choice', question: '探すべき2つの数字の条件として正しいものはどれですか？', options: ['足して6、かけて5', '足して5、かけて6', '引いて5、かけて6'], correctAnswer: '足して5、かけて6', explanation: <p>xの係数「5」が和、定数項「6」が積になるような2つの数を探します。</p> }
+          quiz: { type: 'choice', question: '探すべき2つの数字の条件として正しいものはどれですか？', options: ['足して6、かけて5', '足して5、かけて6', '引いて5、かけて6', '足して−5、かけて6', '足して5、かけて−6'], correctAnswer: '足して5、かけて6', explanation: <p>xの係数「5」が和、定数項「6」が積になるような2つの数を探します。</p> }
         },
         {
           id: 3, title: '積が6になるペア',
@@ -159,7 +159,7 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '反比例の式の意味',
           content: <p>反比例の式 <TextWithMath text="$y = a/x$" /> において、a は「比例定数」と呼ばれます。</p>,
-          quiz: { type: 'choice', question: 'この式を変形して、a を求める式にするとどうなりますか？', options: ['a = x / y', 'a = x + y', 'a = xy'], correctAnswer: 'a = xy', explanation: <p>両辺にxをかけると、a = xy となります。反比例では「xとyをかけると常に一定（a）になる」という性質があります。</p> }
+          quiz: { type: 'choice', question: 'この式を変形して、a を求める式にするとどうなりますか？', options: ['a = x / y', 'a = x + y', 'a = xy', 'a = y / x', 'a = x − y'], correctAnswer: 'a = xy', explanation: <p>両辺にxをかけると、a = xy となります。反比例では「xとyをかけると常に一定（a）になる」という性質があります。</p> }
         },
         {
           id: 2, title: '座標の意味',
@@ -174,7 +174,7 @@ export const q1Data: MajorQuestionData = {
         {
           id: 4, title: '符号の決定',
           content: <p>かけ算の計算をします。まずは符号を決めましょう。</p>,
-          quiz: { type: 'choice', question: '「プラス(2)」と「マイナス(-3)」のかけ算なので、符号はどうなりますか？', options: ['プラス', 'マイナス'], correctAnswer: 'マイナス', explanation: <p>違う符号同士のかけ算なので、答えはマイナスになります。</p> }
+          quiz: { type: 'choice', question: '「プラス(2)」と「マイナス(-3)」のかけ算なので、符号はどうなりますか？', options: ['プラス', 'マイナス', '0になる', 'かける順番によって変わる', '最初の数(2)の符号になる'], correctAnswer: 'マイナス', explanation: <p>違う符号同士のかけ算なので、答えはマイナスになります。</p> }
         },
         {
           id: 5, title: '最終的な計算',
@@ -263,12 +263,12 @@ export const q1Data: MajorQuestionData = {
         {
           id: 1, title: '相対度数とは',
           content: <p>「相対度数」という言葉の意味を確認しましょう。</p>,
-          quiz: { type: 'choice', question: '相対度数とは、全体に対する何を表す値ですか？', options: ['平均値', '割合', '中央値'], correctAnswer: '割合', explanation: <p>相対度数は、その階級の度数が全体の中でどれくらいの割合を占めているかを表します。</p> }
+          quiz: { type: 'choice', question: '相対度数とは、全体に対する何を表す値ですか？', options: ['平均値', '割合', '中央値', '最頻値', '累積度数'], correctAnswer: '割合', explanation: <p>相対度数は、その階級の度数が全体の中でどれくらいの割合を占めているかを表します。</p> }
         },
         {
           id: 2, title: '相対度数の求め方',
           content: <p>相対度数を計算するための公式を確認します。</p>,
-          quiz: { type: 'choice', question: '相対度数を求める正しい計算式はどれですか？', options: ['全体の度数 ÷ その階級の度数', 'その階級の度数 ÷ 全体の度数', 'その階級の度数 × 全体の度数'], correctAnswer: 'その階級の度数 ÷ 全体の度数', explanation: <p>「その階級の度数 ÷ 全体の度数（合計）」で求められます。</p> }
+          quiz: { type: 'choice', question: '相対度数を求める正しい計算式はどれですか？', options: ['全体の度数 ÷ その階級の度数', 'その階級の度数 ÷ 全体の度数', 'その階級の度数 × 全体の度数', 'その階級の度数 ÷ 階級の数', 'その階級の度数 ÷ 階級の幅'], correctAnswer: 'その階級の度数 ÷ 全体の度数', explanation: <p>「その階級の度数 ÷ 全体の度数（合計）」で求められます。</p> }
         },
         {
           id: 3, title: '全体の度数の確認',

@@ -18,7 +18,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'x² + 4x + 1 = 0 はどう解くのがよい？',
-            options: ['(x+1)(x+3)=0 と因数分解する', '解の公式を使う', '(x+2)² = 1 と変形する'],
+            options: ['(x+1)(x+3)=0 と因数分解する', '解の公式を使う', '(x+2)² = 1 と変形する', '(x−1)(x+5)=0 と因数分解する', '(x+2)² = 5 と変形する'],
             correctAnswer: '解の公式を使う',
             explanation: <p>かけて1になる整数は1と1（−1と−1）だけで、和は4になりません。因数分解できないので解の公式を使います。（<TextWithMath text="$(x+2)^2=3$" /> と平方完成してもOK。<TextWithMath text="$(x+2)^2=1$" /> は誤りです）</p>
           }
@@ -80,7 +80,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '今回の問題で「x」と置くべきものはどれ？',
-            options: ['参加者の合計人数', '使用できる教室の数', '余った生徒の人数'],
+            options: ['参加者の合計人数', '使用できる教室の数', '余った生徒の人数', '1つの教室に入る参加者の人数', '使用しない教室の数'],
             correctAnswer: '使用できる教室の数',
             explanation: <p>問題文に「使用できる教室の数を <TextWithMath text="$x$" /> として」と指定されています。参加者の人数は、2通りの式で表してイコールで結びます。</p>
           }
@@ -227,7 +227,7 @@ export const q2Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '「一の位が0でない（c ≧ 1）」という条件が必要な理由は？',
-            options: ['c − 1 が 0 以上になり、一の位の数として使えるから', 'a + 1 が 9 以下になるから', 'b が 0 になってしまうから'],
+            options: ['c − 1 が 0 以上になり、一の位の数として使えるから', 'a + 1 が 9 以下になるから', 'b が 0 になってしまうから', 'c + 1 が 9 以下になり、一の位の数として使えるから', 'b − 1 が 0 以上になり、十の位の数として使えるから'],
             correctAnswer: 'c − 1 が 0 以上になり、一の位の数として使えるから',
             explanation: <p><TextWithMath text="$c=0$" /> だと <TextWithMath text="$c-1=-1$" /> となり位の数になりません。同様に「900未満（<TextWithMath text="$a\leqq8$" />）」だから <TextWithMath text="$a+1\leqq9$" /> で百の位に収まります。</p>
           }

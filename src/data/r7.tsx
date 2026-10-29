@@ -36,7 +36,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 2, title: '② 答えの符号',
             content: <p>同じ符号どうしのたし算は、その共通の符号がつきます。</p>,
-            quiz: { type: 'choice', question: '(−4) + (−3) の答えの符号は？', options: ['−（マイナス）', '＋（プラス）'], correctAnswer: '−（マイナス）', explanation: <p>どちらもマイナスなので、答えもマイナスです。</p> }
+            quiz: { type: 'choice', question: '(−4) + (−3) の答えの符号は？', options: ['−（マイナス）', '＋（プラス）', '0（符号なし）', '±（どちらにもなる）'], correctAnswer: '−（マイナス）', explanation: <p>どちらもマイナスなので、答えもマイナスです。</p> }
           },
           {
             id: 3, title: '③ 答え',
@@ -82,7 +82,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 何を探す？',
             content: <p><TextWithMath text="$x^2+(a+b)x+ab=(x+a)(x+b)$" /> の形を使います。かけて定数項、たして x の係数になる2つの数を探します。</p>,
-            quiz: { type: 'choice', question: 'x² + 2x − 15 で探すのはどんな2つの数？', options: ['かけて −15、たして 2', 'かけて 2、たして −15', 'かけて 15、たして 2'], correctAnswer: 'かけて −15、たして 2', explanation: <p>定数項 −15 が「かけた答え」、xの係数 2 が「たした答え」です。</p> }
+            quiz: { type: 'choice', question: 'x² + 2x − 15 で探すのはどんな2つの数？', options: ['かけて −15、たして 2', 'かけて 2、たして −15', 'かけて 15、たして 2', 'かけて −15、たして −2', 'かけて 15、たして −2'], correctAnswer: 'かけて −15、たして 2', explanation: <p>定数項 −15 が「かけた答え」、xの係数 2 が「たした答え」です。</p> }
           },
           {
             id: 2, title: '② 2つの数を見つける',
@@ -161,12 +161,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① どんな立体ができる？',
             content: <p>直角三角形ABCを、辺ACを軸にしてくるっと1回転させます。辺ACは軸なので動かず、点Bが円をえがきます。</p>,
-            quiz: { type: 'choice', question: '回転させてできる立体はどれ？', options: ['円柱', '円錐', '球'], correctAnswer: '円錐', explanation: <p>軸の上の点Aがとがった頂点、点Bがえがく円が底面になるので、円錐です。</p> }
+            quiz: { type: 'choice', question: '回転させてできる立体はどれ？', options: ['円柱', '円錐', '球', '三角錐', '円錐台'], correctAnswer: '円錐', explanation: <p>軸の上の点Aがとがった頂点、点Bがえがく円が底面になるので、円錐です。</p> }
           },
           {
             id: 2, title: '② 体積の基本の式',
             content: <p>体積の基本は「底面積 × 高さ」。これで求まるのは柱の形（角柱・円柱）です。<br/>とがった形（角錐・円錐）は、同じ底面・同じ高さの柱の <strong>3分の1</strong> になります。</p>,
-            quiz: { type: 'choice', question: '円錐の体積を求める式はどれ？', options: ['底面積 × 高さ', '底面積 × 高さ × 1/3', '底面積 × 高さ × 1/2'], correctAnswer: '底面積 × 高さ × 1/3', explanation: <p>円錐は「とがった形」なので、柱の式に 1/3 をかけます。</p> }
+            quiz: { type: 'choice', question: '円錐の体積を求める式はどれ？', options: ['底面積 × 高さ', '底面積 × 高さ × 1/3', '底面積 × 高さ × 1/2', '底面積 × 高さ × 2/3', '底面積 × 高さ × 3'], correctAnswer: '底面積 × 高さ × 1/3', explanation: <p>円錐は「とがった形」なので、柱の式に 1/3 をかけます。</p> }
           },
           {
             id: 3, title: '③ 底面の半径はどこ？',
@@ -232,17 +232,17 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 傾きの符号',
             content: <p>グラフが右上がりなら傾きは正、右下がりなら負です。</p>,
-            quiz: { type: 'choice', question: '図の2本の直線の傾き a, c の符号は？', options: ['どちらも負', 'どちらも正', 'a は負、c は正'], correctAnswer: 'どちらも負', explanation: <p>2本とも右下がりなので、a も c も負の数です。</p> }
+            quiz: { type: 'choice', question: '図の2本の直線の傾き a, c の符号は？', options: ['どちらも負', 'どちらも正', 'a は負、c は正', 'a は正、c は負', 'どちらも 0'], correctAnswer: 'どちらも負', explanation: <p>2本とも右下がりなので、a も c も負の数です。</p> }
           },
           {
             id: 2, title: '② a と c の大小',
             content: <p><TextWithMath text="$y=ax+b$" /> の方が急に下がっています。右下がりで急なほど、傾きの値は小さい（マイナスが大きい）数になります。</p>,
-            quiz: { type: 'choice', question: 'a と c の大小は？', options: ['a < c', 'a > c'], correctAnswer: 'a < c', explanation: <p>たとえば a = −3、c = −1/2 のようなイメージで、a &lt; c です。</p> }
+            quiz: { type: 'choice', question: 'a と c の大小は？', options: ['a < c', 'a > c', 'a = c', 'a ≧ c', '比べられない'], correctAnswer: 'a < c', explanation: <p>たとえば a = −3、c = −1/2 のようなイメージで、a &lt; c です。</p> }
           },
           {
             id: 3, title: '③ 切片 b と d の大小',
             content: <p>切片は、グラフが y 軸と交わる点の y 座標です。</p>,
-            quiz: { type: 'choice', question: 'b と d の大小は？', options: ['b > d', 'b < d'], correctAnswer: 'b > d', explanation: <p><TextWithMath text="$y=ax+b$" /> の方が y 軸の高い位置で交わっているので b &gt; d です。</p> }
+            quiz: { type: 'choice', question: 'b と d の大小は？', options: ['b > d', 'b < d', 'b = d', 'b ≦ d', '比べられない'], correctAnswer: 'b > d', explanation: <p><TextWithMath text="$y=ax+b$" /> の方が y 軸の高い位置で交わっているので b &gt; d です。</p> }
           },
           {
             id: 4, title: '④ 記号を選ぶ',
@@ -266,12 +266,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 2乗して比べる',
             content: <p>ルートのついた数と自然数は、どちらも2乗すると比べやすくなります。5 と √23 なら、25 と 23 を比べます。</p>,
-            quiz: { type: 'choice', question: '√23 と 5 はどちらが大きい？', options: ['5 の方が大きい', '√23 の方が大きい', '同じ'], correctAnswer: '5 の方が大きい', explanation: <p><TextWithMath text="$5^2=25 > 23$" /> なので、5 の方が大きいです。</p> }
+            quiz: { type: 'choice', question: '√23 と 5 はどちらが大きい？', options: ['5 の方が大きい', '√23 の方が大きい', '同じ', '比べられない'], correctAnswer: '5 の方が大きい', explanation: <p><TextWithMath text="$5^2=25 > 23$" /> なので、5 の方が大きいです。</p> }
           },
           {
             id: 2, title: '② 4 とも比べる',
             content: <p>次に 4 と比べます。</p>,
-            quiz: { type: 'choice', question: '√23 と 4 はどちらが大きい？', options: ['√23 の方が大きい', '4 の方が大きい'], correctAnswer: '√23 の方が大きい', explanation: <p><TextWithMath text="$4^2=16 < 23$" /> なので √23 の方が大きい。つまり <TextWithMath text="$4 < \sqrt{23} < 5$" /> です。</p> }
+            quiz: { type: 'choice', question: '√23 と 4 はどちらが大きい？', options: ['√23 の方が大きい', '4 の方が大きい', '同じ', '比べられない'], correctAnswer: '√23 の方が大きい', explanation: <p><TextWithMath text="$4^2=16 < 23$" /> なので √23 の方が大きい。つまり <TextWithMath text="$4 < \sqrt{23} < 5$" /> です。</p> }
           },
           {
             id: 3, title: '③ 数える',
@@ -337,7 +337,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
               options: [
                 'ノート1冊の値段をx円、鉛筆1本の値段をy円とする', 
                 'セットAの売れた数をxセット、セットBの売れた数をyセットとする', 
-                '売れたノートの合計をx冊、鉛筆の合計をy本とする'
+                '売れたノートの合計をx冊、鉛筆の合計をy本とする', 'セットAの値段をx円、セットBの値段をy円とする', '売れたセットの合計をxセット、売上の合計をy円とする'
               ], 
               correctAnswer: 'セットAの売れた数をxセット、セットBの売れた数をyセットとする', 
               explanation: <p>問題の最後に「セットAとセットBはそれぞれ何セット売れたか」と聞かれているので、そのまま素直にそれをxとyにおくのが鉄則です！</p> 
@@ -477,27 +477,27 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 90°回転とは',
             content: <p>点Aを中心に点Bを回転させるとき、Aからの距離は変わりません。</p>,
-            quiz: { type: 'choice', question: '点Bを点Aを中心に90°回転させた点Pが満たす条件は？', options: ['AP = AB かつ ∠BAP = 90°', 'AP = AB かつ ∠ABP = 90°', 'BP = AB かつ ∠BAP = 90°'], correctAnswer: 'AP = AB かつ ∠BAP = 90°', explanation: <p>中心Aからの距離が等しく（AP = AB）、回した角が90°（∠BAP = 90°）です。</p> }
+            quiz: { type: 'choice', question: '点Bを点Aを中心に90°回転させた点Pが満たす条件は？', options: ['AP = AB かつ ∠BAP = 90°', 'AP = AB かつ ∠ABP = 90°', 'BP = AB かつ ∠BAP = 90°', 'AP = BP かつ ∠BAP = 90°', 'AP = AB かつ ∠APB = 90°'], correctAnswer: 'AP = AB かつ ∠BAP = 90°', explanation: <p>中心Aからの距離が等しく（AP = AB）、回した角が90°（∠BAP = 90°）です。</p> }
           },
           {
             id: 2, title: '② ∠BAP = 90° をつくる作図',
             content: <p>点Aで直線ABに直角な線を引けばよい。</p>,
-            quiz: { type: 'choice', question: '使う作図はどれ？', options: ['点Aを通る直線ABの垂線', '線分ABの垂直二等分線', '∠Aの二等分線'], correctAnswer: '点Aを通る直線ABの垂線', explanation: <p>直線AB上の点Aを通る垂線です。垂直二等分線だとABの中点を通ってしまいます。</p> }
+            quiz: { type: 'choice', question: '使う作図はどれ？', options: ['点Aを通る直線ABの垂線', '線分ABの垂直二等分線', '∠Aの二等分線', '点Bを通る直線ABの垂線', '点Aを通る直線ABの平行線'], correctAnswer: '点Aを通る直線ABの垂線', explanation: <p>直線AB上の点Aを通る垂線です。垂直二等分線だとABの中点を通ってしまいます。</p> }
           },
           {
             id: 3, title: '③ 垂線の作図の手順',
             content: <p>まず直線ABをAの反対側にも少し延ばしておきます。</p>,
-            quiz: { type: 'choice', question: '点Aを通る垂線を引くとき、最初にすることは？', options: ['Aを中心に円をかき、直線ABとの交点を2つとる', 'Bを中心に円をかく', 'ABの中点をとる'], correctAnswer: 'Aを中心に円をかき、直線ABとの交点を2つとる', explanation: <p>Aを中心とする円で直線AB上に2点をとり、その2点を中心に同じ半径の円をかいて交点を作ります。その交点とAを結ぶと垂線です。</p> }
+            quiz: { type: 'choice', question: '点Aを通る垂線を引くとき、最初にすることは？', options: ['Aを中心に円をかき、直線ABとの交点を2つとる', 'Bを中心に円をかく', 'ABの中点をとる', 'Aを中心に円をかき、直線ABとの交点を1つとる', '分度器でAに90°の角をとる'], correctAnswer: 'Aを中心に円をかき、直線ABとの交点を2つとる', explanation: <p>Aを中心とする円で直線AB上に2点をとり、その2点を中心に同じ半径の円をかいて交点を作ります。その交点とAを結ぶと垂線です。</p> }
           },
           {
             id: 4, title: '④ AP = AB にする',
             content: <p>垂線は引けました。あとは長さをABと同じにします。</p>,
-            quiz: { type: 'choice', question: '点Pの位置を決めるには？', options: ['Aを中心に半径ABの円をかき、垂線との交点をとる', 'Bを中心に半径ABの円をかき、垂線との交点をとる', '垂線とABの交点をPにする'], correctAnswer: 'Aを中心に半径ABの円をかき、垂線との交点をとる', explanation: <p>半径ABの円なら AP = AB になります。</p> }
+            quiz: { type: 'choice', question: '点Pの位置を決めるには？', options: ['Aを中心に半径ABの円をかき、垂線との交点をとる', 'Bを中心に半径ABの円をかき、垂線との交点をとる', '垂線とABの交点をPにする', 'Aを中心に半径ABの半分の円をかき、垂線との交点をとる', 'ABの中点を中心に半径ABの円をかき、垂線との交点をとる'], correctAnswer: 'Aを中心に半径ABの円をかき、垂線との交点をとる', explanation: <p>半径ABの円なら AP = AB になります。</p> }
           },
           {
             id: 5, title: '⑤ どちらの交点？',
             content: <p>円と垂線の交点は、直線ABをはさんで2つできます。反時計回りは「左回り」です。</p>,
-            quiz: { type: 'choice', question: '図でBは右下、Aは左上にあります。Aを中心にBを反時計回りに90°回すと、Pは直線ABのどちら側？', options: ['上側（Aの右上あたり）', '下側（Aの左下あたり）'], correctAnswer: '上側（Aの右上あたり）', explanation: <p>右下にあるBを左回りに90°回すと、Aの右上へ行きます。こちらの交点がPです。作図の線は消さずに残しておきます。</p> }
+            quiz: { type: 'choice', question: '図でBは右下、Aは左上にあります。Aを中心にBを反時計回りに90°回すと、Pは直線ABのどちら側？', options: ['上側（Aの右上あたり）', '下側（Aの左下あたり）', '直線AB上（Aの左上あたり）', '直線AB上（Bと重なる点）'], correctAnswer: '上側（Aの右上あたり）', explanation: <p>右下にあるBを左回りに90°回すと、Aの右上へ行きます。こちらの交点がPです。作図の線は消さずに残しておきます。</p> }
           }
         ]
       },
@@ -510,7 +510,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 2つの四角錐の関係',
             content: <p>正方形EFGHは底面ABCDと平行な位置にあり、正四角錐OEFGHは正四角錐OABCDの上の部分を切り取った形です。</p>,
-            quiz: { type: 'choice', question: '正四角錐OEFGHとOABCDはどんな関係？', options: ['合同', '相似（形が同じで大きさがちがう）', '関係はない'], correctAnswer: '相似（形が同じで大きさがちがう）', explanation: <p>同じ形を縮小したものなので相似です。</p> }
+            quiz: { type: 'choice', question: '正四角錐OEFGHとOABCDはどんな関係？', options: ['合同', '相似（形が同じで大きさがちがう）', '関係はない', '底面積が等しい', '体積が等しい'], correctAnswer: '相似（形が同じで大きさがちがう）', explanation: <p>同じ形を縮小したものなので相似です。</p> }
           },
           {
             id: 2, title: '② 底面の1辺の長さ',
@@ -586,12 +586,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 4, title: '④ 2組目の角',
             content: <p>②と③の式は、どちらも ∠HEB を表しています。</p>,
-            quiz: { type: 'choice', question: '2つの式からわかることは？', options: ['∠AHE = ∠BEG', '∠AEH = ∠BGE', '∠AHE = ∠BGE'], correctAnswer: '∠AHE = ∠BEG', explanation: <p><TextWithMath text="$60^\circ + \angle AHE = 60^\circ + \angle BEG$" /> なので ∠AHE = ∠BEG です。</p> }
+            quiz: { type: 'choice', question: '2つの式からわかることは？', options: ['∠AHE = ∠BEG', '∠AEH = ∠BGE', '∠AHE = ∠BGE', '∠EAH = ∠BEG', '∠HEB = ∠BEG'], correctAnswer: '∠AHE = ∠BEG', explanation: <p><TextWithMath text="$60^\circ + \angle AHE = 60^\circ + \angle BEG$" /> なので ∠AHE = ∠BEG です。</p> }
           },
           {
             id: 5, title: '⑤ 相似条件',
             content: <p>①と④で、等しい角が2組そろいました。</p>,
-            quiz: { type: 'choice', question: '使う相似条件は？', options: ['2組の角がそれぞれ等しい', '3組の辺の比がすべて等しい', '2組の辺の比とその間の角がそれぞれ等しい'], correctAnswer: '2組の角がそれぞれ等しい', explanation: <p>∠EAH = ∠GBE、∠AHE = ∠BEG より、2組の角がそれぞれ等しいので △AEH ∽ △BGE です。</p> }
+            quiz: { type: 'choice', question: '使う相似条件は？', options: ['2組の角がそれぞれ等しい', '3組の辺の比がすべて等しい', '2組の辺の比とその間の角がそれぞれ等しい', '1組の辺とその両端の角がそれぞれ等しい', '2組の辺の比がそれぞれ等しい'], correctAnswer: '2組の角がそれぞれ等しい', explanation: <p>∠EAH = ∠GBE、∠AHE = ∠BEG より、2組の角がそれぞれ等しいので △AEH ∽ △BGE です。</p> }
           }
         ]
       }
@@ -610,7 +610,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '(1)① 累積度数とは',
             content: <p>表の品種Aの列を見ます。</p>,
-            quiz: { type: 'choice', question: '「累積度数」の意味は？', options: ['最初の階級からその階級までの度数をたしたもの', 'その階級だけの度数', 'その階級の度数を合計でわったもの'], correctAnswer: '最初の階級からその階級までの度数をたしたもの', explanation: <p>上から順に積み上げた度数です。度数を合計でわったものは相対度数です。</p> }
+            quiz: { type: 'choice', question: '「累積度数」の意味は？', options: ['最初の階級からその階級までの度数をたしたもの', 'その階級だけの度数', 'その階級の度数を合計でわったもの', '最初の階級からその階級までの相対度数をたしたもの', 'その階級から最後の階級までの度数をたしたもの'], correctAnswer: '最初の階級からその階級までの度数をたしたもの', explanation: <p>上から順に積み上げた度数です。度数を合計でわったものは相対度数です。</p> }
           },
           {
             id: 2, title: '(1)② 計算する',
@@ -630,12 +630,12 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 5, title: '(3)① 度数を比べると',
             content: <p>13.0以上は、品種Aが 12 + 2 = 14個、品種Bが 9 + 2 = 11個です。</p>,
-            quiz: { type: 'choice', question: '度数だけ見るとどちらが多い？', options: ['品種A', '品種B'], correctAnswer: '品種A', explanation: <p>度数ではAの方が多く見えます。でも、それで割合が大きいとは言えません。</p> }
+            quiz: { type: 'choice', question: '度数だけ見るとどちらが多い？', options: ['品種A', '品種B', '同じ', '比べられない'], correctAnswer: '品種A', explanation: <p>度数ではAの方が多く見えます。でも、それで割合が大きいとは言えません。</p> }
           },
           {
             id: 6, title: '(3)② 度数で比べてはいけない理由',
             content: <p>それぞれ何個を調べたか（度数の合計）を見ます。品種Aは50個、品種Bは30個です。</p>,
-            quiz: { type: 'choice', question: '度数で比べるのが適切でない理由は？', options: ['度数の合計（調べた個数）がちがうから', '糖度の基準がちがうから', '階級の幅がちがうから'], correctAnswer: '度数の合計（調べた個数）がちがうから', explanation: <p>度数の合計が50個と30個でちがうので、度数ではなく相対度数で比べる必要があります。（相対度数はA 14/50 = 0.28、B 11/30 ≒ 0.37 で、実はBの方が大きい。）</p> }
+            quiz: { type: 'choice', question: '度数で比べるのが適切でない理由は？', options: ['度数の合計（調べた個数）がちがうから', '糖度の基準がちがうから', '階級の幅がちがうから', '収穫された個数（800個と500個）がちがうから', '無作為に抽出していないから'], correctAnswer: '度数の合計（調べた個数）がちがうから', explanation: <p>度数の合計が50個と30個でちがうので、度数ではなく相対度数で比べる必要があります。（相対度数はA 14/50 = 0.28、B 11/30 ≒ 0.37 で、実はBの方が大きい。）</p> }
           }
         ]
       },
@@ -648,7 +648,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '① 4つ進むと元にもどる',
             content: <p>頂点は4つなので、4つ進むとAにもどります。</p>,
-            quiz: { type: 'choice', question: '出た目の和が 4, 8, 12 のとき、点Pが止まる頂点は？', options: ['A', 'B', 'C', 'D'], correctAnswer: 'A', explanation: <p>4で割り切れるときはAです。和を4で割った余りで止まる頂点が決まり、余り1→B、余り2→C、余り3→D です。</p> }
+            quiz: { type: 'choice', question: '出た目の和が 4, 8, 12 のとき、点Pが止まる頂点は？', options: ['A', 'B', 'C', 'D', '和によってちがう'], correctAnswer: 'A', explanation: <p>4で割り切れるときはAです。和を4で割った余りで止まる頂点が決まり、余り1→B、余り2→C、余り3→D です。</p> }
           },
           {
             id: 2, title: '② 和ごとの通り数',
@@ -663,7 +663,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 4, title: '④ ほかの頂点と比べる',
             content: <p>A（和4,8,12）は 3+5+1 = 9通り、B（和5,9）は 4+4 = 8通り、C（和2,6,10）は 1+5+3 = 9通り です。</p>,
-            quiz: { type: 'choice', question: '止まる確率が最も大きい頂点は？', options: ['D', 'A', 'C', 'B'], correctAnswer: 'D', explanation: <p>D の10通りが一番多いです（9 + 8 + 9 + 10 = 36 で全部そろっています）。</p> }
+            quiz: { type: 'choice', question: '止まる確率が最も大きい頂点は？', options: ['D', 'A', 'C', 'B', '4つとも同じ'], correctAnswer: 'D', explanation: <p>D の10通りが一番多いです（9 + 8 + 9 + 10 = 36 で全部そろっています）。</p> }
           },
           {
             id: 5, title: '⑤ 確率',
@@ -698,7 +698,7 @@ export const r7Data: Record<string, MajorQuestionData> = {
           {
             id: 1, title: '(1)① ①のグラフ',
             content: <p>①は <TextWithMath text="$a>0$" /> の放物線で、原点が一番下です。</p>,
-            quiz: { type: 'choice', question: 'x < 0 の範囲で、①は x が増えると y はどうなる？', options: ['減る', '増える'], correctAnswer: '減る', explanation: <p>y軸より左では、放物線は右下がりなので y は減ります。</p> }
+            quiz: { type: 'choice', question: 'x < 0 の範囲で、①は x が増えると y はどうなる？', options: ['減る', '増える', '変わらない', '減ってから増える', '増えてから減る'], correctAnswer: '減る', explanation: <p>y軸より左では、放物線は右下がりなので y は減ります。</p> }
           },
           {
             id: 2, title: '(1)② ②のグラフ',

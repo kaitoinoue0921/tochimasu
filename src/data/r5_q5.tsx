@@ -37,7 +37,7 @@ export const q5Data: MajorQuestionData = {
         {
           id: 1, title: '① グラフの形',
           content: <p><TextWithMath text="$y=2x^2$" /> は上に開いた放物線で、原点（x = 0）が一番下です。</p>,
-          quiz: { type: 'choice', question: 'x の変域 −1 ≦ x ≦ 5 に x = 0 は含まれる？', options: ['含まれる', '含まれない'], correctAnswer: '含まれる', explanation: <p>−1 と 5 の間に 0 があるので、グラフは原点を通ります。</p> }
+          quiz: { type: 'choice', question: 'x の変域 −1 ≦ x ≦ 5 に x = 0 は含まれる？', options: ['含まれる', '含まれない', '含まれない（変域の端の −1 と 5 だけを見る）', '含まれない（0 は正の数でも負の数でもない）', '含まれる（そこで y が最大になる）'], correctAnswer: '含まれる', explanation: <p>−1 と 5 の間に 0 があるので、グラフは原点を通ります。</p> }
         },
         {
           id: 2, title: '② 最小値',

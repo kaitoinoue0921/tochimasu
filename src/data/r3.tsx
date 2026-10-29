@@ -22,7 +22,9 @@ export const r3Data: Record<string, MajorQuestionData> = {
               options: [
                 'プラスにする (+7)',
                 'そのまま引く (-7)',
-                'ゼロにする'
+                'ゼロにする',
+                '前の数の符号を変える (+4)',
+                '2つともプラスにする (+4 +7)'
               ],
               correctAnswer: 'プラスにする (+7)',
               explanation: <p>マイナスとマイナスが続くとプラスに変わります。つまり - (-7) は + 7 になります。</p>
@@ -43,7 +45,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: 'ここまでで式は 3 + (-2) になりました。プラスとマイナスが続くとどうなりますか？',
-              options: ['マイナスになる (-2)', 'プラスになる (+2)'],
+              options: ['マイナスになる (-2)', 'プラスになる (+2)', 'ゼロになる (0)', 'かけ算になる (×(-2))', '両方残る (±2)'],
               correctAnswer: 'マイナスになる (-2)',
               explanation: <p>+(マイナス) はそのまま引くことになります。つまり -2 です。</p>
             }
@@ -214,7 +216,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '作った式 (6x - 2y = 14) と ②の式 (x + 2y = 14) を足し合わせます。yはどうなりますか？',
-              options: ['消える', '4yになる'],
+              options: ['消える', '4yになる', '-4yになる', '2yになる', '-2yになる'],
               correctAnswer: '消える',
               explanation: <p>-2y と +2y を足すと 0 になるので消えます。これが加減法の目的です。</p>
             }
@@ -347,7 +349,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '「毎分一定の割合」とあります。これは何を意味していますか？',
-              options: ['1分間に増える水の高さが常に同じ', '時間が経つほど増えるスピードが速くなる'],
+              options: ['1分間に増える水の高さが常に同じ', '時間が経つほど増えるスピードが速くなる', '時間が経つほど増えるスピードが遅くなる', '水の高さが時間に関係なく一定のまま', '1分ごとに水の高さが2倍になる'],
               correctAnswer: '1分間に増える水の高さが常に同じ',
               explanation: <p>一定の割合＝グラフにすると直線（一次関数や比例）になるということです。</p>
             }
@@ -402,7 +404,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '証明する2つの三角形はどれとどれですか？',
-              options: ['△ABM と △CDN', '△ABC と △CDA'],
+              options: ['△ABM と △CDN', '△ABC と △CDA', '△ABN と △CDM', '△ABD と △CDB', '△AMN と △BMN'],
               correctAnswer: '△ABM と △CDN',
               explanation: <p>問題文に「△ABM ≡ △CDN を証明しなさい」と書かれているので、この2つに注目します。</p>
             }
@@ -412,7 +414,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '「平行四辺形の対辺は等しい」という性質から、どの辺とどの辺が等しいと言えますか？（△ABM と △CDN の辺で考えます）',
-              options: ['AB = CD', 'AD = BC'],
+              options: ['AB = CD', 'AD = BC', 'AB = BC', 'CD = DA', 'AC = BD'],
               correctAnswer: 'AB = CD',
               explanation: <p>平行四辺形の向かい合う辺は長さが同じです。△ABM の辺 AB と、△CDN の辺 CD がこれに当たります。</p>
             }
@@ -422,7 +424,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: 'M は AD の中点、N は BC の中点です。また、平行四辺形なので AD = BC です。これから何が言えますか？',
-              options: ['AM = CN', 'AM = BC'],
+              options: ['AM = CN', 'AM = BC', 'AM = AD', 'CN = AD', 'AM = 2CN'],
               correctAnswer: 'AM = CN',
               explanation: <p>同じ長さの線を半分に割った長さなので、AM (ADの半分) = CN (BCの半分) となります。</p>
             }
@@ -432,7 +434,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '「平行四辺形の対角は等しい」という性質から、どの角とどの角が等しいと言えますか？',
-              options: ['∠A = ∠C', '∠B = ∠D'],
+              options: ['∠A = ∠C', '∠B = ∠C', '∠A = ∠B', '∠A = ∠D', '∠C = ∠D'],
               correctAnswer: '∠A = ∠C',
               explanation: <p>△ABM の ∠BAM (つまり∠A) と、△CDN の ∠DCN (つまり∠C) は向かい合う角なので等しいです。</p>
             }
@@ -442,7 +444,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: 'ここまでで「AB = CD」「AM = CN」「∠A = ∠C」が分かりました。どの合同条件が使えますか？',
-              options: ['2組の辺とその間の角がそれぞれ等しい', '3組の辺がそれぞれ等しい', '1組の辺とその両端の角がそれぞれ等しい'],
+              options: ['2組の辺とその間の角がそれぞれ等しい', '3組の辺がそれぞれ等しい', '1組の辺とその両端の角がそれぞれ等しい', '2組の角がそれぞれ等しい', '2組の辺と1つの角がそれぞれ等しい'],
               correctAnswer: '2組の辺とその間の角がそれぞれ等しい',
               explanation: <p>2つの辺 (AB, AM) と、その間にある角 (∠A) が揃っているのでこの条件になります。</p>
             }
@@ -467,7 +469,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '円柱の表面積を求めるには、何と何を足せばよいですか？',
-              options: ['底面積2つ分 ＋ 側面積', '底面積 ＋ 側面積'],
+              options: ['底面積2つ分 ＋ 側面積', '底面積 ＋ 側面積', '底面積2つ分 × 高さ', '底面積 × 高さ', '底面積2つ分 ＋ 底面の円周'],
               correctAnswer: '底面積2つ分 ＋ 側面積',
               explanation: <p>円柱には「上下のフタ（底面が2つ）」と「横のぐるり（側面）」があるので、それらをすべて足します。</p>
             }
@@ -497,7 +499,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: '次に側面積です。円柱の側面を広げると長方形になります。この長方形の「縦」は円柱の「高さ(5cm)」です。「横」の長さは何と同じですか？',
-              options: ['底面の円周', '底面の直径'],
+              options: ['底面の円周', '底面の直径', '底面の半径', '底面積', '円柱の高さ'],
               correctAnswer: '底面の円周',
               explanation: <p>ぐるりと巻き付いていた部分を開くので、横の長さは底面の円の周りの長さとぴったり同じになります。</p>
             }
@@ -552,7 +554,7 @@ export const r3Data: Record<string, MajorQuestionData> = {
             quiz: {
               type: 'choice',
               question: 'まず、1番目、2番目、3番目の図形の「1辺のタイルの枚数」を数えるとどうなっていますか？',
-              options: ['1番目は1枚、2番目は3枚、3番目は5枚', '1番目は1枚、2番目は2枚、3番目は3枚'],
+              options: ['1番目は1枚、2番目は3枚、3番目は5枚', '1番目は1枚、2番目は2枚、3番目は3枚', '1番目は1枚、2番目は9枚、3番目は25枚', '1番目は1枚、2番目は4枚、3番目は9枚', '1番目は1枚、2番目は3枚、3番目は9枚'],
               correctAnswer: '1番目は1枚、2番目は3枚、3番目は5枚',
               explanation: <p>1枚の周りを囲むと上下左右に1枚ずつ増えるので、1辺の長さは2枚ずつ増えていきます。1, 3, 5... と続きます。</p>
             }

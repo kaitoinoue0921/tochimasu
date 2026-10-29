@@ -24,7 +24,7 @@ export const q3Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '30°を作る方法として正しいものは？',
-            options: ['正三角形の60°を二等分する', '垂線の90°を三等分する', '分度器で30°を測る'],
+            options: ['正三角形の60°を二等分する', '垂線の90°を三等分する', '分度器で30°を測る', '垂線の90°を二等分する', '正六角形の120°を二等分する'],
             correctAnswer: '正三角形の60°を二等分する',
             explanation: <p>正三角形の1つの角は60°。それを角の二等分線で半分にすれば30°です。角の三等分は定規とコンパスではできません。</p>
           }
@@ -38,7 +38,9 @@ export const q3Data: MajorQuestionData = {
             options: [
               'A、Bを中心に半径ABの円をかき、その交点をQとする',
               'Aを中心に半径ACの円をかき、ABとの交点をQとする',
-              'ABの垂直二等分線をひき、ABとの交点をQとする'
+              'ABの垂直二等分線をひき、ABとの交点をQとする',
+              'A、Bを中心にABの半分を半径とする円をかき、その交点をQとする',
+              'Bを中心に半径ABの円をかき、ABの延長との交点をQとする'
             ],
             correctAnswer: 'A、Bを中心に半径ABの円をかき、その交点をQとする',
             explanation: <p>QA＝QB＝AB となるので△ABQは正三角形、<TextWithMath text="$\angle ABQ = 60^\circ$" /> です。垂直二等分線とABの交点はABの中点で、角はできません。</p>
@@ -53,7 +55,9 @@ export const q3Data: MajorQuestionData = {
             options: [
               'Bを中心とする円で BA、BQ と交わる点をとり、その2点から等しい半径の円をかいた交点とBを結ぶ',
               'AとQを結んだ線分の中点とCを結ぶ',
-              'Bから辺ACに垂線をひく'
+              'Bから辺ACに垂線をひく',
+              'Cを中心とする円で CA、CB と交わる点をとり、その2点から等しい半径の円をかいた交点とCを結ぶ',
+              'Aを中心とする円で AB、AQ と交わる点をとり、その2点から等しい半径の円をかいた交点とAを結ぶ'
             ],
             correctAnswer: 'Bを中心とする円で BA、BQ と交わる点をとり、その2点から等しい半径の円をかいた交点とBを結ぶ',
             explanation: (
@@ -123,12 +127,12 @@ export const q3Data: MajorQuestionData = {
         {
           id: 1, title: '① どんな立体ができる？',
           content: <p>Aから辺CDに垂線AHをひき、台形を「長方形ABCH」と「直角三角形AHD」に分けて、それぞれをCDのまわりに回します。</p>,
-          quiz: { type: 'choice', question: 'できる立体の形は？', options: ['円柱の上に円錐がのった形', '円錐だけ', '円柱から円錐をくりぬいた形'], correctAnswer: '円柱の上に円錐がのった形', explanation: <p>長方形ABCHは円柱、△AHDは円錐になります。2つに分けて体積を求め、最後にたします。</p> }
+          quiz: { type: 'choice', question: 'できる立体の形は？', options: ['円柱の上に円錐がのった形', '円錐だけ', '円柱から円錐をくりぬいた形', '円柱を2つ重ねた形', '円錐の先を切りとった形（円錐台）'], correctAnswer: '円柱の上に円錐がのった形', explanation: <p>長方形ABCHは円柱、△AHDは円錐になります。2つに分けて体積を求め、最後にたします。</p> }
         },
         {
           id: 2, title: '② 体積の基本の式',
           content: <p>体積の基本は「底面積 × 高さ」。これで柱（角柱・円柱）の体積が出ます。とがった形（角錐・円錐）は、同じ底面・同じ高さの柱の 3分の1 です。</p>,
-          quiz: { type: 'choice', question: '円柱と円錐の体積の式の組は？', options: ['円柱：底面積×高さ、円錐：底面積×高さ×1/3', '円柱：底面積×高さ×1/3、円錐：底面積×高さ', 'どちらも 底面積×高さ'], correctAnswer: '円柱：底面積×高さ、円錐：底面積×高さ×1/3', explanation: <p>円錐だけ最後に 1/3 をかけます。</p> }
+          quiz: { type: 'choice', question: '円柱と円錐の体積の式の組は？', options: ['円柱：底面積×高さ、円錐：底面積×高さ×1/3', '円柱：底面積×高さ×1/3、円錐：底面積×高さ', 'どちらも 底面積×高さ', '円柱：底面積×高さ、円錐：底面積×高さ×1/2', '円柱：底面積×高さ×1/2、円錐：底面積×高さ×1/3'], correctAnswer: '円柱：底面積×高さ、円錐：底面積×高さ×1/3', explanation: <p>円錐だけ最後に 1/3 をかけます。</p> }
         },
         {
           id: 3, title: '③ 底面の半径',
@@ -179,7 +183,7 @@ export const q3Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '△ABF の斜辺はどれ？',
-            options: ['AB', 'AF', 'BF'],
+            options: ['AB', 'AF', 'BF', 'DA', 'AE'],
             correctAnswer: 'AB',
             explanation: <p>直角は∠AFB。その向かいの辺ABが斜辺です。△DAGでは∠DGAが直角なので斜辺はDAです。</p>
           }
@@ -190,7 +194,7 @@ export const q3Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'AB = DA が言える理由は？',
-            options: ['正方形の辺はすべて等しいから', '対角線が等しいから', 'AEが共通だから'],
+            options: ['正方形の辺はすべて等しいから', '対角線が等しいから', 'AEが共通だから', '向かい合う辺が平行だから', 'BF = AG だから'],
             correctAnswer: '正方形の辺はすべて等しいから',
             explanation: <p>正方形ABCDの辺なので <TextWithMath text="$AB = DA$" />……① です。</p>
           }
@@ -206,7 +210,7 @@ export const q3Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '2つの式から言えることは？',
-            options: ['∠BAF = ∠ADG', '∠BAF = ∠DAG', '∠ABF = ∠DAG かつ ∠BAF = 45°'],
+            options: ['∠BAF = ∠ADG', '∠BAF = ∠DAG', '∠ABF = ∠DAG かつ ∠BAF = 45°', '∠ABF = ∠ADG', '∠AFB = ∠ADG'],
             correctAnswer: '∠BAF = ∠ADG',
             explanation: <p>どちらも「90° − ∠DAG」なので <TextWithMath text="$\angle BAF = \angle ADG$" />……③ です。対応する頂点は A↔D、B↔A、F↔G の順なので、∠BAF に対応するのは ∠ADG です。</p>
           }
@@ -217,7 +221,7 @@ export const q3Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '使う合同条件は？',
-            options: ['直角三角形の斜辺と1つの鋭角がそれぞれ等しい', '直角三角形の斜辺と他の1辺がそれぞれ等しい', '2組の辺とその間の角がそれぞれ等しい'],
+            options: ['直角三角形の斜辺と1つの鋭角がそれぞれ等しい', '直角三角形の斜辺と他の1辺がそれぞれ等しい', '2組の辺とその間の角がそれぞれ等しい', '3組の辺がそれぞれ等しい', '2組の角がそれぞれ等しい'],
             correctAnswer: '直角三角形の斜辺と1つの鋭角がそれぞれ等しい',
             explanation: (
               <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg border border-emerald-200 dark:border-emerald-800 text-sm space-y-1">

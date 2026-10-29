@@ -32,7 +32,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'x 秒後の AP と BQ の長さは？',
-            options: ['AP＝x、BQ＝x', 'AP＝x、BQ＝4−x', 'AP＝8−x、BQ＝x'],
+            options: ['AP＝x、BQ＝x', 'AP＝x、BQ＝4−x', 'AP＝8−x、BQ＝x', 'AP＝8−x、BQ＝4−x', 'AP＝x、BQ＝2x'],
             correctAnswer: 'AP＝x、BQ＝x',
             explanation: <p>Pは Aから、Qは Bから同時に出発するので、どちらも <TextWithMath text="$x$" /> cm 進んでいます。</p>
           }
@@ -95,7 +95,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '適切なグラフは？',
-            options: ['1（放物線のあと右上がりの直線）', '2（放物線のあと右下がりの直線）', '3（直線のあと水平）'],
+            options: ['1（放物線のあと右上がりの直線）', '2（放物線のあと右下がりの直線）', '3（直線のあと水平）', '4（直線のあと右下がりの直線）'],
             correctAnswer: '1（放物線のあと右上がりの直線）',
             explanation: <p>前半は曲線で、後半は増え続ける直線なので1です。8秒のとき面積は16で、この区間ではずっと増え続けます。</p>
           }

@@ -161,7 +161,7 @@ export const q6Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'a が満たすべき条件は？',
-            options: ['a² が 77 以上で、a は奇数', 'a² が 75 以上で、a は偶数', 'a は 75 以上'],
+            options: ['a² が 77 以上で、a は奇数', 'a² が 75 以上で、a は偶数', 'a は 75 以上', 'a² が 77 以上で、a は偶数', 'a² が 77 以下で、a は奇数'],
             correctAnswer: 'a² が 77 以上で、a は奇数',
             explanation: <p><TextWithMath text="$b\geqq1$" /> より <TextWithMath text="$a^2\geqq77$" />。また <TextWithMath text="$a^2-75$" /> が偶数になるには <TextWithMath text="$a^2$" /> が奇数、つまり <TextWithMath text="$a$" /> が奇数。</p>
           }

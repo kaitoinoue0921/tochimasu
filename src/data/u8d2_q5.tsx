@@ -146,7 +146,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'どの2つの三角形が相似？',
-            options: ['△FMH と △FEO', '△FMH と △FEC', '△OMF と △OAH'],
+            options: ['△FMH と △FEO', '△FMH と △FEC', '△OMF と △OAH', '△FMO と △FHE', '△OMF と △OEF'],
             correctAnswer: '△FMH と △FEO',
             explanation: <p>MH ∥ OE なので、F をはさんで △FMH と △FEO が砂時計型の相似になります。</p>
           }

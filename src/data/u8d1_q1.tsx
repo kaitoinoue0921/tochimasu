@@ -18,7 +18,7 @@ export const q1Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '−4 + 15 の答えの符号は？',
-            options: ['＋（正）', '−（負）', '0になる'],
+            options: ['＋（正）', '−（負）', '0になる', '±（どちらにもなる）'],
             correctAnswer: '＋（正）',
             explanation: <p>絶対値は4と15で、15のほうが大きいので答えは正の数です。</p>
           }

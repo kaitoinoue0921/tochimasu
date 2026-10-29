@@ -41,7 +41,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'BP : PC と等しい比は？',
-            options: ['BR : RD', 'BD : DR', 'AR : RD'],
+            options: ['BR : RD', 'BD : DR', 'AR : RD', 'RD : BR', 'BR : BD'],
             correctAnswer: 'BR : RD',
             explanation: <p>△BRPで DC // RP なので、<TextWithMath text="$BP:PC=BR:RD$" /> です（平行線と線分の比）。</p>
           }
@@ -52,7 +52,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'イにあてはまる値は？',
-            options: ['b/c', 'c/b', '(b − c)/c'],
+            options: ['b/c', 'c/b', '(b − c)/c', 'b/(b − c)', 'a/c'],
             correctAnswer: 'b/c',
             explanation: <p><TextWithMath text="$\dfrac{BP}{PC}=\dfrac{BR}{RD}=\dfrac{b}{c}$" /> です。BDとDRの比 <TextWithMath text="$\tfrac{b-c}{c}$" /> と取り違えないよう、比をとる始点が同じBであることを確認します。</p>
           }
@@ -71,7 +71,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'CQ : QA と等しい比は？',
-            options: ['DR : RA', 'RA : DR', 'BR : RA'],
+            options: ['DR : RA', 'RA : DR', 'BR : RA', 'AR : AD', 'DR : DA'],
             correctAnswer: 'DR : RA',
             explanation: <p>△ADCで RQ // DC なので <TextWithMath text="$AQ:QC=AR:RD$" />、つまり <TextWithMath text="$CQ:QA=DR:RA$" /> です。</p>
           }
@@ -82,7 +82,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'ウにあてはまる値は？',
-            options: ['c/a', 'a/c', 'c/b'],
+            options: ['c/a', 'a/c', 'c/b', 'c/(a + c)', 'b/a'],
             correctAnswer: 'c/a',
             explanation: <p><TextWithMath text="$\dfrac{CQ}{QA}=\dfrac{DR}{RA}=\dfrac{c}{a}$" /> です。分子・分母の順番を問題の式どおりにそろえます。</p>
           }
@@ -101,7 +101,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'AR/RB は？',
-            options: ['a/b', 'b/a', 'a/c'],
+            options: ['a/b', 'b/a', 'a/c', 'c/b', 'a/(a + b)'],
             correctAnswer: 'a/b',
             explanation: <p>そのまま <TextWithMath text="$\dfrac{AR}{RB}=\dfrac{a}{b}$" /> です。</p>
           }
@@ -131,7 +131,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'メネラウスの定理を使う三角形と直線の組は？',
-            options: ['△ABP と直線RC', '△ABC と直線RC', '△APC と直線RB'],
+            options: ['△ABP と直線RC', '△ABC と直線RC', '△APC と直線RB', '△ABQ と直線RC', '△AQC と直線BP'],
             correctAnswer: '△ABP と直線RC',
             explanation: <p>直線RCは △ABP の辺AB上のR、辺AP上のQ、辺BPの延長上のCを通ります。△ABCでは直線RCが頂点Cを通ってしまうので使えません。</p>
           }

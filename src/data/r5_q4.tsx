@@ -177,7 +177,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '箱ひげ図の「箱の左端」が表している値は？',
-            options: ['最小値', '第1四分位数', '中央値'],
+            options: ['最小値', '第1四分位数', '中央値', '第3四分位数', '平均値'],
             correctAnswer: '第1四分位数',
             explanation: (
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -266,7 +266,7 @@ export const q4Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '第1四分位数は、何番目の人の得点で決まる？',
-            options: ['25番目だけ', '25番目と26番目の平均', '50番目と51番目の平均'],
+            options: ['25番目だけ', '25番目と26番目の平均', '50番目と51番目の平均', '24番目と25番目の平均', '26番目だけ'],
             correctAnswer: '25番目と26番目の平均',
             explanation: <p>50人（偶数）の中央値は、まん中の2人＝25番目と26番目の平均です。50番目と51番目は全体の中央値です。</p>
           }
@@ -280,7 +280,9 @@ export const q4Data: MajorQuestionData = {
             options: [
               '25番目の生徒の得点が7点、26番目の生徒の得点が9点',
               '25番目の生徒の得点が8点、26番目の生徒の得点が8点',
-              '50番目の生徒の得点が7点、51番目の生徒の得点が9点'
+              '50番目の生徒の得点が7点、51番目の生徒の得点が9点',
+              '24番目の生徒の得点が7点、25番目の生徒の得点が9点',
+              '25番目の生徒の得点が6点、26番目の生徒の得点が9点'
             ],
             correctAnswer: '25番目の生徒の得点が7点、26番目の生徒の得点が9点',
             explanation: (

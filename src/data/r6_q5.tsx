@@ -98,7 +98,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '毎秒1cmで右に進むとき、「x秒後」には長方形の先頭（右端の点C）は何cm進んでいることになりますか？',
-            options: ['x cm', '2x cm', 'x/2 cm'],
+            options: ['x cm', '2x cm', 'x/2 cm', '(x + 4) cm', '4x cm'],
             correctAnswer: 'x cm',
             explanation: <p>速さ1cm/秒 × 時間x秒 = x cm なので、x秒後には右にx cm進んでいます。</p>
           }
@@ -132,7 +132,7 @@ export const q5Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: 'このとき、長方形はL字型の左側部分（幅3cm）と右側部分にまたがります。長方形の高さは2cmですが、L字型の図形からはみ出しますか？',
-            options: ['はみ出す', 'はみ出さない', '条件が足りずわからない'],
+            options: ['はみ出す', 'はみ出さない', '条件が足りずわからない', 'はみ出す（右側部分の上にはみ出る）', 'はみ出す（左側部分の上にはみ出る）'],
             correctAnswer: 'はみ出さない',
             explanation: <p>長方形の高さは2cmで、L字型の最も低い部分（右半分の高さ3cm）よりも低いため、上にはみ出すことはありません。完全にL字型の中に収まっています。</p>
           }

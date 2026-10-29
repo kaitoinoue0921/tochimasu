@@ -48,7 +48,7 @@ export const q1Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '÷ 1/(x⁵y⁶) を直すと？',
-            options: ['× x⁵y⁶', '× 1/(x⁵y⁶)', '÷ x⁵y⁶'],
+            options: ['× x⁵y⁶', '× 1/(x⁵y⁶)', '÷ x⁵y⁶', '× x⁶y⁵', '× (−x⁵y⁶)'],
             correctAnswer: '× x⁵y⁶',
             explanation: <p><TextWithMath text="$\dfrac{1}{x^5y^6}$" /> の逆数は <TextWithMath text="$x^5y^6$" /> です。</p>
           }
@@ -59,7 +59,7 @@ export const q1Data: MajorQuestionData = {
           quiz: {
             type: 'choice',
             question: '約分した結果は？',
-            options: ['x³y⁴', 'x²y²', 'x⁹y¹²'],
+            options: ['x³y⁴', 'x²y²', 'x⁹y¹²', 'x³y²', 'x¹⁸y³²'],
             correctAnswer: 'x³y⁴',
             explanation: (
               <div>
