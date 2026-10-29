@@ -143,3 +143,7 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
   - 本人の問題用紙の写真（6・7ページ）。大問5-1（走る・休む・走るグラフ：休憩8分、y=100x−600、追い抜き22分後）と5-2（y=x+5と平行四辺形・格子点：B(4)=9、面積24、①t+1、②t=7）。公式解答なし、自力で解いた。
   - `/bst/k1`・`/bst/k2`（src/data/bst_k1.tsx, bst_k2.tsx、図は bst_figs.tsx）。ホームに「実力テスト」セクション（本人確認：学校の実力テスト、年度の欄には入れない）。
   - 図は目視確認済み、公開済み。
+
+- 2026-10-29（類題 24大問）
+  - `/ruiji/<キー>`：A速さ・1次関数の利用(a1〜a6)、B1次関数と図形(b1〜b6)、C放物線と直線(c1〜c6)、D規則性・文字式・データ(d1〜d6)。各3小問。データ src/data/ruiji_{a,b,c,d}.tsx、配線 src/data/ruiji.tsx、図の部品 ruiji_figs.tsx(GraphFig, SimpleTable)。
+  - 栃木県入試の大問5形式を踏まえてOpusが作成。全問pythonで検算済みだが公式解答はない。ホームは類題A〜Dの4セクション。図は一覧で目視確認、全ステップの表示までは未確認。

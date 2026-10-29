@@ -10,6 +10,7 @@ import { r7Data } from '@/data/r7';
 import { u8d1Data } from '@/data/u8d1';
 import { u8d2Data } from '@/data/u8d2';
 import { bstData } from '@/data/bst';
+import { ruijiData } from '@/data/ruiji';
 
 type Card = {
   title: string;
@@ -53,6 +54,12 @@ function card(
     color: themes[theme].card,
     progress: { prefix: `${year}/${q}`, total },
   };
+}
+
+function ruijiCards(prefix: string, theme: keyof typeof themes): Card[] {
+  return Object.keys(ruijiData)
+    .filter((k) => k.startsWith(prefix))
+    .map((k) => card('ruiji', k, ruijiData, theme, (ruijiData as Record<string, { title: string; subs: { title: string }[] }>)[k].title, (ruijiData as Record<string, { title: string; subs: { title: string }[] }>)[k].subs.map((x) => x.title.replace(/^\(\d\)\s*/, '')).join('、'), (c) => <Calculator className={`w-8 h-8 ${c}`} />));
 }
 
 const sections: { title: string; label?: string; border: string; cards: Card[] }[] = [
@@ -153,9 +160,33 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
       card('bst', 'k2', bstData, 'amber', '大問5-2：直線と平行四辺形・格子点', '平行線の式から面積を求め、格子点の個数を t で表して2次方程式で t を決める。', (c) => <Users className={`w-8 h-8 ${c}`} />),
     ],
   },
+  {
+    title: '類題A 速さ・1次関数の利用（栃木県入試の形式で作成）',
+    label: '類題A',
+    border: 'border-violet-500',
+    cards: ruijiCards('a', 'amber'),
+  },
+  {
+    title: '類題B 1次関数と図形（栃木県入試の形式で作成）',
+    label: '類題B',
+    border: 'border-violet-500',
+    cards: ruijiCards('b', 'teal'),
+  },
+  {
+    title: '類題C 放物線と直線（栃木県入試の形式で作成）',
+    label: '類題C',
+    border: 'border-violet-500',
+    cards: ruijiCards('c', 'cyan'),
+  },
+  {
+    title: '類題D 規則性・文字式・データ（栃木県入試の形式で作成）',
+    label: '類題D',
+    border: 'border-violet-500',
+    cards: ruijiCards('d', 'pink'),
+  },
 ];
 function qNum(href: string) {
-  return Number(href.match(/q(\d+)$/)?.[1] ?? (/\/k\d$/.test(href) ? 5 : 0));
+  return Number(href.match(/(\d+)$/)?.[1] ?? 0);
 }
 
 // 「令和7年 大問1：基本の小問集合」→「基本の小問集合」
