@@ -204,6 +204,12 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
     border: 'border-sky-500',
     cards: eigoCards('k', 'sky'),
   },
+  {
+    title: '英語 類題（対話文とグラフ・図を読む）',
+    label: '英語 類題',
+    border: 'border-sky-500',
+    cards: eigoCards('r', 'cyan'),
+  },
 ];
 function qNum(href: string) {
   return Number(href.match(/(\d+)$/)?.[1] ?? 0);

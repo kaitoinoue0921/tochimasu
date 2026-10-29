@@ -160,3 +160,4 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
 - 2026-10-29（英語版）
   - /eigo/<キー>。src/data/eigo.tsx（配線）、eigo_k.tsx（本人の英語実力テスト大問5・コンビニの対話文：7小問）、eigo_figs.tsx（BarChartFig/SeasonsFig/ElderlyFig）、eigo_r.tsx（Opus作成の類題r1〜r6、完成後に eigo.tsx へ配線）。ホームに「英語 実力テスト」セクション。
   - 答案用紙の写真には他人の氏名・得点が写っているので使わない。問題文と図だけ使用。問3(4)は「is smaller」を正解にした（公式解答なし、図3の描き直しは概略）。
+  - 英語の類題 eigo_r.tsx(r1〜r6：図書館・通学手段・スマホ・観光・部活・給食) を配線、ホームに「英語 類題」。Opus作成、図は一覧で目視。各5小問(3ステップ、最後が5択)。
