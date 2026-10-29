@@ -134,3 +134,60 @@ export function TilesTable() {
     </div>
   );
 }
+
+/** 年度不明 大問5-1 Aさんの道のりのグラフ（x：分、y：m） */
+export function SpeedGraphFig({ withB = false }: { withB?: boolean }) {
+  // x: 1分=8px、y: 100m=8px
+  const X = (x: number) => 50 + 8 * x;
+  const Y = (y: number) => 190 - 0.08 * y;
+  return (
+    <FigWrap caption={withB ? '図（Bさんの動きを赤で加えたもの）' : '図'}>
+      <svg viewBox="0 0 345 215" className="w-80 h-auto">
+        <line x1="40" y1={Y(0)} x2="300" y2={Y(0)} stroke="#334155" strokeWidth="1.2" />
+        <line x1={X(0)} y1="205" x2={X(0)} y2="10" stroke="#334155" strokeWidth="1.2" />
+        <text x="302" y={Y(0) + 4} className={lbl} fill="#334155" fontStyle="italic">x(分)</text>
+        <text x={X(0) + 4} y="12" className={lbl} fill="#334155" fontStyle="italic">y(m)</text>
+        <polyline points={`${X(0)},${Y(0)} ${X(4)},${Y(600)} ${X(12)},${Y(600)} ${X(28)},${Y(2200)}`} fill="none" stroke="#1e293b" strokeWidth="1.8" />
+        {withB && <polyline points={`${X(14)},${Y(0)} ${X(25)},${Y(2200)}`} fill="none" stroke="#dc2626" strokeWidth="1.8" />}
+        {[[0, 600], [0, 2200]].map(([, y]) => (
+          <line key={y} x1={X(0)} y1={Y(y)} x2={y === 2200 ? X(28) : X(12)} y2={Y(y)} stroke="#94a3b8" strokeDasharray="3 3" />
+        ))}
+        <line x1={X(12)} y1={Y(0)} x2={X(12)} y2={Y(600)} stroke="#94a3b8" strokeDasharray="3 3" />
+        <line x1={X(28)} y1={Y(0)} x2={X(28)} y2={Y(2200)} stroke="#94a3b8" strokeDasharray="3 3" />
+        <text x="6" y={Y(2200) + 4} className={lbl} fill="#334155">2200</text>
+        <text x="20" y={Y(600) + 4} className={lbl} fill="#334155">600</text>
+        <text x={X(12) - 6} y={Y(0) + 14} className={lbl} fill="#334155">12</text>
+        <text x={X(28) - 6} y={Y(0) + 14} className={lbl} fill="#334155">28</text>
+        <text x={X(0) - 12} y={Y(0) + 14} className={lbl} fill="#334155">O</text>
+        <text x={X(4) - 4} y={Y(0) + 14} className={lbl} fill="#334155">4</text>
+        <line x1={X(4)} y1={Y(0)} x2={X(4)} y2={Y(600)} stroke="#94a3b8" strokeDasharray="3 3" />
+      </svg>
+    </FigWrap>
+  );
+}
+
+/** 年度不明 大問5-2 直線 l と平行四辺形ABCD（t=3の例） */
+export function LatticeParallelogramFig() {
+  // 1目盛 11px
+  const X = (x: number) => 150 + 11 * x;
+  const Y = (y: number) => 118 - 11 * y;
+  const t = 3;
+  const P = (x: number, y: number) => `${X(x)},${Y(y)}`;
+  return (
+    <FigWrap caption="図（t = 3 の場合の例）">
+      <svg viewBox="0 0 300 220" className="w-72 h-auto">
+        <line x1="20" y1={Y(0)} x2="285" y2={Y(0)} stroke="#334155" strokeWidth="1.2" />
+        <line x1={X(0)} y1="215" x2={X(0)} y2="8" stroke="#334155" strokeWidth="1.2" />
+        <text x="288" y={Y(0) + 4} className={lbl} fill="#334155" fontStyle="italic">x</text>
+        <text x={X(0) + 4} y="12" className={lbl} fill="#334155" fontStyle="italic">y</text>
+        <line x1={X(-9)} y1={Y(-4)} x2={X(4)} y2={Y(9)} stroke="#334155" strokeWidth="1.2" />
+        <text x={X(4) + 4} y={Y(9) + 4} className={lbl} fill="#334155" fontStyle="italic">ℓ</text>
+        <line x1={X(-3)} y1={Y(-6)} x2={X(9)} y2={Y(6)} stroke="#334155" strokeWidth="1.2" />
+        <polygon points={`${P(t, 0)} ${P(t, t + 5)} ${P(0, 5)} ${P(0, -t)}`} fill="#bfdbfe" fillOpacity="0.5" stroke="#1d4ed8" strokeWidth="1.6" />
+        {[['A', t, 0, 6, 14], ['B', t, t + 5, 6, -2], ['C', 0, 5, -14, 4], ['D', 0, -t, 6, 14], ['O', 0, 0, -12, 14]].map(([n, x, y, dx, dy]) => (
+          <text key={n as string} x={X(x as number) + (dx as number)} y={Y(y as number) + (dy as number)} className={lbl} fill="#0f172a">{n}</text>
+        ))}
+      </svg>
+    </FigWrap>
+  );
+}
