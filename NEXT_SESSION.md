@@ -156,3 +156,7 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
 - 2026-10-29（類題E：直線の式→交点 8大問）
   - /ruiji/e1〜e8（src/data/ruiji_e.tsx）。ホームに「実力テスト風」セクション。(2)の式の求め方を毎回変え(2点・平行・x軸との交点・傾きと1点など)、(3)で連立して交点。全問pythonで検算済み、図は一覧で目視（e6のD/Qラベルがやや近い）。
   - 実力テスト由来の k1/k2 は問題文そのままで公開（本人了承 10/29。著作権は先生側にある点は説明済み）。
+
+- 2026-10-29（英語版）
+  - /eigo/<キー>。src/data/eigo.tsx（配線）、eigo_k.tsx（本人の英語実力テスト大問5・コンビニの対話文：7小問）、eigo_figs.tsx（BarChartFig/SeasonsFig/ElderlyFig）、eigo_r.tsx（Opus作成の類題r1〜r6、完成後に eigo.tsx へ配線）。ホームに「英語 実力テスト」セクション。
+  - 答案用紙の写真には他人の氏名・得点が写っているので使わない。問題文と図だけ使用。問3(4)は「is smaller」を正解にした（公式解答なし、図3の描き直しは概略）。
