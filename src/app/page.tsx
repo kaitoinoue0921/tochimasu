@@ -11,7 +11,6 @@ import { u8d1Data } from '@/data/u8d1';
 import { u8d2Data } from '@/data/u8d2';
 import { bstData } from '@/data/bst';
 import { ruijiData } from '@/data/ruiji';
-import { eigoData } from '@/data/eigo';
 
 type Card = {
   title: string;
@@ -61,13 +60,6 @@ function ruijiCards(prefix: string, theme: keyof typeof themes): Card[] {
   return Object.keys(ruijiData)
     .filter((k) => k.startsWith(prefix))
     .map((k) => card('ruiji', k, ruijiData, theme, (ruijiData as Record<string, { title: string; subs: { title: string }[] }>)[k].title, (ruijiData as Record<string, { title: string; subs: { title: string }[] }>)[k].subs.map((x) => x.title.replace(/^\(\d\)\s*/, '')).join('、'), (c) => <Calculator className={`w-8 h-8 ${c}`} />));
-}
-
-function eigoCards(prefix: string, theme: keyof typeof themes): Card[] {
-  const d = eigoData as Record<string, { title: string; subs: { title: string }[] }>;
-  return Object.keys(d)
-    .filter((k) => k.startsWith(prefix))
-    .map((k) => card('eigo', k, eigoData, theme, d[k].title, d[k].subs.map((x) => x.title.replace(/^問\d\S*\s*/, '')).join('、'), (c) => <BookOpen className={`w-8 h-8 ${c}`} />));
 }
 
 const sections: { title: string; label?: string; border: string; cards: Card[] }[] = [
@@ -197,18 +189,6 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
     label: '実力テスト風',
     border: 'border-violet-500',
     cards: ruijiCards('e', 'rose'),
-  },
-  {
-    title: '英語 実力テスト 大問5（対話文とグラフを読む）',
-    label: '英語 実力テスト',
-    border: 'border-sky-500',
-    cards: eigoCards('k', 'sky'),
-  },
-  {
-    title: '英語 類題（対話文とグラフ・図を読む）',
-    label: '英語 類題',
-    border: 'border-sky-500',
-    cards: eigoCards('r', 'cyan'),
   },
 ];
 function qNum(href: string) {
