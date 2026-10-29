@@ -90,51 +90,64 @@ export const k1Data: MajorQuestionData = {
     {
       id: "3",
       title: "(3) BさんがAさんを追い抜く時刻",
-      knowledge: ["1次関数の利用", "連立方程式", "速さ"],
+      knowledge: ["1次関数の式", "連立方程式", "グラフの交点"],
       originalText: <div>{intro}<p>(3)　学校にいたBさんは、Aさんが休憩をやめて再び走り始めたあとに、学校を出発した。Bさんは、分速200mでAさんと同じ道を通って公園に向かって走ったところ、途中でAさんを追い抜き、Aさんより3分早く公園に到着した。このとき、BさんがAさんを追い抜いたのは、Aさんが学校を出発してから何分後か。</p></div>,
       steps: [
         {
-          id: 1, title: '① Bさんが公園に着く時刻',
-          content: <p>Aさんは <TextWithMath text="$x=28$" /> で公園に着きます。Bさんはそれより3分早く着きます。</p>,
+          id: 1, title: '① Bさんのグラフが通る点',
+          content: (
+            <div className="space-y-3">
+              <div className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg">
+                <p className="font-bold mb-1">グラフの問題はこの型で解く（どんな問題でも同じ）</p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li>直線の式は <TextWithMath text="$y=ax+b$" />。<b>傾き a</b> と <b>通る1点</b> が分かれば決まる</li>
+                  <li>傾き a ＝ 速さ（または 増加量 ÷ 増加量）。通る点 ＝ 条件から読む（出発、到着、休憩の終わり…）</li>
+                  <li>通る点を <TextWithMath text="$y=ax+b$" /> に代入して <TextWithMath text="$b$" /> を出す</li>
+                  <li>「追い抜く・出会う」は2つの式を連立して <TextWithMath text="$x$" /> を求める</li>
+                </ol>
+              </div>
+              <p>この問題は、まずBさんの式が欲しい。Aさんは <TextWithMath text="$x=28$" /> で公園に着くので、Bさんはその3分前に着きます。これで「通る点」が1つ決まります。</p>
+            </div>
+          ),
           quiz: {
             type: 'choice',
-            question: 'Bさんが公園に着くのは、Aさんの出発から何分後？',
-            options: ['25分後', '31分後', '11分後'],
-            correctAnswer: '25分後',
-            explanation: <p>28 − 3 ＝ 25（分後）。</p>
+            question: 'Bさんのグラフが通る点は？',
+            options: ['(25, 2200)', '(31, 2200)', '(28, 2200)'],
+            correctAnswer: '(25, 2200)',
+            explanation: <p>28 − 3 ＝ 25 より、Bさんは <TextWithMath text="$x=25$" /> で公園（2200m）に着きます。</p>
           }
         },
         {
-          id: 2, title: '② Bさんが出発した時刻',
-          content: <p>Bさんは分速200mで2200m走るので、かかる時間は 2200 ÷ 200 ＝ 11（分）です。</p>,
+          id: 2, title: '② Bさんのグラフの傾き',
+          content: <p>グラフの傾きは、1分あたりに進む道のり、つまり速さです。</p>,
           quiz: {
             type: 'choice',
-            question: 'Bさんが出発したのは、Aさんの出発から何分後？',
-            options: ['14分後', '17分後', '11分後'],
-            correctAnswer: '14分後',
-            explanation: <p>25 − 11 ＝ 14（分後）。Aさんが走り始めた12分後より後なので問題に合います。</p>
+            question: 'Bさんのグラフの傾きは？',
+            options: ['200', '100', '150'],
+            correctAnswer: '200',
+            explanation: <p>Bさんは分速200mなので傾きは200です（100はAさんの再出発後の速さ）。</p>
           }
         },
         {
-          id: 3, title: '③ Bさんのグラフの式',
-          content: <p>Bさんは (14, 0) を出発し、傾きは200です。<TextWithMath text="$y=200x+b$" /> に (14, 0) を代入します。</p>,
+          id: 3, title: '③ Bさんの式',
+          content: <p>型の③です。傾き200が分かったので <TextWithMath text="$y=200x+b$" /> とおき、通る点 (25, 2200) を代入して <TextWithMath text="$b$" /> を求めます。</p>,
           quiz: {
             type: 'choice',
             question: 'Bさんの式は？',
             options: ['y = 200x − 2800', 'y = 200x − 2200', 'y = 200x + 2800'],
             correctAnswer: 'y = 200x − 2800',
-            explanation: <p><TextWithMath text="$0=200\times14+b$" /> より <TextWithMath text="$b=-2800$" />。x＝25 で 5000 − 2800 ＝ 2200 と合います。</p>
+            explanation: <p><TextWithMath text="$2200=200\times25+b$" /> より <TextWithMath text="$b=-2800$" />。<TextWithMath text="$y=0$" /> のとき <TextWithMath text="$x=14$" />（Bさんの出発は14分後で、Aさんが走り出した12分後より後なので問題に合います）。</p>
           }
         },
         {
-          id: 4, title: '④ 追い抜く点（2直線の交点）',
-          content: <p>Aさんは <TextWithMath text="$y=100x-600$" />、Bさんは <TextWithMath text="$y=200x-2800$" /> です。追い抜く点は2つのグラフの交点なので、y を等しくおきます。</p>,
+          id: 4, title: '④ Aさんの式と連立',
+          content: <p>型の④です。追い抜く点は2つのグラフの交点です。(2)で求めたAさんの式 <TextWithMath text="$y=100x-600$" /> と、Bさんの式 <TextWithMath text="$y=200x-2800$" /> の <TextWithMath text="$y$" /> を等しくおきます。</p>,
           quiz: {
             type: 'choice',
-            question: '追い抜いたのは、Aさんの出発から何分後？',
+            question: 'BさんがAさんを追い抜いたのは、Aさんの出発から何分後？',
             options: ['22分後', '20分後', '25分後'],
             correctAnswer: '22分後',
-            explanation: <div><SpeedGraphFig withB /><p><TextWithMath text="$100x-600=200x-2800$" /> より <TextWithMath text="$100x=2200$" />、<TextWithMath text="$x=22$" />。答えは22分後です。</p></div>
+            explanation: <div><SpeedGraphFig withB /><p><TextWithMath text="$100x-600=200x-2800$" /> より <TextWithMath text="$100x=2200$" />、<TextWithMath text="$x=22$" />。そのとき <TextWithMath text="$y=100\times22-600=1600$" />（学校から1600mの地点）です。答えは22分後。</p></div>
           }
         }
       ]
