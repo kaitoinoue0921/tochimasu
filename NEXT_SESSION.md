@@ -152,3 +152,7 @@ git remote add origin https://github.com/kaitoinoue0921/tochimasu.git && git pus
   - 問題ページの「使う知識」タグがタグ名に応じて /formulas の該当カードへのリンクになる（src/lib/formulaLinks.ts の対応表、StepLayout）。「📖 公式・ルール集」ボタンも追加。
   - formulas ページの各カードに id（f-line, f-parabola, f-joho ほか）。新カード「グラフから直線の式を求めて交点を出す（型）」(f-line-recipe)。#id つきで開くとスクロール＋枠で強調。
   - k1(3)を「傾き＋通る1点→式→連立」の型で作り直し済み。
+
+- 2026-10-29（類題E：直線の式→交点 8大問）
+  - /ruiji/e1〜e8（src/data/ruiji_e.tsx）。ホームに「実力テスト風」セクション。(2)の式の求め方を毎回変え(2点・平行・x軸との交点・傾きと1点など)、(3)で連立して交点。全問pythonで検算済み、図は一覧で目視（e6のD/Qラベルがやや近い）。
+  - 実力テスト由来の k1/k2 は問題文そのままで公開（本人了承 10/29。著作権は先生側にある点は説明済み）。

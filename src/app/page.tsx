@@ -184,6 +184,12 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
     border: 'border-violet-500',
     cards: ruijiCards('d', 'pink'),
   },
+  {
+    title: '実力テスト風 直線の式を求めて交点を出す（栃木県入試の形式で作成）',
+    label: '実力テスト風',
+    border: 'border-violet-500',
+    cards: ruijiCards('e', 'rose'),
+  },
 ];
 function qNum(href: string) {
   return Number(href.match(/(\d+)$/)?.[1] ?? 0);
