@@ -145,12 +145,12 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
     ],
   },
   {
-    title: '年度不明の大問5（問題用紙の写真から）',
-    label: '年度不明',
+    title: '学校の実力テスト 大問5',
+    label: '実力テスト',
     border: 'border-emerald-500',
     cards: [
-      card('bst', 'k1', bstData, 'emerald', '大問5-1：走る・休む・走るグラフ（年度不明）', '休憩の長さ、再び走る区間の式、後から出発したBさんが追い抜く時刻を求める。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
-      card('bst', 'k2', bstData, 'amber', '大問5-2：直線と平行四辺形・格子点（年度不明）', '平行線の式から面積を求め、格子点の個数を t で表して2次方程式で t を決める。', (c) => <Users className={`w-8 h-8 ${c}`} />),
+      card('bst', 'k1', bstData, 'emerald', '大問5-1：走る・休む・走るグラフ', '休憩の長さ、再び走る区間の式、後から出発したBさんが追い抜く時刻を求める。', (c) => <Beaker className={`w-8 h-8 ${c}`} />),
+      card('bst', 'k2', bstData, 'amber', '大問5-2：直線と平行四辺形・格子点', '平行線の式から面積を求め、格子点の個数を t で表して2次方程式で t を決める。', (c) => <Users className={`w-8 h-8 ${c}`} />),
     ],
   },
 ];

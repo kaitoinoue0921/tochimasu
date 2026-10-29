@@ -14,7 +14,7 @@ const intro = (
 // 問題用紙の写真の大問5（本人が持っていた問題用紙の写真。年度は不明）
 export const k1Data: MajorQuestionData = {
   id: "k1",
-  title: "大問5-1：走る・休む・走る のグラフ（年度不明）",
+  title: "大問5-1：走る・休む・走る のグラフ",
   subs: [
     {
       id: "1",

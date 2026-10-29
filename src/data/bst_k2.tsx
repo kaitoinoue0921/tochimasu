@@ -13,7 +13,7 @@ const intro = (
 // 問題用紙の写真の大問5-2（本人が持っていた問題用紙の写真。年度は不明）
 export const k2Data: MajorQuestionData = {
   id: "k2",
-  title: "大問5-2：直線と平行四辺形・格子点（年度不明）",
+  title: "大問5-2：直線と平行四辺形・格子点",
   subs: [
     {
       id: "1",
