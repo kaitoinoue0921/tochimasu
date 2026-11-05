@@ -1,7 +1,6 @@
-import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { BookOpen, GraduationCap, Calculator, Shapes, BarChart2, Beaker, Users } from 'lucide-react';
-import { ClearedCount, ProgressPill } from '@/components/Progress';
+import { BookOpen, Calculator, Shapes, BarChart2, Beaker, Users } from 'lucide-react';
+import { HomeTabs } from '@/components/HomeTabs';
 import { r3Data } from '@/data/r3';
 import { r4Data } from '@/data/r4';
 import { r5Data } from '@/data/r5';
@@ -191,101 +190,18 @@ const sections: { title: string; label?: string; border: string; cards: Card[] }
     cards: ruijiCards('e', 'rose'),
   },
 ];
-function qNum(href: string) {
-  return Number(href.match(/(\d+)$/)?.[1] ?? 0);
-}
-
-// 「令和7年 大問1：基本の小問集合」→「基本の小問集合」
-function shortTitle(title: string) {
-  return title.replace(/^.*?大問\d+\s*[：:（(]?\s*/, '').replace(/[）)]$/, '');
-}
-
-function yearLabel(title: string) {
-  return title.match(/^令和\d+年度/)?.[0] ?? title;
-}
-
-function ProblemCard({ prob }: { prob: Card }) {
-  return (
-    <Link href={prob.href} className="block group">
-      <div className="flex gap-4 items-start bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 h-full shadow-sm transition-all group-hover:border-emerald-400 group-hover:shadow-md">
-        <div className="shrink-0 w-14 text-center">
-          <div className="text-[11px] font-bold text-slate-400 leading-none">大問</div>
-          <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400 leading-tight">{qNum(prob.href)}</div>
-        </div>
-        <div className="min-w-0 flex-1">
-          <h4 className="font-bold text-slate-800 dark:text-slate-100 leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-300">{shortTitle(prob.title)}</h4>
-          {prob.description && <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mt-1 line-clamp-2">{prob.description}</p>}
-          {prob.progress && (
-            <div className="mt-2 flex items-center gap-2 text-xs text-slate-400">
-              <span>全{prob.progress.total}問</span>
-              <ProgressPill prefix={prob.progress.prefix} total={prob.progress.total} />
-            </div>
-          )}
-        </div>
-      </div>
-    </Link>
-  );
+function groupOf(sec: { title: string; label?: string }): string {
+  if (sec.title.startsWith('令和')) return '公立入試 過去問';
+  if (sec.label?.startsWith('類題') || sec.label === '実力テスト風') return '類題（オリジナル）';
+  return '私立・学校のテスト';
 }
 
 export default function Home() {
-  return (
-    <div className="space-y-10 pb-12">
-      <section className="text-center space-y-4 bg-white dark:bg-slate-800 px-5 py-7 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
-        <h2 className="text-2xl md:text-3xl font-black text-slate-800 dark:text-slate-100 leading-snug">
-          栃木県立高校入試 数学を<br className="sm:hidden" />1ステップずつ解く
-        </h2>
-        <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
-          下野模試や実力テストであと10点、20点上げたい栃木の中学生のための特訓サイトです。
-          大問を選び、小問を1つずつ解いていきます。
-        </p>
-        <p className="inline-block bg-rose-50 dark:bg-rose-900/30 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 px-3 py-1.5 rounded-lg text-sm font-bold">
-          ⚠️ 適当に押すと罵倒されます。計算用紙を用意して挑むこと
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-3">
-          <ClearedCount />
-          <Link
-            href="/formulas"
-            className="inline-flex items-center gap-2 text-sm bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-5 rounded-full shadow-sm"
-          >
-            <BookOpen className="w-4 h-4 shrink-0" />
-            公式・ルール集
-          </Link>
-          <a
-            href="https://kaitoinoue0921.github.io/chugaku-math/"
-            className="inline-flex items-center gap-2 text-sm bg-white dark:bg-slate-800 hover:border-indigo-400 border border-indigo-200 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300 font-bold py-2.5 px-5 rounded-full shadow-sm"
-          >
-            <GraduationCap className="w-4 h-4 shrink-0" />
-            中1〜中3 公式と要点
-          </a>
-        </div>
-      </section>
-
-      <nav className="sticky top-[52px] z-30 -mx-4 px-4 py-2 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
-        <div className="flex gap-2 overflow-x-auto">
-          {sections.map((sec, i) => (
-            <a
-              key={sec.title}
-              href={`#y${i}`}
-              className="shrink-0 text-sm font-bold px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-emerald-400 hover:text-emerald-700"
-            >
-              {sec.label ?? yearLabel(sec.title)}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      {sections.map((sec, i) => (
-        <section key={sec.title} id={`y${i}`}>
-          <h3 className={`text-xl font-bold text-slate-800 dark:text-slate-100 border-l-4 ${sec.border} pl-3 mb-4`}>
-            {sec.title}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {[...sec.cards].sort((a, b) => qNum(a.href) - qNum(b.href)).map((prob) => (
-              <ProblemCard key={prob.href} prob={prob} />
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
+  const data = sections.map((sec) => ({
+    title: sec.title,
+    label: sec.label ?? sec.title.match(/^令和\d+年度/)?.[0] ?? sec.title,
+    group: groupOf(sec),
+    cards: sec.cards.map((c) => ({ title: c.title, description: c.description, href: c.href, progress: c.progress })),
+  }));
+  return <HomeTabs sections={data} />;
 }

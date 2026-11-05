@@ -18,12 +18,12 @@ export function SubNav({ base, subs, current }: { base: string; subs: Sub[]; cur
         </Link>
       ) : <div className="flex-1" />}
       {next ? (
-        <Link href={`${base}/${next.id}`} className={`${cls} justify-end text-right`}>
+        <Link href={`${base}/${next.id}`} data-next-sub data-label="次の小問へ" className={`${cls} justify-end text-right !bg-emerald-600 !text-white !border-emerald-600 hover:!bg-emerald-700`}>
           <span className="min-w-0 truncate">次：{next.title}</span>
-          <ChevronRight className="w-5 h-5 shrink-0 text-emerald-500" />
+          <ChevronRight className="w-5 h-5 shrink-0" />
         </Link>
       ) : (
-        <Link href={base} className={`${cls} justify-end`}>大問の一覧へ戻る<ChevronRight className="w-5 h-5 shrink-0 text-emerald-500" /></Link>
+        <Link href={base} data-next-sub data-label="大問の一覧へ" className={`${cls} justify-end`}>大問の一覧へ戻る<ChevronRight className="w-5 h-5 shrink-0 text-emerald-500" /></Link>
       )}
     </nav>
   );

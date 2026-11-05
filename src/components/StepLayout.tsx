@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { buildOptions } from '@/lib/distractors';
 import { formulaAnchor } from '@/lib/formulaLinks';
+import { recordAnswer } from '@/lib/mistakes';
 
 export interface StepQuiz {
   type: 'choice' | 'input';
@@ -28,6 +29,7 @@ interface StepLayoutProps {
   questionText: React.ReactNode;
   steps: Step[];
   progressKey?: string; // クリア記録のキー。未指定ならtitle
+  onComplete?: () => void; // 全ステップ正解したときに1回呼ぶ
 }
 
 function shuffled<T>(arr: T[]): T[] {
@@ -39,7 +41,9 @@ function shuffled<T>(arr: T[]): T[] {
   return a;
 }
 
-export function StepLayout({ title, knowledge, questionText, steps, progressKey }: StepLayoutProps) {
+export function StepLayout({ title, knowledge, questionText, steps, progressKey, onComplete }: StepLayoutProps) {
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const completedRef = React.useRef(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [stepStates, setStepStates] = useState<Record<number, { 
     isCorrect: boolean; 
@@ -50,7 +54,15 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   }>>({});
   // この問題を通してのミス回数（やり直しても消えない。報告に出す）
   const [totalMisses, setTotalMisses] = useState(0);
+  // ホームの「続きから」用に、開いた問題を覚えておく
+  useEffect(() => {
+    try {
+      localStorage.setItem('tochimasu_last', JSON.stringify({ key: progressKey ?? title, title, t: Date.now() }));
+    } catch {}
+  }, [progressKey, title]);
   const [resetNotice, setResetNotice] = useState(false);
+  // 解説文・ステップ名は正解するまで出さない。使った知識はクリア後に出す
+  const [knowOpen, setKnowOpen] = useState(false);
   const [restartAt, setRestartAt] = useState<number | null>(null);
   // 問題文はスクロールしても上に貼りつける（固定ヘッダーの真下）
   const [headerH, setHeaderH] = useState(0);
@@ -112,7 +124,7 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
     setStepStates({});
     setResetNotice(true);
     shuffleOptions();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const scoldingMessages = [
@@ -156,6 +168,13 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
     if (currentState.lockUntil && now < currentState.lockUntil) return;
 
     const isCorrect = option === correctAnswer;
+    recordAnswer({
+      tags: knowledge ?? [],
+      correct: isCorrect,
+      key: progressKey ?? title,
+      title,
+      step: steps.find((s) => s.id === stepId)?.title ?? '',
+    });
     
     if (isCorrect) {
       setStepStates((prev) => {
@@ -201,12 +220,19 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
   };
 
   const isAllComplete = steps.every(s => stepStates[s.id]?.isCorrect);
+  useEffect(() => {
+    if (isAllComplete && !completedRef.current) {
+      completedRef.current = true;
+      onComplete?.();
+    }
+    if (!isAllComplete) completedRef.current = false;
+  }, [isAllComplete, onComplete]);
   const missText = totalMisses === 0 ? 'ノーミス' : `ミス${totalMisses}回`;
   const shareText = encodeURIComponent(`🔥【とちます！】\n「${title}」の特訓をクリアしました！（${missText}）\n\n#とちマス #栃木県公立入試`);
 
   return (
-    <div className="space-y-8 max-w-3xl mx-auto">
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 transition-colors duration-300">
+    <div ref={rootRef} className="scroll-mt-20 space-y-8 max-w-3xl mx-auto lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:max-w-none lg:w-[min(72rem,calc(100vw-4rem))] lg:relative lg:left-1/2 lg:-translate-x-1/2">
+      <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 md:p-8 transition-colors duration-300">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 border-b-2 border-emerald-500 pb-4">
           <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
             {title}
@@ -226,8 +252,17 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
           ></div>
         </div>
         
-        {knowledge && knowledge.length > 0 && (
-          <div className="mb-6 flex flex-wrap gap-2">
+        {knowledge && knowledge.length > 0 && isAllComplete && (
+          <div className="mb-2">
+            {!knowOpen ? (
+              <button
+                onClick={() => setKnowOpen(true)}
+                className="text-sm font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-600 hover:border-emerald-400"
+              >
+                💡 この問題で使った知識を見る
+              </button>
+            ) : (
+          <div className="flex flex-wrap gap-2">
             <span className="text-sm font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-600">
               💡 使う知識
             </span>
@@ -247,25 +282,25 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
             </Link>
           </div>
         )}
+          </div>
+        )}
 
       </div>
 
       <div
-        className="sticky z-30 -mt-4 bg-white dark:bg-slate-800 rounded-2xl shadow-md border-2 border-emerald-500 transition-colors duration-300"
+        className="sticky z-30 -mt-4 lg:mt-0 bg-white dark:bg-slate-800 rounded-2xl shadow-md border-2 border-emerald-500 transition-colors duration-300"
         style={{ top: headerH + 8 }}
       >
         <button
           onClick={() => setQuestionOpen((o) => !o)}
-          className="w-full flex items-center justify-between px-4 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-300"
+          className="w-full flex items-center justify-between px-4 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-300 lg:cursor-default"
         >
           <span>問題</span>
-          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{questionOpen ? 'たたむ ▲' : 'ひらく ▼'}</span>
+          <span className="lg:hidden text-xs font-medium text-slate-500 dark:text-slate-400">{questionOpen ? 'たたむ ▲' : 'ひらく ▼'}</span>
         </button>
-        {questionOpen && (
-          <div className="px-4 pb-4 md:px-6 max-h-[40vh] overflow-y-auto prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-200">
-            {questionText}
-          </div>
-        )}
+        <div className={`${questionOpen ? '' : 'hidden lg:block'} px-4 pb-4 md:px-6 max-h-[40vh] lg:max-h-[calc(100vh-9rem)] overflow-y-auto prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-200`}>
+          {questionText}
+        </div>
       </div>
 
       <div className="space-y-6">
@@ -305,13 +340,13 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
                     STEP {step.id} / {steps.length}
                   </div>
                   <h3 className={`text-lg font-bold transition-colors ${isLatest ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'}`}>
-                    {step.title || `ステップ ${step.id}`}
+                    {state.isCorrect ? step.title || `ステップ ${step.id}` : '考えてみよう'}
                   </h3>
                   {state.isCorrect && <CheckCircle2 className="w-6 h-6 text-emerald-500 dark:text-emerald-400 ml-auto" />}
                 </div>
                 
                 <div className="pl-0 sm:pl-11 text-slate-700 dark:text-slate-200 min-w-0 overflow-x-auto">
-                  {step.content && <div className="mb-4">{step.content}</div>}
+                  {step.content && state.isCorrect && <div className="mb-4">{step.content}</div>}
                   
                   {hasQuiz && (
                     <div className="mt-6 p-5 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 transition-colors">
@@ -444,6 +479,13 @@ export function StepLayout({ title, knowledge, questionText, steps, progressKey 
               {totalMisses === 0 ? 'ノーミスでクリア。この調子でどんどん解いていこう！' : `ミス${totalMisses}回。次はノーミスを目指そう。`}
             </p>
             
+            <button
+              onClick={() => document.querySelector<HTMLAnchorElement>('a[data-next-sub]')?.click()}
+              className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 px-8 rounded-full shadow-md w-full sm:w-auto"
+            >
+              次へ進む ▶
+            </button>
+
             <div className="pt-6 border-t border-emerald-200 dark:border-emerald-800">
               <p className="text-sm text-emerald-600/80 dark:text-emerald-400/80 mb-4 font-bold">
                 ↓ 先生にクリアしたことを報告しよう ↓

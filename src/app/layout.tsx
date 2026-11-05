@@ -19,7 +19,12 @@ export default function RootLayout({
         <header className="sticky top-0 z-40 bg-emerald-600 dark:bg-emerald-800 text-white px-4 py-3 shadow-md transition-colors duration-300">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <h1 className="text-xl font-black tracking-wider">🔥 とちます！ <span className="hidden sm:inline text-sm font-normal ml-2 opacity-80">栃木県公立入試 スパルタ特訓</span></h1>
-            <Link href="/" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">ホーム</Link>
+            <nav className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base">
+              <Link href="/review" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">復習</Link>
+              <Link href="/topics" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">分野別</Link>
+              <Link href="/weak" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">苦手</Link>
+              <Link href="/" className="text-emerald-100 hover:text-white transition-colors font-bold whitespace-nowrap">ホーム</Link>
+            </nav>
           </div>
         </header>
         <main className="flex-1 max-w-4xl w-full mx-auto p-4 md:p-8">

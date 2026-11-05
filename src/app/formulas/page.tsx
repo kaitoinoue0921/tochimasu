@@ -6,8 +6,25 @@ import { Book, ChevronLeft } from 'lucide-react';
 import { TextWithMath, MathText } from '@/components/MathText';
 
 export default function FormulasPage() {
+  return <FormulaCards />;
+}
+
+/** only を渡すと、その id のカードだけ残す（A4まとめ用）。見出し・前置きも隠す */
+export function FormulaCards({ only }: { only?: string[] }) {
   // #f-xxx つきで開かれたら、そのカードまでスクロールする（静的書き出しだと自動では飛ばないため）
   useEffect(() => {
+    if (!only) return;
+    document.querySelectorAll<HTMLElement>('[data-formula-root] [id^="f-"]').forEach((el) => {
+      if (!only.includes(el.id)) el.style.display = 'none';
+    });
+    document.querySelectorAll<HTMLElement>('[data-sheet-hide]').forEach((el) => (el.style.display = 'none'));
+    document.querySelectorAll<HTMLElement>('[data-formula-root] section').forEach((sec) => {
+      if (![...sec.querySelectorAll<HTMLElement>('[id^="f-"]')].some((c) => c.style.display !== 'none')) sec.style.display = 'none';
+    });
+  }, [only]);
+
+  useEffect(() => {
+    if (only) return;
     const id = decodeURIComponent(window.location.hash.slice(1));
     if (!id) return;
     const t = setTimeout(() => document.getElementById(id)?.scrollIntoView({ block: 'center' }), 150);
@@ -15,9 +32,9 @@ export default function FormulasPage() {
   }, []);
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div data-formula-root className="space-y-8 max-w-4xl mx-auto pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       
-      <div className="flex items-center gap-4 border-b-2 border-indigo-500 pb-4">
+      <div data-sheet-hide className="flex items-center gap-4 border-b-2 border-indigo-500 pb-4">
         <Link href="/" className="text-slate-500 hover:text-indigo-500 transition-colors">
           <ChevronLeft className="w-8 h-8" />
         </Link>
@@ -27,7 +44,7 @@ export default function FormulasPage() {
         </h2>
       </div>
 
-      <p className="text-slate-600 dark:text-slate-300">
+      <p data-sheet-hide className="text-slate-600 dark:text-slate-300">
         入試問題を解く上で絶対に覚えておきたい、中学数学の基本的な公式やルールをまとめました。
         問題を解いていて「あれ、どうだっけ？」と思ったら、ここを確認しましょう！
       </p>

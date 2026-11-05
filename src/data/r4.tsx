@@ -252,7 +252,7 @@ export const r4Data: Record<string, MajorQuestionData> = {
             ),
             quiz: { 
               type: 'choice', 
-              question: 'この表を見てください。この問題では、何を x と y に設定しましたか？', 
+              question: 'この問題では、何を x と y に設定するのが適切ですか？', 
               options: [
                 '割引後の大人の入館料をx円、割引後の子どもの入館料をy円とする', 
                 '割引前の大人1人の入館料をx円、割引前の子ども1人の入館料をy円とする', 

@@ -29,6 +29,14 @@ export default async function R3QuestionMenu({ params }: { params: Promise<{ que
       <p className="text-slate-600 dark:text-slate-300">
         解きたい小問を選んでください。1問ずつサクッと挑戦できます！
       </p>
+      {data.subs[0] && (
+        <Link
+          href={`/r3/${resolvedParams.questionId}/all`}
+          className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full shadow-sm"
+        >
+          1から続けて解く ▶（全{data.subs.length}問）
+        </Link>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {data.subs.map(sub => (
